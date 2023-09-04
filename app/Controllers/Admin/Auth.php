@@ -34,24 +34,37 @@ class Auth extends Common {
         }
         else {
             $admin_details = $this->admin_model->get_admin_details(['email' => $post_data['email']]);
-            $this->output = [
-                "status" => true,
-                "message" => "Post Data get successfully.",
-                "data" => [
-                    "post_data" => $post_data,
-                    "admin_details" => $admin_details
-                ],
-                "errors" => $this->validation->getErrors()
-            ];
+            if (!empty($admin_details->password)) {
+                $encryped_password = md5($post_data['password']);
+                $saved_password = $admin_details->password;
+                if ($encryped_password == $saved_password) {
+                    $status = true;
+                    $message = "Admin verification successfull.";
+                    $data["redirect_to"] = base_url("admin/dashboard");
+                }
+                else {
+                    $status = false;
+                    $message = "Your given password is wrong!";
+                    $data = new \stdClass;
+                }
+                $this->output = [
+                    "status" => $status,
+                    "message" => $message,
+                    "data" => $data,
+                    "errors" => $this->validation->getErrors()
+                ];
+            }
+            else {
+                $this->output = [
+                    "status" => false,
+                    "message" => "No admin account found with this Email!",
+                    "data" => new \stdClass,
+                    "errors" => $this->validation->getErrors()
+                ];   
+            }
         }
 
         return $this->response->setJSON($this->output);
-    }
-
-    public function get_signup_view() {
-        echo view('admin/templates/header');
-        echo view('admin/signup_view');
-        echo view('admin/templates/footer_links');
     }
 
 }

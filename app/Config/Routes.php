@@ -30,7 +30,6 @@ $routes->get('/terms-and-conditions', 'Client\Terms_and_conditions::index');
 // ========================
 $routes->get('/admin', 'Admin\Auth::index');
 $routes->post('/admin/verify-user', 'Admin\Auth::verify_user');
-$routes->get('/admin/signup', 'Admin\Auth::get_signup_view');
 $routes->get('/admin/dashboard', 'Admin\Dashboard::index');
 // ======================
 // Admin Panel Routes End
