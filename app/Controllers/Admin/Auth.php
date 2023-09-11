@@ -38,6 +38,7 @@ class Auth extends Common {
                 $encryped_password = md5($post_data['password']);
                 $saved_password = $admin_details->password;
                 if ($encryped_password == $saved_password) {
+                    $this->session->set("admin_id", $admin_details->uid);
                     $status = true;
                     $message = "Admin verification successfull.";
                     $data["redirect_to"] = base_url("admin/dashboard");
@@ -65,6 +66,11 @@ class Auth extends Common {
         }
 
         return $this->response->setJSON($this->output);
+    }
+
+    public function logout() {
+        $this->session->destroy();
+        return redirect()->to(base_url("admin"));
     }
 
 }

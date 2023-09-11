@@ -1,133 +1,165 @@
-<!-- Page Wrapper -->
-<div id="wrapper">
+<?php
+  $URL_path = uri_string();
+  $URL_segment = explode("/", $URL_path);
+?>
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
 
-<!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-    <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon p-2 bg-white rounded">
-            <img src="<?=base_url('assets/client/images/logo.png')?>" alt="Locaguide logo" width="30">
-        </div>
-        <div class="sidebar-brand-text ml-2">Admin Panel</div>
+<ul class="sidebar-nav" id="sidebar-nav">
+  <li class="nav-item">
+    <a class="nav-link <?=($URL_segment[1] == "dashboard") ? '' : 'collapsed'?>" 
+    href="<?=base_url('admin/dashboard')?>">
+      <i class="bi bi-grid"></i>
+      <span>Dashboard</span>
     </a>
+  </li><!-- End Dashboard Nav -->
 
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
+  <li class="nav-item">
+    <a class="nav-link <?=($URL_segment[1] == "SEO") ? '' : 'collapsed'?>" 
+    href="<?=base_url("admin/SEO")?>">
+      <i class="bi bi-megaphone"></i>
+      <span>SEO</span>
+    </a>
+  </li><!-- End SEO Page Nav -->
 
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Interface
-    </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Components</span>
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-list-task"></i><span>Product</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <li>
+        <a class="collapsed" href="product-category.html">
+          <i class="bi bi-circle"></i><span>Product Category</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="buttons.html">Buttons</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
-            </div>
-        </div>
-    </li>
-
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Utilities</span>
+      </li>
+      <li>
+        <a href="product-list.html">
+          <i class="bi bi-circle"></i><span>Product List</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="utilities-color.html">Colors</a>
-                <a class="collapse-item" href="utilities-border.html">Borders</a>
-                <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                <a class="collapse-item" href="utilities-other.html">Other</a>
-            </div>
-        </div>
-    </li>
+      </li>
+      
+    </ul>
+  </li><!-- End Product Nav -->
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Addons
-    </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-            aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Pages</span>
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-star"></i><span>Blogs</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="blog-category.html">
+          <i class="bi bi-circle"></i><span>Blog Category</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item" href="login.html">Login</a>
-                <a class="collapse-item" href="register.html">Register</a>
-                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="404.html">404 Page</a>
-                <a class="collapse-item" href="blank.html">Blank Page</a>
-            </div>
-        </div>
-    </li>
+      </li>
+      <li>
+        <a href="blog-list.html">
+          <i class="bi bi-circle"></i><span>Blog List</span>
+        </a>
+      </li>
+    </ul>
+  </li><!-- End Blog Nav -->
 
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
-    </li>
+   <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#pages-nav" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-list-check"></i><span>Pages</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="pages-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="home.html">
+          <i class="bi bi-circle"></i><span>Home</span>
+        </a>
+      </li>
+      <li>
+        <a href="about-us.html">
+          <i class="bi bi-circle"></i><span>About Us</span>
+        </a>
+      </li>
+      <li>
+        <a href="products.html">
+          <i class="bi bi-circle"></i><span>Products</span>
+        </a>
+      </li>
+      <li>
+        <a href="infrastructure.html">
+          <i class="bi bi-circle"></i><span>Infrastructure</span>
+        </a>
+      </li>
+      <li>
+        <a href="quality.html">
+          <i class="bi bi-circle"></i><span>Quality</span>
+        </a>
+      </li>
+      <li>
+        <a href="career.html">
+          <i class="bi bi-circle"></i><span>Career</span>
+        </a>
+      </li>
+      <li>
+        <a href="client.html">
+          <i class="bi bi-circle"></i><span>Client</span>
+        </a>
+      </li>
+      <li>
+        <a href="blogs.html">
+          <i class="bi bi-circle"></i><span>Blogs</span>
+        </a>
+      </li>
+      <li>
+        <a href="contact-us.html">
+          <i class="bi bi-circle"></i><span>Contact Us</span>
+        </a>
+      </li>
+ 
+      
+    </ul>
+  </li><!-- End Pages Nav -->
 
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
-    </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
 
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="our-clients.html">
+      <i class="bi bi-people"></i>
+      <span>Our Clients</span>
+    </a>
+  </li><!-- End Clients Page Nav -->
 
-    <!-- Sidebar Message -->
-    <div class="sidebar-card d-none d-lg-flex">
-        <img class="sidebar-card-illustration mb-2" src="<?=base_url('assets/admin/img/undraw_rocket.svg')?>" alt="...">
-        <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-        <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-    </div>
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="testimonials.html">
+      <i class="bi bi-asterisk"></i>
+      <span>Testimonials</span>
+    </a>
+  </li><!-- End F.A.Q Page Nav -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#Contact-nav" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-journal-text"></i><span>Contact Us</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="Contact-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="contact-details.html">
+          <i class="bi bi-circle"></i><span>Contact Details</span>
+        </a>
+      </li>
+      <li>
+        <a href="get-in-touch-form.html">
+          <i class="bi bi-circle"></i><span>Get In Touch Form</span>
+        </a>
+      </li>
+    </ul>
+  </li><!-- End Contact Page Nav -->
 
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="newsletter.html">
+      <i class="bi bi-card-list"></i>
+      <span>Newsletter</span>
+    </a>
+  </li><!-- End Newsletter Page Nav -->
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="users.html">
+     <i class="bi bi-person-plus"></i>
+      <span>Users</span>
+    </a>
+  </li><!-- End Login Page Nav -->
 </ul>
-<!-- End of Sidebar -->
 
-<!-- Content Wrapper -->
-<div id="content-wrapper" class="d-flex flex-column">
-
-<!-- Main Content -->
-<div id="content">
+</aside><!-- End Sidebar-->

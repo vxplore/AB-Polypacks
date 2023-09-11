@@ -22,7 +22,7 @@ class Common extends BaseController {
     }
 
     public function check_admin_logged_in() {
-        return (!empty($this->session->get('admin_id'))) ? true : false;
+        return (!empty($this->session->has('admin_id'))) ? true : false;
     }
 
     public function GUID($prefix = "") {
