@@ -50,6 +50,15 @@ class Validation extends BaseConfig
         'email' => 'required|max_length[255]|valid_email',
         'password' => 'required|max_length[255]'
     ];
+
+    public array $pages_editing_rules = [
+        'page_id' => 'required',
+        'name' => 'required|max_length[255]',
+        'slug' => 'required',
+        'meta_title' => 'required',
+        'meta_keywords' => 'required',
+        'meta_description' => 'required'
+    ];
     // ================================
     // Admin Panel Validation Rules End
     // ================================

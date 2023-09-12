@@ -8,87 +8,45 @@
             <li class="breadcrumb-item active">SEO</li>
           </ol>
         </nav></div>
-       <div><a href="<?=base_url('admin/SEO/add-content')?>" type="button" class="btn btn-danger text-uppercase py-2 rounded-1"><i class="bi bi-plus"></i> Add SEO Content</a></div>
+       <!-- <div><a href="<?=base_url('admin/SEO/add-content')?>" type="button" class="btn btn-danger text-uppercase py-2 rounded-1"><i class="bi bi-plus"></i> Add SEO Content</a></div> -->
     </div>
     <!-- End Page Title -->
 
     <section class="section">
       <div class="card">
           <div class="card-body">
-            <h5 class="card-title">SEO List</h5>
+            <h5 class="card-title">SEO Data List</h5>
               <div class="table-responsive">
                     <!-- Table with stripped rows -->
-              <table class="table datatable table-striped table-bordered">
+              <table id="SEO_data_listing_table" class="table table-striped table-bordered">
                 <thead>
                   <tr>
-                    <th scope="col">SL No</th>
-                    <th scope="col">Page</th>
-                    <th scope="col">Meta Title</th>
+                    <th scope="col">No. </th>
+                    <th scope="col">Name</th>
                     <th scope="col">Slug</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Meta Title</th>
+                    <th scope="col">Meta Description</th>
+                    <th scope="col">Meta Keywords</th>
+                    <th scope="col">Options</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>home</td>
-                    <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. </td>
-                    <td>home</td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                          <a class="editbtn bgedit" href="#"><i class="bi bi-pencil"></i></a>
-                          <a class="deletebtn bgdelete ms-2" href="#"><i class="bi bi-trash3"></i></a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>home</td>
-                    <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. </td>
-                    <td>home</td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                          <a class="editbtn bgedit" href="#"><i class="bi bi-pencil"></i></a>
-                          <a class="deletebtn bgdelete ms-2" href="#"><i class="bi bi-trash3"></i></a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>home</td>
-                    <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. </td>
-                    <td>home</td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                          <a class="editbtn bgedit" href="#"><i class="bi bi-pencil"></i></a>
-                          <a class="deletebtn bgdelete ms-2" href="#"><i class="bi bi-trash3"></i></a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>home</td>
-                    <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. </td>
-                    <td>home</td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                          <a class="editbtn bgedit" href="#"><i class="bi bi-pencil"></i></a>
-                          <a class="deletebtn bgdelete ms-2" href="#"><i class="bi bi-trash3"></i></a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>home</td>
-                    <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. </td>
-                    <td>home</td>
-                    <td>
-                      <div class="d-flex align-items-center">
-                          <a class="editbtn bgedit" href="#"><i class="bi bi-pencil"></i></a>
-                          <a class="deletebtn bgdelete ms-2" href="#"><i class="bi bi-trash3"></i></a>
-                      </div>
-                    </td>
-                  </tr>
+                  <?php if (!empty($list_of_pages)) {
+                  foreach ($list_of_pages as $i => $page_details) { ?>
+                    <tr>
+                      <th scope="row"><?=$i+1?></th>
+                      <td scope="row"><?=$page_details->name?></td>
+                      <td scope="row"><?=$page_details->slug?></td>
+                      <td scope="row"><?=$page_details->meta_title?></td>
+                      <td scope="row"><?=$page_details->meta_description?></td>
+                      <td scope="row"><?=$page_details->meta_keywords?></td>
+                      <td scope="row">
+                        <div class="d-flex align-items-center">
+                            <a class="editbtn bgedit" href="<?=base_url('admin/SEO/edit-content/'.$page_details->page_id)?>"><i class="bi bi-pencil"></i></a>
+                        </div>
+                      </td>
+                    </tr>
+                  <?php }} ?>
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->
@@ -98,3 +56,14 @@
     </section>
 
   </main><!-- End #main -->
+
+  <script>
+
+    let SEO_data_listing_table = new DataTable("#SEO_data_listing_table", {
+      "order": [[0,"DESC"]],
+      "language": {
+        "emptyTable": "No SEO Data Found!"
+      }
+    });
+
+  </script>

@@ -1,5 +1,4 @@
 <!-- Vendor JS Files -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="<?=base_url('assets/admin/vendor/apexcharts/apexcharts.min.js')?>"></script>
 <script src="<?=base_url('assets/admin/vendor/bootstrap/js/bootstrap.bundle.min.js')?>"></script>
 <script src="<?=base_url('assets/admin/vendor/chart.js/chart.umd.js')?>"></script>
