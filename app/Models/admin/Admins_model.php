@@ -18,6 +18,12 @@ class Admins_model extends Model {
         return $admin_table->get()->getRow();
     }
 
+    public function get_list_of_editable_pages() {
+        $pages_table = $this->db->table("pages");
+        $pages_table->select("page_id, name")->where(["page_contents_editable" => "TRUE"]);
+        return $pages_table->get()->getResult();
+    }
+
     public function get_list_of_pages() {
         $pages_table = $this->db->table("pages");
         return $pages_table->get()->getResult();

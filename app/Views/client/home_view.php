@@ -1,3 +1,9 @@
+<?php if (!empty($page_contents_editable)) {
+    $contentEditableStatus = "contentEditable='true'";
+} else {
+    $contentEditableStatus = "";
+}?>
+
 <section class="homebanner py-5 position-relative" style="
 background-image: url(<?=base_url('assets/client/images/homehero-bg.jpg')?>); 
 background-size: cover; 
@@ -71,7 +77,7 @@ background-attachment: fixed;">
 </section>
 <section class="pt-5">
     <div class="container pt-5">
-        <h2 class="title1 text-center mb-5 fadeUp">Our Certificates</h2>
+        <h2 <?=$contentEditableStatus?> class="title1 text-center mb-5 fadeUp">Our Certificates</h2>
         <div class="row justify-content-center">
             <div class="col-md-10 fadePopup">
                 <img src="<?=base_url('assets/client/images/certificates-min.jpg')?>" alt="" class="w-100">

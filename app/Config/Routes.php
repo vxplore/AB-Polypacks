@@ -35,7 +35,7 @@ $routes->get('/admin/dashboard', 'Admin\Dashboard::index');
 $routes->get('/admin/SEO', 'Admin\SEO::index');
 $routes->get('/admin/SEO/edit-content/(:any)', 'Admin\SEO::get_SEO_content_edit_view/$1');
 $routes->post('/admin/SEO/save-content', 'Admin\SEO::save_SEO_content');
-$routes->get('/admin/SEO/add-content', 'Admin\SEO::get_SEO_content_add_view');
+$routes->get('/admin/pages/edit-content/(:any)', 'Admin\Pages::get_page_contents_edit_view/$1');
 // ======================
 // Admin Panel Routes End
 // ======================

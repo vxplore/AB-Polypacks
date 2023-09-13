@@ -4,40 +4,36 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\Admin\Common;
 
-class SEO extends Common {
+class Pages extends Common {
 
-    public function index() {
+    public function get_page_contents_edit_view($page_id) {
         if ($this->check_admin_logged_in()) {
             $sidebar_data["pages"] = $this->admin_model->get_list_of_editable_pages();
-            $data["list_of_pages"] = $this->admin_model->get_list_of_pages();
-
-            echo view('admin/templates/header');
-            echo view('admin/templates/navbar');
-            echo view('admin/templates/sidebar', $sidebar_data);
-            echo view('admin/SEO_list_view', $data);
-            echo view('admin/templates/footer');
-            echo view('admin/templates/footer_links');
+            $condition = ["page_id" => $page_id];
+            $data["page_details"] = $this->admin_model->get_page_details_on_condition($condition);
+            
+            $this->get_editable_page_view($page_id);
         }
         else {
             return redirect()->to(base_url("admin"));
         }
     }
 
-    public function get_SEO_content_edit_view($page_id) {
-        if ($this->check_admin_logged_in()) {
-            $sidebar_data["pages"] = $this->admin_model->get_list_of_editable_pages();
-            $condition = ["page_id" => $page_id];
-            $data["page_details"] = $this->admin_model->get_page_details_on_condition($condition);
+    public function get_editable_page_view($page_id) {
+        $condition = ["page_contents_editable" => "TRUE", "page_id" => $page_id];
+        $page_details = $this->admin_model->get_page_details_on_condition($condition);
+        $page_rendering_data["page_contents_editable"] = true;
+        $script_rendering_data = [];
 
-            echo view('admin/templates/header');
-            echo view('admin/templates/navbar');
-            echo view('admin/templates/sidebar', $sidebar_data);
-            echo view('admin/SEO_content_view', $data);
-            echo view('admin/templates/footer');
-            echo view('admin/templates/footer_links');
+        if (!empty($page_details->view_file_path)) {
+            echo view("client/templates/header");
+            echo view("admin/templates/CMS_navbar_controls", ["page_details" => $page_details]);
+            echo view($page_details->view_file_path, $page_rendering_data);
+            echo view("admin/templates/CMS_data_saving_script", $script_rendering_data);
+            echo view("client/templates/footer_links");
         }
         else {
-            return redirect()->to(base_url("admin"));
+            echo view("errors/html/error_404");
         }
     }
 

@@ -22,6 +22,50 @@
     </a>
   </li><!-- End SEO Page Nav -->
 
+  <?php if ($URL_segment[1] == "pages") {
+    $pages_item_active_status = "";
+    $pages_list_showing_status = "show";
+  } else {
+    $pages_item_active_status = "collapsed";
+    $pages_list_showing_status = "";
+  }?>
+  <li class="nav-item">
+    <a class="nav-link <?=$pages_item_active_status?>" data-bs-target="#pages-nav" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-list-check"></i><span>Pages</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <?php if (!empty($pages)) { ?>
+      <ul id="pages-nav" class="nav-content collapse <?=$pages_list_showing_status?>" data-bs-parent="#sidebar-nav">
+        <?php $end_URL_segment = end($URL_segment);
+        foreach ($pages as $i => $page_details) { 
+          if ($end_URL_segment == $page_details->page_id) {
+            $page_link_active_status = "active";
+          } else {
+            $page_link_active_status = "";
+          }?>
+          <li>
+            <a class="<?=$page_link_active_status?>" href="<?=base_url('admin/pages/edit-content/'.$page_details->page_id)?>" target="_blank">
+              <i class="bi bi-circle"></i><span><?=$page_details->name?></span>
+            </a>
+          </li>
+        <?php } ?>
+      </ul>
+    <?php } ?>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="our-clients.html">
+    <i class="bi bi-images"></i>
+      <span>Banners</span>
+    </a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="our-clients.html">
+      <i class="bi bi-people"></i>
+      <span>Clients</span>
+    </a>
+  </li>
+
   <li class="nav-item">
     <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
       <i class="bi bi-list-task"></i><span>Product</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -59,69 +103,9 @@
     </ul>
   </li><!-- End Blog Nav -->
 
-   <li class="nav-item">
-    <a class="nav-link collapsed" data-bs-target="#pages-nav" data-bs-toggle="collapse" href="#">
-      <i class="bi bi-list-check"></i><span>Pages</span><i class="bi bi-chevron-down ms-auto"></i>
-    </a>
-    <ul id="pages-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-      <li>
-        <a href="home.html">
-          <i class="bi bi-circle"></i><span>Home</span>
-        </a>
-      </li>
-      <li>
-        <a href="about-us.html">
-          <i class="bi bi-circle"></i><span>About Us</span>
-        </a>
-      </li>
-      <li>
-        <a href="products.html">
-          <i class="bi bi-circle"></i><span>Products</span>
-        </a>
-      </li>
-      <li>
-        <a href="infrastructure.html">
-          <i class="bi bi-circle"></i><span>Infrastructure</span>
-        </a>
-      </li>
-      <li>
-        <a href="quality.html">
-          <i class="bi bi-circle"></i><span>Quality</span>
-        </a>
-      </li>
-      <li>
-        <a href="career.html">
-          <i class="bi bi-circle"></i><span>Career</span>
-        </a>
-      </li>
-      <li>
-        <a href="client.html">
-          <i class="bi bi-circle"></i><span>Client</span>
-        </a>
-      </li>
-      <li>
-        <a href="blogs.html">
-          <i class="bi bi-circle"></i><span>Blogs</span>
-        </a>
-      </li>
-      <li>
-        <a href="contact-us.html">
-          <i class="bi bi-circle"></i><span>Contact Us</span>
-        </a>
-      </li>
- 
-      
-    </ul>
-  </li><!-- End Pages Nav -->
 
 
-
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="our-clients.html">
-      <i class="bi bi-people"></i>
-      <span>Our Clients</span>
-    </a>
-  </li><!-- End Clients Page Nav -->
+  
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="testimonials.html">
