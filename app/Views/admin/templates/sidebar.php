@@ -53,7 +53,7 @@
   </li>
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="our-clients.html">
+    <a class="nav-link <?=($URL_segment[1] == "banners") ? '' : 'collapsed'?>" href="<?=base_url('admin/banners')?>">
     <i class="bi bi-images"></i>
       <span>Banners</span>
     </a>

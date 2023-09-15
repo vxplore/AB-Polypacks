@@ -41,4 +41,31 @@ class Common extends BaseController {
         }
     }
 
+    public function upload_image($image, $image_upload_directory)
+    {
+        $uploaded_image_path = NULL;
+        if (!empty($image) && !empty($image_upload_directory))
+        {
+            $file_name = $this->GUID();
+            $file_extension = ".".pathinfo($image["name"], PATHINFO_EXTENSION);
+            
+            $file_save_path = $image_upload_directory.$file_name.$file_extension;
+            $file_upload_path = FCPATH.$file_save_path;
+
+            if (move_uploaded_file($image["tmp_name"], $file_upload_path))
+            {
+                $uploaded_image_path = $file_save_path;
+            }
+        }
+        return $uploaded_image_path;
+    }
+
+    public function delete_image($image_path)
+    {
+        if (!empty($image_path))
+        {
+            unlink(FCPATH.$image_path);
+        }
+    }
+
 }

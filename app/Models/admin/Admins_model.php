@@ -39,4 +39,24 @@ class Admins_model extends Model {
         return $pages_table->set($data)->where($condition)->update();
     }
 
+    public function add_banner_details($data) {
+        $banners_table = $this->db->table("banners");
+        return $banners_table->insert($data);
+    }
+
+    public function get_list_of_banners() {
+        $banners_table = $this->db->table("banners");
+        return $banners_table->get()->getResult();
+    }
+
+    public function get_banner_details_on_condition($condition) {
+        $banners_table = $this->db->table("banners");
+        return $banners_table->where($condition)->get()->getRow();
+    }
+
+    public function update_banner_details($data, $condition) {
+        $banners_table = $this->db->table("banners");
+        return $banners_table->set($data)->where($condition)->update();
+    }
+
 }

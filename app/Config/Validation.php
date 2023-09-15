@@ -59,6 +59,20 @@ class Validation extends BaseConfig
         'meta_keywords' => 'required',
         'meta_description' => 'required'
     ];
+
+    public array $new_banner_adding_rules = [
+        'title' => 'required'
+    ];
+
+    public array $banner_editing_rules = [
+        'banner_id' => 'required',
+        'title' => 'required'
+    ];
+
+    public array $banner_status_changing_rules = [
+        'banner_id' => 'required',
+        'status' => 'required'
+    ];
     // ================================
     // Admin Panel Validation Rules End
     // ================================

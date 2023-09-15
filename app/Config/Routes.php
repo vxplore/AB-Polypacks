@@ -36,6 +36,12 @@ $routes->get('/admin/SEO', 'Admin\SEO::index');
 $routes->get('/admin/SEO/edit-content/(:any)', 'Admin\SEO::get_SEO_content_edit_view/$1');
 $routes->post('/admin/SEO/save-content', 'Admin\SEO::save_SEO_content');
 $routes->get('/admin/pages/edit-content/(:any)', 'Admin\Pages::get_page_contents_edit_view/$1');
+$routes->get('/admin/banners', 'Admin\Banners::index');
+$routes->get('/admin/banners/add', 'Admin\Banners::get_banner_add_view');
+$routes->post('/admin/banners/add-new-banner', 'Admin\Banners::add_new_banner');
+$routes->get('/admin/banners/edit/(:any)', 'Admin\Banners::get_banner_edit_view/$1');
+$routes->post('/admin/banners/save-banner-details', 'Admin\Banners::save_banner_details');
+$routes->post('/admin/banners/change-banner-status', 'Admin\Banners::change_banner_status');
 // ======================
 // Admin Panel Routes End
 // ======================

@@ -1,0 +1,43 @@
+.hide {
+    display: none !important;
+}
+
+.image-preview-container {
+    width: 100%;
+    height: 300px;
+    border: 2px dashed rgba(1, 41, 112, 0.8);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.image-preview-container:hover {
+    border: 2px dashed rgba(1, 41, 112, 0.6);
+}
+
+.text-preview-container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    color: rgba(1, 41, 112, 0.8);
+}
+
+.text-preview-container:hover {
+    color: rgba(1, 41, 112, 0.6);
+}
+
+.text-preview {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 5px;
+}
+
+.hidden-image-input {
+    display: none;
+}
