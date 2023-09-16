@@ -46,7 +46,7 @@ class Admins_model extends Model {
 
     public function get_list_of_banners() {
         $banners_table = $this->db->table("banners");
-        return $banners_table->get()->getResult();
+        return $banners_table->orderBy("appearing_order", "ASC")->get()->getResult();
     }
 
     public function get_banner_details_on_condition($condition) {
@@ -57,6 +57,16 @@ class Admins_model extends Model {
     public function update_banner_details($data, $condition) {
         $banners_table = $this->db->table("banners");
         return $banners_table->set($data)->where($condition)->update();
+    }
+
+    public function delete_banner($condition) {
+        $banners_table = $this->db->table("banners");
+        return $banners_table->where($condition)->delete();
+    }
+
+    public function get_list_of_clients() {
+        $banners_table = $this->db->table("clients");
+        return $banners_table->get()->getResult();
     }
 
 }

@@ -42,6 +42,9 @@ $routes->post('/admin/banners/add-new-banner', 'Admin\Banners::add_new_banner');
 $routes->get('/admin/banners/edit/(:any)', 'Admin\Banners::get_banner_edit_view/$1');
 $routes->post('/admin/banners/save-banner-details', 'Admin\Banners::save_banner_details');
 $routes->post('/admin/banners/change-banner-status', 'Admin\Banners::change_banner_status');
+$routes->post('/admin/banners/change-banner-appearing-order', 'Admin\Banners::change_banner_appearing_order');
+$routes->get('/admin/banners/delete/(:any)', 'Admin\Banners::delete_banner/$1');
+$routes->get('/admin/clients', 'Admin\Clients::index');
 // ======================
 // Admin Panel Routes End
 // ======================

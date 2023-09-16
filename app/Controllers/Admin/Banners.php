@@ -254,4 +254,56 @@ class Banners extends Common {
         return $this->response->setJSON($this->output);
     }
 
+    public function change_banner_appearing_order() {
+        $output = [];
+        $json_data = $this->request->getJSON();
+        foreach ($json_data as $i => $appearing_order_details) {
+            $data = ["appearing_order" => $appearing_order_details->appearing_order];
+            $condition = ["banner_id" => $appearing_order_details->banner_id];
+            $banner_updated = $this->admin_model->update_banner_details($data, $condition);
+        }
+
+        $this->output = [
+            "status" => true,
+            "message" => "Banner Appearing Order Changed.",
+            "data" => new \stdClass,
+            "errors" => $this->validation->getErrors()
+        ];
+
+        return $this->response->setJSON($this->output);
+    }
+
+    public function delete_banner($banner_id) {
+        $output = [];
+        $condition = ["banner_id" => $banner_id];
+        $banner_details = $this->admin_model->get_banner_details_on_condition($condition);
+        $banner_deleted = $this->admin_model->delete_banner($condition);
+
+        if ($banner_deleted) {
+            if (!empty($banner_details->image)) {
+                $image_path = FCPATH.$banner_details->image;
+                if (file_exists($image_path)) {
+                    unlink($image_path);
+                }
+            }
+            
+            $this->output = [
+                "status" => true, 
+                "message" => "Banner Deleted.",
+                "data" => new \stdClass,
+                "errors" => $this->validation->getErrors()
+            ];
+        }
+        else {
+            $this->output = [
+                "status" => false,
+                "message" => "Database Error Occured! Failed to delete banner.",
+                "data" => new \stdClass,
+                "errors" => $this->validation->getErrors()
+            ];
+        }
+
+        return $this->response->setJSON($this->output);
+    }
+
 }
