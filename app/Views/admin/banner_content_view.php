@@ -17,7 +17,6 @@ else {
     $submit_button_class = "btn btn-success";    
 }?>
 
-<link rel="stylesheet" href="<?=base_url('assets/admin/css/banner_content_view_style.css')?>">
 <main id="main" class="main">
     <div class="pagetitle d-flex align-items-center justify-content-between">
         <div>
@@ -98,25 +97,6 @@ else {
             selector: "#description",
             height: "300px"
         });
-    }
-
-    function previewImage(input) {
-        const imagePreview = document.getElementById('image_preview');
-        const textPreviewContainer = document.getElementById('text_preview_container');
-        if (input.files && input.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                imagePreview.src = e.target.result;
-                imagePreview.classList.remove("hide");
-                textPreviewContainer.classList.add("hide");
-                
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-        else {
-            textPreviewContainer.classList.remove("hide");
-            imagePreview.classList.add("hide");
-        }
     }
 
     $("#banner_data_form").submit(function(e) {

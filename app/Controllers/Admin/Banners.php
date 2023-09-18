@@ -57,13 +57,15 @@ class Banners extends Common {
                     $banner_image = $_FILES["image"];
                     $uploaded_image_path = $this->upload_image($banner_image, "uploads/banner_images/");
                     if (!empty($uploaded_image_path)) {
+                        $total_banners_count = $this->admin_model->get_total_banners_count();
                         $banner_id = $this->GUID("BANNER");
                         $data = [
                             "banner_id" => $banner_id,
                             "title" => $post_data["title"],
                             "description" => $post_data["description"],
                             "image" => $uploaded_image_path,
-                            "link" => (!empty($post_data["link"])) ? $post_data["link"] : NULL
+                            "link" => (!empty($post_data["link"])) ? $post_data["link"] : NULL,
+                            "appearing_order" => intval($total_banners_count + 1)
                         ];
 
                         $banner_added = $this->admin_model->add_banner_details($data);

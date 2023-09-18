@@ -44,6 +44,11 @@ class Admins_model extends Model {
         return $banners_table->insert($data);
     }
 
+    public function get_total_banners_count() {
+        $banners_table = $this->db->table("banners");
+        return $banners_table->get()->getNumRows();
+    }
+
     public function get_list_of_banners() {
         $banners_table = $this->db->table("banners");
         return $banners_table->orderBy("appearing_order", "ASC")->get()->getResult();
@@ -64,9 +69,49 @@ class Admins_model extends Model {
         return $banners_table->where($condition)->delete();
     }
 
+    public function add_client_details($data) {
+        $clients_table = $this->db->table("clients");
+        return $clients_table->insert($data);
+    }
+
+    public function get_total_clients_count() {
+        $clients_table = $this->db->table("clients");
+        return $clients_table->get()->getNumRows();
+    }
+
     public function get_list_of_clients() {
-        $banners_table = $this->db->table("clients");
-        return $banners_table->get()->getResult();
+        $clients_table = $this->db->table("clients");
+        return $clients_table->orderBy("appearing_order", "ASC")->get()->getResult();
+    }
+
+    public function get_client_details_on_condition($condition) {
+        $clients_table = $this->db->table("clients");
+        return $clients_table->where($condition)->get()->getRow();
+    }
+
+    public function update_client_details($data, $condition) {
+        $clients_table = $this->db->table("clients");
+        return $clients_table->set($data)->where($condition)->update();
+    }
+
+    public function delete_client($condition) {
+        $clients_table = $this->db->table("clients");
+        return $clients_table->where($condition)->delete();
+    }
+
+    public function add_product_category_details($data) {
+        $product_categories_table = $this->db->table("product_categories");
+        return $product_categories_table->insert($data);
+    }
+
+    public function get_total_product_categories_count() {
+        $product_categories_table = $this->db->table("product_categories");
+        return $product_categories_table->get()->getNumRows();
+    }
+
+    public function get_list_of_product_categories() {
+        $product_categories_table = $this->db->table("product_categories");
+        return $product_categories_table->orderBy("appearing_order", "ASC")->get()->getResult();
     }
 
 }

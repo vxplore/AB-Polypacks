@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="<?=base_url('assets/admin/css/banner_list_view_style.css')?>">
 <main id="main" class="main">
 
   <div class="pagetitle d-flex align-items-center justify-content-between">

@@ -45,6 +45,13 @@ $routes->post('/admin/banners/change-banner-status', 'Admin\Banners::change_bann
 $routes->post('/admin/banners/change-banner-appearing-order', 'Admin\Banners::change_banner_appearing_order');
 $routes->get('/admin/banners/delete/(:any)', 'Admin\Banners::delete_banner/$1');
 $routes->get('/admin/clients', 'Admin\Clients::index');
+$routes->post('/admin/clients/add-new-client', 'Admin\Clients::add_new_client');
+$routes->post('/admin/clients/edit-client-details', 'Admin\Clients::edit_client_details');
+$routes->post('/admin/clients/change-client-appearing-order', 'Admin\Clients::change_client_appearing_order');
+$routes->get('/admin/clients/delete/(:any)', 'Admin\Clients::delete_client/$1');
+$routes->get('/admin/product/categories', 'Admin\Product::get_product_categories_view');
+$routes->post('/admin/product/categories/add-new-category', 'Admin\Product::add_new_category');
+$routes->post('/admin/product/categories/change-category-status', 'Admin\Product::change_category_status');
 // ======================
 // Admin Panel Routes End
 // ======================

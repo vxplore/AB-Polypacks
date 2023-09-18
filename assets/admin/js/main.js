@@ -327,3 +327,42 @@ $(window).on('load', function () {
   $("#cover").fadeOut(1750);
   });
 });
+
+
+// -------------------------------------------
+// Commonly Used Variables and Functions Start
+// -------------------------------------------
+
+var btnLoader = `<div class="spinner-border text-light" role="status" style="width:25px; height:25px;"></div>`;
+
+// -----------------------------------------
+// Commonly Used Variables and Functions End
+// -----------------------------------------
+
+
+// -------------------------------------
+// Uploaded Image Preview Function Start
+// -------------------------------------
+
+function previewImage(input) {
+  const imagePreview = document.getElementById('image_preview');
+  const textPreviewContainer = document.getElementById('text_preview_container');
+  if (input.files && input.files[0]) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+          imagePreview.src = e.target.result;
+          imagePreview.classList.remove("hide");
+          textPreviewContainer.classList.add("hide");
+          
+      };
+      reader.readAsDataURL(input.files[0]);
+  }
+  else {
+      textPreviewContainer.classList.remove("hide");
+      imagePreview.classList.add("hide");
+  }
+}
+
+// -----------------------------------
+// Uploaded Image Preview Function End
+// -----------------------------------

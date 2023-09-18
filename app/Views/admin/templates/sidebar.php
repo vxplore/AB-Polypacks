@@ -60,24 +60,32 @@
   </li>
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="our-clients.html">
+    <a class="nav-link <?=($URL_segment[1] == "clients") ? '' : 'collapsed'?>" href="<?=base_url('admin/clients')?>">
       <i class="bi bi-people"></i>
       <span>Clients</span>
     </a>
   </li>
 
+  <?php if ($URL_segment[1] == "product") {
+    $product_dropdown_active_status = "";
+    $product_nav_items_showing_status = "show";
+  } else {
+    $product_dropdown_active_status = "collapsed";
+    $product_nav_items_showing_status = "";
+  }
+  $end_URL_segment = end($URL_segment); ?>
   <li class="nav-item">
-    <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+    <a class="nav-link <?=$product_dropdown_active_status?>" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
       <i class="bi bi-list-task"></i><span>Product</span><i class="bi bi-chevron-down ms-auto"></i>
     </a>
-    <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+    <ul id="components-nav" class="nav-content collapse <?=$product_nav_items_showing_status?>" data-bs-parent="#sidebar-nav">
       <li>
-        <a class="collapsed" href="product-category.html">
+        <a class="<?=(!empty($end_URL_segment) && $end_URL_segment == 'categories') ? 'active' : ''?>" href="<?=base_url('admin/product/categories')?>">
           <i class="bi bi-circle"></i><span>Product Category</span>
         </a>
       </li>
       <li>
-        <a href="product-list.html">
+        <a class="<?=(!empty($end_URL_segment) && $end_URL_segment == 'list') ? 'active' : ''?>" href="product-list.html">
           <i class="bi bi-circle"></i><span>Product List</span>
         </a>
       </li>

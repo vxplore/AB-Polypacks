@@ -73,6 +73,19 @@ class Validation extends BaseConfig
         'banner_id' => 'required',
         'status' => 'required'
     ];
+
+    public array $new_client_adding_rules = [
+        'name' => 'required'
+    ];
+
+    public array $client_editing_rules = [
+        'client_id' => 'required',
+        'name' => 'required'
+    ];
+
+    public array $new_product_category_adding_rules = [
+        'name' => 'required'
+    ];
     // ================================
     // Admin Panel Validation Rules End
     // ================================
