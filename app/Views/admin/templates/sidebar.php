@@ -85,7 +85,7 @@
         </a>
       </li>
       <li>
-        <a class="<?=(!empty($end_URL_segment) && $end_URL_segment == 'list') ? 'active' : ''?>" href="product-list.html">
+        <a class="<?=(!empty($end_URL_segment) && $end_URL_segment == 'list') ? 'active' : ''?>" href="<?=base_url('admin/product/list')?>">
           <i class="bi bi-circle"></i><span>Product List</span>
         </a>
       </li>

@@ -86,6 +86,16 @@ class Validation extends BaseConfig
     public array $new_product_category_adding_rules = [
         'name' => 'required'
     ];
+
+    public array $product_category_editing_rules = [
+        'category_id' => 'required',
+        'name' => 'required'
+    ];
+
+    public array $product_category_status_changing_rules = [
+        'category_id' => 'required',
+        'status' => 'required'
+    ];
     // ================================
     // Admin Panel Validation Rules End
     // ================================

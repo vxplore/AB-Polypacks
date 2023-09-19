@@ -51,7 +51,11 @@ $routes->post('/admin/clients/change-client-appearing-order', 'Admin\Clients::ch
 $routes->get('/admin/clients/delete/(:any)', 'Admin\Clients::delete_client/$1');
 $routes->get('/admin/product/categories', 'Admin\Product::get_product_categories_view');
 $routes->post('/admin/product/categories/add-new-category', 'Admin\Product::add_new_category');
+$routes->post('/admin/product/categories/edit-category-details', 'Admin\Product::edit_category_details');
+$routes->post('/admin/product/categories/change-category-appearing-order', 'Admin\Product::change_category_appearing_order');
 $routes->post('/admin/product/categories/change-category-status', 'Admin\Product::change_category_status');
+$routes->get('/admin/product/categories/delete/(:any)', 'Admin\Product::delete_category/$1');
+$routes->get('/admin/product/list', 'Admin\Product::get_product_list_view');
 // ======================
 // Admin Panel Routes End
 // ======================

@@ -1,80 +1,142 @@
+<style>
+
+    .collapsable-section {
+        border-radius: 5px;
+    }
+
+    .collapsable-section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .collapsable-section-header-data {
+        display: flex;
+        justify-content: flex-start; 
+        align-items: center;
+    }
+
+    .collapsable-section-header-data img {
+        height: 50px;
+        margin-right: 18px;
+        border: 1px solid #e7e7e7;
+        border-radius: 5px;
+    }
+
+    .collapsable-section-header-data h4 {
+        margin-bottom: 0;
+        color: #525252;
+        font-weight: 600;
+    }
+
+    .big-icon {
+        font-size: 25px;
+    }
+
+    .collapsable-section-body {
+        width: 100%;
+        min-height: 300px;
+    }
+
+</style>
 <main id="main" class="main">
 
   <div class="pagetitle d-flex align-items-center justify-content-between">
-      <div> <h1>Product Categories</h1>
+      <div> <h1>Products List</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="<?=base_url('admin')?>">Home</a></li>
           <li class="breadcrumb-item">Product</li>
-          <li class="breadcrumb-item active">Categories</li>
+          <li class="breadcrumb-item active">List</li>
         </ol>
       </nav></div>
-      <div><a href="javascript:add_new_product_category()" type="button" class="btn btn-success text-uppercase py-2 rounded-1"><i class="bi bi-plus"></i> Add New Product Category</a></div>
+      <!-- <div><a href="javascript:add_new_product_category()" type="button" class="btn btn-success text-uppercase py-2 rounded-1"><i class="bi bi-plus"></i> Add New Product Category</a></div> -->
   </div>
   <!-- End Page Title -->
 
+
   <section class="section">
-    <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Product Categories List</h5>
-          <?php if (!empty($list_of_product_categories)) { ?>
-            <div class="table-responsive min-height-300px">
-              <table id="product_categories_listing_table" class="table table-hover table-bordered">
-                <thead class="thead-light">
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">No. </th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Options</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php foreach ($list_of_product_categories as $i => $category_details) { ?>
-                    <tr data-category-id="<?=$category_details->category_id?>">
-                      <th scope="row">
-                        <div class="drag-handle"><i class="bi bi-list"></i></div>
-                      </th>
-                      <td scope="row" class="font-weight-600">
-                        <?=(!empty($category_details->appearing_order)) ? $category_details->appearing_order : $i+1;?>
-                      </td>
-                      <td scope="row" data-column="name">
-                        <?=$category_details->name?>
-                      </td>
-                      <td scope="row" data-column="image" align="center">
-                          <img src="<?=base_url($category_details->image)?>" alt="" height="50px">
-                      </td>
-                      <td scope="row">
-                        <?php $category_id = (!empty($category_details->category_id)) ? $category_details->category_id : '';
-                        if (!empty($category_details) && $category_details->status == "ACTIVE") {
-                          $checked_status = "checked";
-                        } else {
-                          $checked_status = "";
-                        }?>
-                        <div class="toggle-switch">
-                          <input type="checkbox" id="status_toggler_<?=$i+1?>" data-category-id="<?=$category_id?>" <?=$checked_status?> onchange="change_product_category_status(this)">
-                          <label for="status_toggler_<?=$i+1?>"></label>
-                        </div>
-                      </td>
-                      <td scope="row">
-                        <div class="d-flex align-items-center">
-                            <a class="editbtn bgedit" href="javascript:edit_product_category('<?=$category_details->category_id?>')"><i class="bi bi-pencil"></i></a>
-                            <a class="deletebtn bgdelete ms-2" href="javascript:delete_product_category('<?=$category_details->category_id?>')"><i class="bi bi-trash3"></i></a>
-                        </div>
-                      </td>
-                    </tr>
-                  <?php }?>
-                </tbody>
-              </table>
+    <?php if (!empty($categories_and_products_list)) {
+    foreach ($categories_and_products_list as $i => $category_details) { 
+    $collapsable_showing_status = ($i == 0) ? 'show' : '';?>
+        <div class="collapsable-section card">
+            <div class="card-header p-2">
+                <div class="collapsable-section-header" onclick="toggleCollapsable('#collapsableSection<?=$i+1?>')">
+                    <div class="collapsable-section-header-data">
+                        <img src="<?=base_url($category_details['image'])?>" alt="" class="shadow-sm">
+                        <h4><?=$category_details['name']?> Products</h4>
+                    </div>
+                    <div class="collapsable-section-header-controls">
+                        <a class="px-2"><i class="big-icon bi bi-plus-circle-fill text-success bg-white"></i></a>
+                    </div>
+                </div>
             </div>
-          <?php } else { ?>
-            <div class="empty-container">
-              <h5 class="empty-container-note">No Product Categories Found!</h5>
+
+            <div id="collapsableSection<?=$i+1?>" class="collapse <?=$collapsable_showing_status?>">
+                <div class="card-body p-2">
+                    <div class="collapsable-section-body">
+                        <?php if (!empty($category_details['products_list'])) { ?>
+                            <div class="table-responsive min-height-300px">
+                            <table id="product_categories_listing_table" class="table table-hover table-bordered">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">No. </th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Options</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach ($category_details['products_list'] as $j => $product_details) { ?>
+                                    <tr data-product-id="<?=$product_details->product_id?>">
+                                    <th scope="row">
+                                        <div class="drag-handle"><i class="bi bi-list"></i></div>
+                                    </th>
+                                    <td scope="row" class="font-weight-600">
+                                        <?=(!empty($product_details->appearing_order)) ? $product_details->appearing_order : $i+1;?>
+                                    </td>
+                                    <td scope="row" data-column="name">
+                                        <?=$product_details->name?>
+                                    </td>
+                                    <td scope="row" data-column="image" align="center">
+                                        <img src="<?=base_url($product_details->image)?>" alt="" height="50px">
+                                    </td>
+                                    <td scope="row">
+                                        <?php $product_id = (!empty($product_details->product_id)) ? $product_details->product_id : '';
+                                        if (!empty($product_details) && $product_details->status == "ACTIVE") {
+                                        $checked_status = "checked";
+                                        } else {
+                                        $checked_status = "";
+                                        }?>
+                                        <div class="toggle-switch">
+                                        <input type="checkbox" id="status_toggler_<?=$i+1?>" data-product-id="<?=$product_id?>" <?=$checked_status?> onchange="change_product_status(this)">
+                                        <label for="status_toggler_<?=$j+1?>"></label>
+                                        </div>
+                                    </td>
+                                    <td scope="row">
+                                        <div class="d-flex align-items-center">
+                                            <a class="editbtn bgedit" href="javascript:edit_product('<?=$product_details->product_id?>')"><i class="bi bi-pencil"></i></a>
+                                            <a class="deletebtn bgdelete ms-2" href="javascript:delete_product('<?=$product_details->product_id?>')"><i class="bi bi-trash3"></i></a>
+                                        </div>
+                                    </td>
+                                    </tr>
+                                <?php }?>
+                                </tbody>
+                            </table>
+                            </div>
+                        <?php } else { ?>
+                            <div class="empty-container">
+                                <h5 class="empty-container-note">No Products Found!</h5>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
             </div>
-          <?php } ?>
         </div>
-    </div>
+    <?php }} ?>
   </section>
 
 
@@ -153,7 +215,7 @@
 <script src="<?=base_url('assets/admin/js/jquery.dragsort.js')?>"></script>
 <script>
 
-  $("#product_categories_listing_table tbody").dragsort({
+  $("table tbody").dragsort({
     dragSelector:"tr .drag-handle",
     placeHolderTemplate:"<tr></tr>",
     dragEnd: function() {

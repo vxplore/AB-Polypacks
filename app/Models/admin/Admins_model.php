@@ -114,4 +114,24 @@ class Admins_model extends Model {
         return $product_categories_table->orderBy("appearing_order", "ASC")->get()->getResult();
     }
 
+    public function get_product_category_details_on_condition($condition) {
+        $product_categories_table = $this->db->table("product_categories");
+        return $product_categories_table->where($condition)->get()->getRow();
+    }
+
+    public function update_product_category_details($data, $condition) {
+        $product_categories_table = $this->db->table("product_categories");
+        return $product_categories_table->set($data)->where($condition)->update();
+    }
+
+    public function delete_product_category($condition) {
+        $product_categories_table = $this->db->table("product_categories");
+        return $product_categories_table->where($condition)->delete();
+    }
+
+    public function get_list_of_products_on_condition($condition) {
+        $products_table = $this->db->table("products"); 
+        return $products_table->where($condition)->orderBy("appearing_order", "ASC")->get()->getResult();
+    }
+
 }

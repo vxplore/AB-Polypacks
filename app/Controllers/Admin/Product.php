@@ -100,4 +100,207 @@ class Product extends Common {
         return $this->response->setJSON($this->output);
     }
 
+    public function edit_category_details() {
+        $output = [];
+        $post_data = $this->request->getPost();
+
+        if (!$this->validation->run($post_data, 'product_category_editing_rules')) {
+            $this->output = [
+                "status" => false,
+                "message" => "Something went wrong! Please try again later.",
+                "data" => new \stdClass,
+                "errors" => $this->validation->getErrors()
+            ];
+        }
+        else {
+            if ($this->check_admin_logged_in()) {
+                if (!empty($_FILES["image"]["name"])) {
+                    $previous_category_details = $this->admin_model->get_product_category_details_on_condition(["category_id" => $post_data["category_id"]]);
+                    if (!empty($previous_category_details->image)) {
+                        $previous_category_image = $previous_category_details->image;
+                    }
+
+                    $new_product_category_image = $_FILES["image"];
+                    $uploaded_image_path = $this->upload_image($new_product_category_image, "uploads/product_category_images/");
+                }
+
+                $condition = ["category_id" => $post_data["category_id"]];
+                $data = [
+                    "name" => $post_data["name"]
+                ];
+                if (!empty($uploaded_image_path)) {
+                    $data["image"] = $uploaded_image_path;
+                }
+                
+                $product_category_updated = $this->admin_model->update_product_category_details($data, $condition);
+                if ($product_category_updated) {
+                    if (!empty($previous_category_image)) {
+                        $this->delete_image($previous_category_image);
+                    }
+
+                    $this->output = [
+                        "status" => true,
+                        "message" => "Product Category Details Saved Successfully.",
+                        "data" => new \stdClass,
+                        "errors" => $this->validation->getErrors()
+                    ];
+                }
+                else {
+                    $this->output = [
+                        "status" => false,
+                        "message" => "Database Error Occurred! Failed to save product category details.",
+                        "data" => new \stdClass,
+                        "errors" => $this->validation->getErrors()
+                    ];
+                }
+
+            }
+            else {
+                $this->output = [
+                    "status" => false,
+                    "message" => "Session Expired! Please login and try again.",
+                    "data" => new \stdClass,
+                    "errors" => $this->validation->getErrors()
+                ];
+            }
+        }
+
+        return $this->response->setJSON($this->output);
+    }
+
+    public function change_category_appearing_order() {
+        $output = [];
+        $json_data = $this->request->getJSON();
+        foreach ($json_data as $i => $appearing_order_details) {
+            $data = ["appearing_order" => $appearing_order_details->appearing_order];
+            $condition = ["category_id" => $appearing_order_details->category_id];
+            $product_category_updated = $this->admin_model->update_product_category_details($data, $condition);
+        }
+
+        $this->output = [
+            "status" => true,
+            "message" => "Product Category Appearing Order Changed.",
+            "data" => new \stdClass,
+            "errors" => $this->validation->getErrors()
+        ];
+
+        return $this->response->setJSON($this->output);
+    }
+
+    public function change_category_status() {
+        $output = [];
+        $post_data = $this->request->getPost();
+
+        if (!$this->validation->run($post_data, 'product_category_status_changing_rules')) {
+            $this->output = [
+                "status" => false,
+                "message" => "Something went wrong! Please try again later.",
+                "data" => new \stdClass,
+                "errors" => $this->validation->getErrors()
+            ];
+        }
+        else {
+            if ($this->check_admin_logged_in()) {
+                $condition = ["category_id" => $post_data["category_id"]];
+                $data = ["status" => $post_data["status"]];
+                $product_category_updated = $this->admin_model->update_product_category_details($data, $condition);
+                if ($product_category_updated) {
+                    $this->output = [
+                        "status" => true,
+                        "message" => "Product Category Status Changed to ".ucwords(strtolower($post_data["status"])),
+                        "data" => new \stdClass,
+                        "errors" => $this->validation->getErrors()
+                    ];
+                }
+                else {
+                    $this->output = [
+                        "status" => false,
+                        "message" => "Database Error Occurred! Failed to change product category status.",
+                        "data" => new \stdClass,
+                        "errors" => $this->validation->getErrors()
+                    ];
+                }
+            }
+            else {
+                $this->output = [
+                    "status" => false,
+                    "message" => "Session Expired! Please login and try again.",
+                    "data" => new \stdClass,
+                    "errors" => $this->validation->getErrors()
+                ];
+            }
+        }
+
+        return $this->response->setJSON($this->output);
+    }
+
+    public function delete_category($category_id) {
+        $output = [];
+        $condition = ["category_id" => $category_id];
+        $product_category_details = $this->admin_model->get_product_category_details_on_condition($condition);
+        $product_category_deleted = $this->admin_model->delete_product_category($condition);
+
+        if ($product_category_deleted) {
+            if (!empty($product_category_details->image)) {
+                $image_path = FCPATH.$product_category_details->image;
+                if (file_exists($image_path)) {
+                    unlink($image_path);
+                }
+            }
+            
+            $this->output = [
+                "status" => true, 
+                "message" => "Product Category Deleted.",
+                "data" => new \stdClass,
+                "errors" => $this->validation->getErrors()
+            ];
+        }
+        else {
+            $this->output = [
+                "status" => false,
+                "message" => "Database Error Occured! Failed to delete product category.",
+                "data" => new \stdClass,
+                "errors" => $this->validation->getErrors()
+            ];
+        }
+
+        return $this->response->setJSON($this->output);
+    }
+
+    public function get_product_list_view() {
+        if ($this->check_admin_logged_in()) {
+            $sidebar_data["pages"] = $this->admin_model->get_list_of_editable_pages();
+            $data["categories_and_products_list"] = $this->get_product_categories_and_products_list();
+
+            echo view('admin/templates/header');
+            echo view('admin/templates/navbar');
+            echo view('admin/templates/sidebar', $sidebar_data);
+            echo view('admin/products_list_view', $data);
+            echo view('admin/templates/footer');
+            echo view('admin/templates/footer_links');
+        }
+        else {
+            return redirect()->to(base_url("admin"));
+        }
+    }
+
+    private function get_product_categories_and_products_list() {
+        $categories_and_products_list = [];
+        $list_of_product_categories = $this->admin_model->get_list_of_product_categories();
+        foreach ($list_of_product_categories as $i => $category_details) {
+            $products_and_category_details = [];
+            $products_and_category_details["category_id"] = $category_details->category_id;
+            $products_and_category_details["name"] = $category_details->name;
+            $products_and_category_details["image"] = $category_details->image;
+
+            $condition = ["product_category_id" => $category_details->category_id];
+            $list_of_products = $this->admin_model->get_list_of_products_on_condition($condition);
+            $products_and_category_details["products_list"] = $list_of_products;
+
+            $categories_and_products_list[] = $products_and_category_details;
+        }
+
+        return $categories_and_products_list;
+    }
+
 }

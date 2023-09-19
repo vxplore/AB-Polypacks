@@ -16,7 +16,7 @@ class App extends BaseConfig
      *
      *    http://example.com/
      */
-    public string $baseURL = 'http://localhost/AB-Polypacks/';
+    public string $baseURL = 'https://v-xplore.com/dev/AB-Polypacks/';
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
