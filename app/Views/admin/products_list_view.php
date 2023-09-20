@@ -68,7 +68,7 @@
                         <h4><?=$category_details['name']?> Products</h4>
                     </div>
                     <div class="collapsable-section-header-controls">
-                        <a class="px-2"><i class="big-icon bi bi-plus-circle-fill text-success bg-white"></i></a>
+                        <a class="px-2" onclick="add_new_product(event, '<?=$category_details['category_id']?>')"><i class="big-icon bi bi-plus-circle-fill text-success bg-white"></i></a>
                     </div>
                 </div>
             </div>
@@ -140,20 +140,31 @@
   </section>
 
 
-  <!-- ===================================== -->
-  <!-- Add/Edit Product Category Modal Start -->
-  <!-- ===================================== -->
-  <div id="product_category_modal" class="custommodal modal fade" tabindex="-1">
+  <!-- ============================ -->
+  <!-- Add/Edit Product Modal Start -->
+  <!-- ============================ -->
+  <div id="product_modal" class="custommodal modal fade" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header py-2">
-          <h5 id="product_category_modal_title" class="modal-title text-white">Add New Product Category</h5>
-          <button type="button" class="btn-close" onclick="close_product_category_modal()"></button>
+          <h5 id="product_category_modal_title" class="modal-title text-white">Add New Product</h5>
+          <button type="button" class="btn-close" onclick="close_product_modal()"></button>
         </div>
         <div class="modal-body">
-          <form id="product_category_details_form">
-            <input type="hidden" name="category_id" id="editable_category_id">
+          <form id="product_details_form">
+            <input type="hidden" name="product_id" id="editable_product_id">
             <div class="row">
+                <div class="col-md-12">
+                  <div class="form-floating mb-3">
+                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                      <option selected="">Select Page</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                    <label for="floatingSelect">Works with selects</label>
+                  </div>
+                </div>
                 <div class="col-md-12">
                   <div class="form-floating mb-3">
                     <input type="text" name="name" id="product_category_name" class="form-control" placeholder="Enter Category Name Here..." required>
@@ -214,6 +225,10 @@
 
 <script src="<?=base_url('assets/admin/js/jquery.dragsort.js')?>"></script>
 <script>
+
+  function toggleCollapsable(collapsableSectionId) {
+    $(collapsableSectionId).collapse("toggle");
+  }
 
   $("table tbody").dragsort({
     dragSelector:"tr .drag-handle",
