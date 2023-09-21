@@ -303,4 +303,262 @@ class Product extends Common {
         return $categories_and_products_list;
     }
 
+    public function add_new_product() {
+        $output = [];
+        $post_data = $this->request->getPost();
+
+        if (!$this->validation->run($post_data, 'new_product_adding_rules')) {
+            $this->output = [
+                "status" => false,
+                "message" => "Something went wrong! Please try again later.",
+                "data" => new \stdClass,
+                "errors" => $this->validation->getErrors()
+            ];
+        }
+        else {
+            if ($this->check_admin_logged_in()) {
+                if (!empty($_FILES["image"]["name"])) {
+                    $condition = ["product_category_id" => $post_data["product_category_id"]];
+                    $product_image = $_FILES["image"];
+                    $uploaded_image_path = $this->upload_image($product_image, "uploads/product_images/");
+                    if (!empty($uploaded_image_path)) {
+                        $total_products_count = $this->admin_model->get_total_products_count($condition);
+                        $product_id = $this->GUID("PRODUCT");
+                        $data = [
+                            "product_id" => $product_id,
+                            "product_category_id" => $post_data["product_category_id"],
+                            "name" => $post_data["name"],
+                            "image" => $uploaded_image_path,
+                            "appearing_order" => intval($total_products_count + 1),
+                            "status" => "ACTIVE"
+                        ];
+
+                        $product_added = $this->admin_model->add_product_details($data);
+                        if ($product_added) {
+                            $condition = ["product_category_id" => $post_data["product_category_id"]];
+                            $products_list = $this->admin_model->get_list_of_products_on_condition($condition);
+                            $data["products_list"] = $products_list;
+
+                            $this->output = [
+                                "status" => true,
+                                "message" => "New Product Added Successfully.",
+                                "data" => $data,
+                                "errors" => $this->validation->getErrors()
+                            ];
+                        }
+                        else {
+                            $this->output = [
+                                "status" => false,
+                                "message" => "Database Error Occurred! Failed to Add New Product.",
+                                "data" => new \stdClass,
+                                "errors" => $this->validation->getErrors()
+                            ];
+                        }
+                    }
+                    else {
+                        $this->output = [
+                            "status" => false,
+                            "message" => "Failed to Upload Product Image! Please try again later.",
+                            "data" => new \stdClass,
+                            "errors" => $this->validation->getErrors()
+                        ];
+                    }
+                }
+                else {
+                    $this->output = [
+                        "status" => false,
+                        "message" => "Please Upload an Image to Add New Product.",
+                        "data" => new \stdClass,
+                        "errors" => $this->validation->getErrors()
+                    ];
+                }
+            }
+            else {
+                $this->output = [
+                    "status" => false,
+                    "message" => "Session Expired! Please login and try again.",
+                    "data" => new \stdClass,
+                    "errors" => $this->validation->getErrors()
+                ];
+            }
+        }
+
+        return $this->response->setJSON($this->output);
+    }
+
+    public function edit_product_details() {
+        $output = [];
+        $post_data = $this->request->getPost();
+
+        if (!$this->validation->run($post_data, 'product_editing_rules')) {
+            $this->output = [
+                "status" => false,
+                "message" => "Something went wrong! Please try again later.",
+                "data" => new \stdClass,
+                "errors" => $this->validation->getErrors()
+            ];
+        }
+        else {
+            if ($this->check_admin_logged_in()) {
+                if (!empty($_FILES["image"]["name"])) {
+                    $previous_product_details = $this->admin_model->get_product_details_on_condition(["product_id" => $post_data["product_id"]]);
+                    if (!empty($previous_product_details->image)) {
+                        $previous_product_image = $previous_product_details->image;
+                    }
+
+                    $new_product_image = $_FILES["image"];
+                    $uploaded_image_path = $this->upload_image($new_product_image, "uploads/product_images/");
+                }
+
+                $condition = ["product_id" => $post_data["product_id"]];
+                $data = [
+                    "product_category_id" => $post_data["product_category_id"],
+                    "name" => $post_data["name"]
+                ];
+                if (!empty($uploaded_image_path)) {
+                    $data["image"] = $uploaded_image_path;
+                }
+                
+                $product_updated = $this->admin_model->update_product_details($data, $condition);
+                if ($product_updated) {
+                    if (!empty($previous_product_image)) {
+                        $this->delete_image($previous_product_image);
+                    }
+
+                    $condition = ["product_category_id" => $post_data["product_category_id"]];
+                    $products_list = $this->admin_model->get_list_of_products_on_condition($condition);
+                    $data["products_list"] = $products_list;
+
+                    $this->output = [
+                        "status" => true,
+                        "message" => "Product Details Saved Successfully.",
+                        "data" => $data,
+                        "errors" => $this->validation->getErrors()
+                    ];
+                }
+                else {
+                    $this->output = [
+                        "status" => false,
+                        "message" => "Database Error Occurred! Failed to save product details.",
+                        "data" => new \stdClass,
+                        "errors" => $this->validation->getErrors()
+                    ];
+                }
+
+            }
+            else {
+                $this->output = [
+                    "status" => false,
+                    "message" => "Session Expired! Please login and try again.",
+                    "data" => new \stdClass,
+                    "errors" => $this->validation->getErrors()
+                ];
+            }
+        }
+
+        return $this->response->setJSON($this->output);
+    }
+
+    public function change_product_appearing_order() {
+        $output = [];
+        $json_data = $this->request->getJSON();
+        foreach ($json_data as $i => $appearing_order_details) {
+            $data = ["appearing_order" => $appearing_order_details->appearing_order];
+            $condition = [
+                "product_id" => $appearing_order_details->product_id,
+                "product_category_id" => $appearing_order_details->product_category_id
+            ];
+            $products_updated = $this->admin_model->update_product_details($data, $condition);
+        }
+
+        $this->output = [
+            "status" => true,
+            "message" => "Product Appearing Order Changed.",
+            "data" => new \stdClass,
+            "errors" => $this->validation->getErrors()
+        ];
+
+        return $this->response->setJSON($this->output);
+    }
+
+    public function change_product_status() {
+        $output = [];
+        $post_data = $this->request->getPost();
+
+        if (!$this->validation->run($post_data, 'product_status_changing_rules')) {
+            $this->output = [
+                "status" => false,
+                "message" => "Something went wrong! Please try again later.",
+                "data" => new \stdClass,
+                "errors" => $this->validation->getErrors()
+            ];
+        }
+        else {
+            if ($this->check_admin_logged_in()) {
+                $condition = ["product_id" => $post_data["product_id"]];
+                $data = ["status" => $post_data["status"]];
+                $product_updated = $this->admin_model->update_product_details($data, $condition);
+                if ($product_updated) {
+                    $this->output = [
+                        "status" => true,
+                        "message" => "Product Status Changed to ".ucwords(strtolower($post_data["status"])),
+                        "data" => new \stdClass,
+                        "errors" => $this->validation->getErrors()
+                    ];
+                }
+                else {
+                    $this->output = [
+                        "status" => false,
+                        "message" => "Database Error Occurred! Failed to change product status.",
+                        "data" => new \stdClass,
+                        "errors" => $this->validation->getErrors()
+                    ];
+                }
+            }
+            else {
+                $this->output = [
+                    "status" => false,
+                    "message" => "Session Expired! Please login and try again.",
+                    "data" => new \stdClass,
+                    "errors" => $this->validation->getErrors()
+                ];
+            }
+        }
+
+        return $this->response->setJSON($this->output);
+    }
+
+    public function delete_product($product_id) {
+        $output = [];
+        $condition = ["product_id" => $product_id];
+        $product_details = $this->admin_model->get_product_details_on_condition($condition);
+        $product_deleted = $this->admin_model->delete_product($condition);
+
+        if ($product_deleted) {
+            if (!empty($product_details->image)) {
+                $image_path = FCPATH.$product_details->image;
+                if (file_exists($image_path)) {
+                    unlink($image_path);
+                }
+            }
+            
+            $this->output = [
+                "status" => true, 
+                "message" => "Product Deleted.",
+                "data" => new \stdClass,
+                "errors" => $this->validation->getErrors()
+            ];
+        }
+        else {
+            $this->output = [
+                "status" => false,
+                "message" => "Database Error Occured! Failed to delete product.",
+                "data" => new \stdClass,
+                "errors" => $this->validation->getErrors()
+            ];
+        }
+
+        return $this->response->setJSON($this->output);
+    }
+
 }

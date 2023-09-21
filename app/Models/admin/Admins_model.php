@@ -129,9 +129,34 @@ class Admins_model extends Model {
         return $product_categories_table->where($condition)->delete();
     }
 
+    public function add_product_details($data) {
+        $products_table = $this->db->table("products");
+        return $products_table->insert($data);
+    }
+
+    public function get_total_products_count($condition) {
+        $products_table = $this->db->table("products");
+        return $products_table->where($condition)->get()->getNumRows();
+    }
+
     public function get_list_of_products_on_condition($condition) {
         $products_table = $this->db->table("products"); 
         return $products_table->where($condition)->orderBy("appearing_order", "ASC")->get()->getResult();
+    }
+
+    public function get_product_details_on_condition($condition) {
+        $products_table = $this->db->table("products");
+        return $products_table->where($condition)->get()->getRow();
+    }
+
+    public function update_product_details($data, $condition) {
+        $products_table = $this->db->table("products");
+        return $products_table->set($data)->where($condition)->update();
+    }
+
+    public function delete_product($condition) {
+        $products_table = $this->db->table("products");
+        return $products_table->where($condition)->delete();
     }
 
 }

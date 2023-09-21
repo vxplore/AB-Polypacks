@@ -93,7 +93,7 @@
     </ul>
   </li><!-- End Product Nav -->
 
-  <li class="nav-item">
+  <!-- <li class="nav-item">
     <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
       <i class="bi bi-star"></i><span>Blogs</span><i class="bi bi-chevron-down ms-auto"></i>
     </a>
@@ -109,19 +109,23 @@
         </a>
       </li>
     </ul>
-  </li><!-- End Blog Nav -->
+  </li> -->
 
-
-
-  
+  <li class="nav-item">
+    <a class="nav-link <?=($URL_segment[1] == "testimonials") ? '' : 'collapsed'?>" href="<?=base_url('admin/testimonials')?>">
+      <i class="bi bi-person-heart"></i>
+      <span>Testimonials</span>
+    </a>
+  </li>
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="testimonials.html">
-      <i class="bi bi-asterisk"></i>
-      <span>Testimonials</span>
+      <i class="bi bi-telephone"></i>
+      <span>Contact Details</span>
     </a>
-  </li><!-- End F.A.Q Page Nav -->
-  <li class="nav-item">
+  </li>
+
+  <!-- <li class="nav-item">
     <a class="nav-link collapsed" data-bs-target="#Contact-nav" data-bs-toggle="collapse" href="#">
       <i class="bi bi-journal-text"></i><span>Contact Us</span><i class="bi bi-chevron-down ms-auto"></i>
     </a>
@@ -137,21 +141,21 @@
         </a>
       </li>
     </ul>
-  </li><!-- End Contact Page Nav -->
+  </li> -->
 
-  <li class="nav-item">
+  <!-- <li class="nav-item">
     <a class="nav-link collapsed" href="newsletter.html">
       <i class="bi bi-card-list"></i>
       <span>Newsletter</span>
     </a>
-  </li><!-- End Newsletter Page Nav -->
+  </li> -->
 
-  <li class="nav-item">
+  <!-- <li class="nav-item">
     <a class="nav-link collapsed" href="users.html">
      <i class="bi bi-person-plus"></i>
       <span>Users</span>
     </a>
-  </li><!-- End Login Page Nav -->
+  </li> -->
 </ul>
 
-</aside><!-- End Sidebar-->
+</aside>

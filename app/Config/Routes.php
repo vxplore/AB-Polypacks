@@ -56,6 +56,12 @@ $routes->post('/admin/product/categories/change-category-appearing-order', 'Admi
 $routes->post('/admin/product/categories/change-category-status', 'Admin\Product::change_category_status');
 $routes->get('/admin/product/categories/delete/(:any)', 'Admin\Product::delete_category/$1');
 $routes->get('/admin/product/list', 'Admin\Product::get_product_list_view');
+$routes->post('/admin/product/add-new-product', 'Admin\Product::add_new_product');
+$routes->post('/admin/product/edit-product-details', 'Admin\Product::edit_product_details');
+$routes->post('/admin/product/change-product-appearing-order', 'Admin\Product::change_product_appearing_order');
+$routes->post('/admin/product/change-product-status', 'Admin\Product::change_product_status');
+$routes->get('/admin/product/delete/(:any)', 'Admin\Product::delete_product/$1');
+$routes->get('/admin/testimonials', 'Admin\Testimonials::index');
 // ======================
 // Admin Panel Routes End
 // ======================
