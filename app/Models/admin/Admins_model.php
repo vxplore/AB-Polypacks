@@ -159,4 +159,29 @@ class Admins_model extends Model {
         return $products_table->where($condition)->delete();
     }
 
+    public function get_list_of_testimonials() {
+        $testimonials_table = $this->db->table("testimonials");
+        return $testimonials_table->get()->getResult();
+    }
+
+    public function get_total_testimonials_count() {
+        $testimonials_table = $this->db->table("testimonials");
+        return $testimonials_table->get()->getNumRows();
+    }
+
+    public function add_testimonial_details($data) {
+        $testimonials_table = $this->db->table("testimonials");
+        return $testimonials_table->insert($data);
+    }
+
+    public function get_testimonial_details_on_condition($condition) {
+        $testimonials_table = $this->db->table("testimonials");
+        return $testimonials_table->where($condition)->get()->getRow();
+    }
+
+    public function update_testimonial_details($data, $condition) {
+        $testimonials_table = $this->db->table("testimonials");
+        return $testimonials_table->set($data)->where($condition)->update();
+    }
+
 }

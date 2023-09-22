@@ -112,6 +112,18 @@ class Validation extends BaseConfig
         'product_id' => 'required',
         'status' => 'required'
     ];
+
+    public array $new_testimonial_adding_rules = [
+        'customer_name' => 'required|max_length[255]',
+        'rating' => 'required',
+        'testimonial' => 'required'
+    ];
+
+    public array $testimonial_editing_rules = [
+        'customer_name' => 'required|max_length[255]',
+        'rating' => 'required',
+        'testimonial' => 'required'
+    ];
     // ================================
     // Admin Panel Validation Rules End
     // ================================

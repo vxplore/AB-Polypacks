@@ -62,6 +62,8 @@ $routes->post('/admin/product/change-product-appearing-order', 'Admin\Product::c
 $routes->post('/admin/product/change-product-status', 'Admin\Product::change_product_status');
 $routes->get('/admin/product/delete/(:any)', 'Admin\Product::delete_product/$1');
 $routes->get('/admin/testimonials', 'Admin\Testimonials::index');
+$routes->post('/admin/testimonials/add-new-testimonial', 'Admin\Testimonials::add_new_testimonial');
+$routes->post('/admin/testimonials/edit-testimonial-details', 'Admin\Testimonials::edit_testimonial_details');
 // ======================
 // Admin Panel Routes End
 // ======================
