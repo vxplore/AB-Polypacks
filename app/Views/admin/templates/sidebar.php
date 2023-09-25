@@ -119,7 +119,7 @@
   </li>
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="testimonials.html">
+    <a class="nav-link <?=($URL_segment[1] == "contact-details") ? '' : 'collapsed'?>" href="<?=base_url('admin/contact-details')?>">
       <i class="bi bi-telephone"></i>
       <span>Contact Details</span>
     </a>

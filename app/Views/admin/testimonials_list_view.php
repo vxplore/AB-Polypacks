@@ -193,14 +193,14 @@
             <svg height="50" viewBox="0 0 512 512" width="50" ><path d="m256 0c-141.164062 0-256 114.835938-256 256s114.835938 256 256 256 256-114.835938 256-256-114.835938-256-256-256zm0 0" fill="#f44336"/><path d="m350.273438 320.105469c8.339843 8.34375 8.339843 21.824219 0 30.167969-4.160157 4.160156-9.621094 6.25-15.085938 6.25-5.460938 0-10.921875-2.089844-15.082031-6.25l-64.105469-64.109376-64.105469 64.109376c-4.160156 4.160156-9.621093 6.25-15.082031 6.25-5.464844 0-10.925781-2.089844-15.085938-6.25-8.339843-8.34375-8.339843-21.824219 0-30.167969l64.109376-64.105469-64.109376-64.105469c-8.339843-8.34375-8.339843-21.824219 0-30.167969 8.34375-8.339843 21.824219-8.339843 30.167969 0l64.105469 64.109376 64.105469-64.109376c8.34375-8.339843 21.824219-8.339843 30.167969 0 8.339843 8.34375 8.339843 21.824219 0 30.167969l-64.109376 64.105469zm0 0" fill="#fafafa"/></svg>
           </div>
           <h4>Are you sure ?</h4>
-          <p class="pb-0 mb-0">Do you really want to delete this product category ?</p>
-          <form id="product_category_delete_form">
-            <input type="hidden" name="category_id" id="deletable_category_id">
+          <p class="pb-0 mb-0">Do you really want to delete this testimonial ?</p>
+          <form id="testimonial_delete_form">
+            <input type="hidden" name="testimonial" id="deletable_testimonial_id">
           </form>
         </div>
         <div class="modal-footer justify-content-center border-0">
           <button type="button" class="btn btn-secondary" onclick="close_delete_confirmation_modal()">Cancel</button>
-          <button form="product_category_delete_form" id="product_category_delete_form_submit_button" class="btn btn-danger">Delete</button>
+          <button form="testimonial_delete_form" id="testimonial_delete_form_submit_button" class="btn btn-danger">Delete</button>
         </div>
       </div>
     </div>
@@ -214,11 +214,11 @@
 <script src="<?=base_url('assets/admin/js/jquery.dragsort.js')?>"></script>
 <script>
 
-  $("#product_categories_listing_table tbody").dragsort({
+  $("#testimonials_listing_table tbody").dragsort({
     dragSelector:"tr .drag-handle",
     placeHolderTemplate:"<tr></tr>",
     dragEnd: function() {
-      change_category_appearing_order();
+      change_testimonial_appearing_order();
     }
   });
 
@@ -281,15 +281,20 @@
       var URL = "<?=base_url('admin/testimonials/edit-testimonial-details')?>";
       var validationErrorMessage = "Please Choose an Customer Image to Edit Testimonial...";
       var errorMessage = "Something went wrong! Failed to edit testimonial details.";
+      var APICallType = "edit";
     }
     else {
       var URL = "<?=base_url('admin/testimonials/add-new-testimonial')?>";
       var validationErrorMessage = "Please Choose an Customer Image to Add Testimonial...";
       var errorMessage = "Something went wrong! Failed to add new testimonial.";
+      var APICallType = "add";
     }
-
+    
     let uploadedImageCount = document.getElementById("customer_image").files.length;
-    if (uploadedImageCount > 0) {
+    if (APICallType == "add" && uploadedImageCount == 0) {
+      toast(validationErrorMessage, 1800);
+    }
+    else {
       $.ajax({
         url: URL,
         type: "POST",
@@ -329,47 +334,31 @@
         }
       });
     }
-    else {
-      toast(validationErrorMessage, 1800);
-    }
   });
 
   function close_testimonial_modal() {
     $("#testimonial_modal").modal("hide");
   }
 
-  function edit_product_category(category_id) {
-    let row = $(`#product_categories_listing_table tbody tr[data-category-id="${category_id}"]`);
-    let category_name = row.find("td[data-column='name']").text().trim();
-    let category_image = row.find("td[data-column='image']").children("img").attr("src");
-    let data = {
-      id: category_id,
-      name: category_name,
-      image: category_image
-    };
-    render_product_category_modal(data);
-    $("#product_category_modal").modal("show");
-  }
-
-  function change_category_appearing_order() {
-    let rows = $("#product_categories_listing_table tbody tr");
-    let category_appearing_orders = [];
+  function change_testimonial_appearing_order() {
+    let rows = $("#testimonials_listing_table tbody tr");
+    let testimonial_appearing_orders = [];
     for (let i=0; i<rows.length; i++) {
       let row = rows[i];
       let appearing_order_details = {
-        category_id: row.dataset.categoryId,
+        testimonial_id: row.dataset.testimonialId,
         appearing_order: parseInt(i+1)
       };
-      category_appearing_orders.push(appearing_order_details);
+      testimonial_appearing_orders.push(appearing_order_details);
     }
 
     $.ajax({
-      url: "<?=base_url('admin/product/categories/change-category-appearing-order')?>",
+      url: "<?=base_url('admin/testimonials/change-testimonial-appearing-order')?>",
       type: "POST",
-      data: JSON.stringify(category_appearing_orders),
+      data: JSON.stringify(testimonial_appearing_orders),
       contentType: "application/json",
       error: function(a, b, c) {
-        toast("Something went wrong! Failed to change product category appearing order.", 3000);
+        toast("Something went wrong! Failed to change testimonial appearing order.", 3000);
         console.log(a);
         console.log(b);
         console.log(c);
@@ -377,49 +366,49 @@
       success: function(response) {
         if (response.status == true) {
           toast(response.message, 1500);
-          render_category_appearing_order(category_appearing_orders);
+          render_testimonial_appearing_order(testimonial_appearing_orders);
         }
         else if (response.status == false) {
           toast(response.message, 3000);
           console.log(response);
         }
         else {
-          toast("Something went wrong! Failed to change client appearing order.", 3000);
+          toast("Something went wrong! Failed to change testimonial appearing order.", 3000);
           console.log(response);
         }
       }
     });
   }
 
-  function render_category_appearing_order(category_appearing_orders) {
-    category_appearing_orders.forEach((details, i) => {
-      let row = $(`#product_categories_listing_table tbody tr[data-category-id="${details.category_id}"]`);
+  function render_testimonial_appearing_order(testimonial_appearing_orders) {
+    testimonial_appearing_orders.forEach((details, i) => {
+      let row = $(`#testimonials_listing_table tbody tr[data-testimonial-id="${details.testimonial_id}"]`);
       row.children("td:first").text(details.appearing_order);
     });
   }
 
-  function change_product_category_status(checkbox) {
-    let categoryId = checkbox.dataset.categoryId;
+  function change_testimonial_status(checkbox) {
+    let testimonialId = checkbox.dataset.testimonialId;
     let checkedStatus = checkbox.checked;
     if (checkedStatus == true) {
       var postData = {
-        category_id: categoryId,
+        testimonial_id: testimonialId,
         status: "ACTIVE"
       };
     }
     else {
       var postData = {
-        category_id: categoryId,
+        testimonial_id: testimonialId,
         status: "INACTIVE"
       };
     }
 
     $.ajax({
-      url: "<?=base_url('admin/product/categories/change-category-status')?>",
+      url: "<?=base_url('admin/testimonials/change-testimonial-status')?>",
       type: "POST",
       data: postData,
       error: function(a, b, c) {
-          toast("Something went wrong! Failed to change banner status.", 3000);
+          toast("Something went wrong! Failed to change testimonial status.", 3000);
           console.log(a);
           console.log(b);
           console.log(c);
@@ -433,34 +422,34 @@
             console.log(response);
           }
           else {
-            toast(errorMessage, 3000);
+            toast("Something went wrong! Failed to change testimonial status.", 3000);
             console.log(response);
           }
       }
     });
   }
 
-  function delete_product_category(category_id) {
-    $("#deletable_category_id").val(category_id);
+  function delete_testimonial(testimonial_id) {
+    $("#deletable_testimonial_id").val(testimonial_id);
     $("#delete_confirmation_modal").modal("show");
   }
 
-  $("#product_category_delete_form").submit(function(e) {
+  $("#testimonial_delete_form").submit(function(e) {
     e.preventDefault();
-    let category_id = $("#deletable_category_id").val();
+    let testimonial_id = $("#deletable_testimonial_id").val();
 
     $.ajax({
-      url: "<?=base_url('admin/product/categories/delete/')?>"+category_id,
+      url: "<?=base_url('admin/testimonials/delete/')?>"+testimonial_id,
       type: "GET",
       error: function(a, b, c) {
-        toast("Something went wrong! Failed to delete product category.", 3000);
+        toast("Something went wrong! Failed to delete testimonial.", 3000);
         console.log(a);
         console.log(b);
         console.log(c);
       },
       success: function(response) {
         if (response.status == true) {
-          $(`#product_categories_listing_table tbody tr[data-category-id="${category_id}"]`).remove();
+          $(`#testimonials_listing_table tbody tr[data-testimonial-id="${testimonial_id}"]`).remove();
           close_delete_confirmation_modal();
           toast(response.message, 1200);
         }
@@ -469,7 +458,7 @@
           console.log(response);
         }
         else {
-          toast("Something went wrong! Failed to delete product category.", 3000);
+          toast("Something went wrong! Failed to delete testimonial.", 3000);
           console.log(response);
         }
       }
@@ -478,7 +467,7 @@
 
   function close_delete_confirmation_modal() {
     $("#delete_confirmation_modal").modal("hide");
-    $("#product_category_delete_form")[0].reset();
+    $("#testimonial_delete_form")[0].reset();
   }
 
 </script>

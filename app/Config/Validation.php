@@ -124,6 +124,18 @@ class Validation extends BaseConfig
         'rating' => 'required',
         'testimonial' => 'required'
     ];
+
+    public array $testimonial_status_changing_rules = [
+        'testimonial_id' => 'required',
+        'status' => 'required'
+    ];
+
+    public array $contact_informations_saving_rules = [
+        'uid' => 'required',
+        'company_name' => 'required',
+        'address' => 'required',
+        'map_embeded_link' => 'required'
+    ];
     // ================================
     // Admin Panel Validation Rules End
     // ================================

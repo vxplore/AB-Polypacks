@@ -161,7 +161,7 @@ class Admins_model extends Model {
 
     public function get_list_of_testimonials() {
         $testimonials_table = $this->db->table("testimonials");
-        return $testimonials_table->get()->getResult();
+        return $testimonials_table->orderBy("appearing_order", "ASC")->get()->getResult();
     }
 
     public function get_total_testimonials_count() {
@@ -182,6 +182,35 @@ class Admins_model extends Model {
     public function update_testimonial_details($data, $condition) {
         $testimonials_table = $this->db->table("testimonials");
         return $testimonials_table->set($data)->where($condition)->update();
+    }
+
+    public function delete_testimonial($condition) {
+        $testimonials_table = $this->db->table("testimonials");
+        return $testimonials_table->where($condition)->delete();
+    }
+
+    public function get_contact_informations() {
+        $contact_informations = new \stdClass;
+        $system_preferences = $this->db->table("system_preferences");
+        
+        $system_preferences_details = $system_preferences->where("key", "OFFICE_CONTACT_INFORMATION_ID")->get()->getRow();
+        $office_contact_information_id = (!empty($system_preferences_details->value)) ? $system_preferences_details->value : NULL;
+
+        $system_preferences_details = $system_preferences->where("key", "FACTORY_CONTACT_INFORMATION_ID")->get()->getRow();
+        $factory_contact_information_id = (!empty($system_preferences_details->value)) ? $system_preferences_details->value : NULL;
+
+        if (!empty($office_contact_information_id) && !empty($factory_contact_information_id)) {
+            $contact_informations_table = $this->db->table("contact_informations");
+            $contact_informations->office = $contact_informations_table->where("uid", $office_contact_information_id)->get()->getRow();
+            $contact_informations->factory = $contact_informations_table->where("uid", $factory_contact_information_id)->get()->getRow();
+        }
+
+        return $contact_informations;
+    }
+
+    public function update_contact_informations($data, $condition) {
+        $contact_informations_table = $this->db->table("contact_informations");
+        return $contact_informations_table->set($data)->where($condition)->update();
     }
 
 }

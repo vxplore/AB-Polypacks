@@ -190,15 +190,20 @@
       var URL = "<?=base_url('admin/product/categories/edit-category-details')?>";
       var validationErrorMessage = "Please Choose an Image to Edit Product Category...";
       var errorMessage = "Something went wrong! Failed to edit client details.";
+      var APICallType = "edit";
     }
     else {
       var URL = "<?=base_url('admin/product/categories/add-new-category')?>";
       var validationErrorMessage = "Please Choose an Image to Add Product Category...";
       var errorMessage = "Something went wrong! Failed to add new product category.";
+      var APICallType = "add";
     }
 
     let uploadedImageCount = document.getElementById("product_category_image").files.length;
-    if (uploadedImageCount > 0) {
+    if (APICallType == "add" && uploadedImageCount == 0) {
+      toast(validationErrorMessage, 1800);
+    }
+    else {
       $.ajax({
         url: URL,
         type: "POST",
@@ -237,9 +242,6 @@
           }
         }
       });
-    }
-    else {
-      toast(validationErrorMessage, 1800);
     }
   });
 

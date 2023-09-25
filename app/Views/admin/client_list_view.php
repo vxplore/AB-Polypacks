@@ -176,15 +176,20 @@
       var URL = "<?=base_url('admin/clients/edit-client-details')?>";
       var validationErrorMessage = "Please Choose an Client Image to Edit Client...";
       var errorMessage = "Something went wrong! Failed to edit client details.";
+      var APICallType = "edit";
     }
     else {
       var URL = "<?=base_url('admin/clients/add-new-client')?>";
       var validationErrorMessage = "Please Choose an Client Image to Add Client...";
       var errorMessage = "Something went wrong! Failed to add new client.";
+      var APICallType = "add";
     }
 
     let uploadedClientImageCount = document.getElementById("client_image").files.length;
-    if (uploadedClientImageCount > 0) {
+    if (APICallType == "add" && uploadedClientImageCount == 0) {
+      toast(validationErrorMessage, 1800);
+    }
+    else {
       $.ajax({
         url: URL,
         type: "POST",
@@ -223,9 +228,6 @@
           }
         }
       });
-    }
-    else {
-      toast(validationErrorMessage, 1800);
     }
   });
 

@@ -172,4 +172,105 @@ class Testimonials extends Common {
         return $this->response->setJSON($this->output);
     }
 
+    public function change_testimonial_appearing_order() {
+        $output = [];
+        $json_data = $this->request->getJSON();
+        foreach ($json_data as $i => $appearing_order_details) {
+            $data = ["appearing_order" => $appearing_order_details->appearing_order];
+            $condition = [
+                "testimonial_id" => $appearing_order_details->testimonial_id
+            ];
+            $testimonial_updated = $this->admin_model->update_testimonial_details($data, $condition);
+        }
+
+        $this->output = [
+            "status" => true,
+            "message" => "Testimonial Appearing Order Changed.",
+            "data" => new \stdClass,
+            "errors" => $this->validation->getErrors()
+        ];
+
+        return $this->response->setJSON($this->output);
+    }
+
+    public function change_testimonial_status() {
+        $output = [];
+        $post_data = $this->request->getPost();
+
+        if (!$this->validation->run($post_data, 'testimonial_status_changing_rules')) {
+            $this->output = [
+                "status" => false,
+                "message" => "Something went wrong! Please try again later.",
+                "data" => new \stdClass,
+                "errors" => $this->validation->getErrors()
+            ];
+        }
+        else {
+            if ($this->check_admin_logged_in()) {
+                $condition = ["testimonial_id" => $post_data["testimonial_id"]];
+                $data = ["status" => $post_data["status"]];
+                $testimonial_category_updated = $this->admin_model->update_testimonial_details($data, $condition);
+                if ($testimonial_category_updated) {
+                    $this->output = [
+                        "status" => true,
+                        "message" => "Testimonial Status Changed to ".ucwords(strtolower($post_data["status"])),
+                        "data" => new \stdClass,
+                        "errors" => $this->validation->getErrors()
+                    ];
+                }
+                else {
+                    $this->output = [
+                        "status" => false,
+                        "message" => "Database Error Occurred! Failed to change testimonial status.",
+                        "data" => new \stdClass,
+                        "errors" => $this->validation->getErrors()
+                    ];
+                }
+            }
+            else {
+                $this->output = [
+                    "status" => false,
+                    "message" => "Session Expired! Please login and try again.",
+                    "data" => new \stdClass,
+                    "errors" => $this->validation->getErrors()
+                ];
+            }
+        }
+
+        return $this->response->setJSON($this->output);
+    }
+
+    public function delete_testimonial($testimonial_id) {
+        $output = [];
+        $condition = ["testimonial_id" => $testimonial_id];
+        $testimonial_details = $this->admin_model->get_testimonial_details_on_condition($condition);
+        $testimonial_deleted = $this->admin_model->delete_testimonial($condition);
+
+        if ($testimonial_deleted) {
+            if (!empty($testimonial_details->image)) {
+                $image_path = FCPATH.$testimonial_details->image;
+                if (file_exists($image_path)) {
+                    unlink($image_path);
+                }
+            }
+            
+            $this->output = [
+                "status" => true, 
+                "message" => "Testimonial Deleted.",
+                "data" => new \stdClass,
+                "errors" => $this->validation->getErrors()
+            ];
+        }
+        else {
+            $this->output = [
+                "status" => false,
+                "message" => "Database Error Occured! Failed to delete testimonial.",
+                "data" => new \stdClass,
+                "errors" => $this->validation->getErrors()
+            ];
+        }
+
+        return $this->response->setJSON($this->output);
+    }
+
 }
