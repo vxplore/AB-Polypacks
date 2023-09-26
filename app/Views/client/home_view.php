@@ -1,58 +1,36 @@
-<?php if (!empty($page_contents_editable)) {
-    $contentEditableStatus = "contentEditable='true'";
-} else {
-    $contentEditableStatus = "";
-}?>
-
-<section class="homebanner py-5 position-relative" style="
-background-image: url(<?=base_url('assets/client/images/homehero-bg.jpg')?>); 
-background-size: cover; 
-background-repeat: no-repeat; 
-background-attachment: fixed;">
-    <div class="homeslider">
-        <div class="homesliderinr py-4">
+<section class="homebanner position-relative" >
+    <div class="homeslider text-white">
+        <div class="homesliderinr" style="background-image:url(<?=base_url('assets/client/images/Banner-Images/banner5.jpg')?>);">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-6 text-center text-md-start">
+                    <div class="col-md-7 text-center text-md-start">
                         <div class="hmslidertxt fadeUp">
-                            <h2 class="m-0">Packaging Solutions for Frozen Food Flour, pulses, etc</h2>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mt-4 mt-md-0">
-                        <div class="hmsliderimg fadePopup">
-                            <img src="<?=base_url('assets/client/images/Banner2.png')?>" alt="" class="w-100">
+                            <h2 class="mb-3">Champions of Circular Harmony</h2>
+                            <p>Achieving Your Vision, Sustainably. Flexible Packaging Tailored To your Brand</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-            <!-- <div class="homesliderinr py-4">
+        <div class="homesliderinr" style="background-image:url(<?=base_url('assets/client/images/Banner-Images/banner7.jpg')?>);">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-6 text-center text-md-start">
+                    <div class="col-md-7 text-center text-md-start">
                         <div class="hmslidertxt fadeUp">
-                            <h2 class="m-0">Packaging Solutions for Frozen Food Flour, pulses, etc</h2>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mt-4 mt-md-0">
-                        <div class="hmsliderimg fadePopup">
-                            <img src="<?=base_url('assets/client/images/Banner1.png')?>" alt="" class="w-100">
+                            <h2 class="mb-3">Eco-Friendly Materials </h2>
+                            <p>We prioritize nature-friendly materials in our packaging solutions. From biodegradable plastics to recycled paper, our products are designed with the planet in mind.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> -->
-        <div class="homesliderinr py-4">
+        </div>
+        <div class="homesliderinr" style="background-image:url(<?=base_url('assets/client/images/Banner-Images/Innovation-Meets-Sustainability.jpg')?>);">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-6 text-center text-md-start">
+                    <div class="col-md-7 text-center text-md-start">
                         <div class="hmslidertxt fadeUp">
-                            <h2 class="m-0">Packaging Solutions for Frozen Food Flour, pulses, etc</h2>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mt-4 mt-md-0">
-                        <div class="hmsliderimg fadePopup">
-                            <img src="<?=base_url('assets/client/images/Banner3.png')?>" alt="" class="w-100">
+                            <h2 class="mb-3">Innovation Meets Sustainability</h2>
+                            <p>We believe that innovation should not come at the cost of the environment. Our cutting-edge technology marries creativity with eco-consciousness.</p>
                         </div>
                     </div>
                 </div>
@@ -63,67 +41,123 @@ background-attachment: fixed;">
         <div class="container">
             <div class="row">
                 <div class="col-4 fadeUp" style="background-color: #D75427;">
-                    <a href="<?=base_url('products')?>" class="d-block py-4 text-white fw-bold h5 m-0">PRODUCTS</a>
+                    <a href="product-list.html" class="d-block py-4 text-white fw-bold h5 m-0">PRODUCTS</a>
                 </div>
                 <div class="col-4 fadeUp" style="background-color: #0D9AD7;">
-                    <a href="<?=base_url('career')?>" class="d-block py-4 text-white fw-bold h5 m-0">CAREERS</a>
+                    <a href="career.html" class="d-block py-4 text-white fw-bold h5 m-0">CAREERS</a>
                 </div>
                 <div class="col-4 fadeUp" style="background-color: #D75427;">
-                    <a href="<?=base_url('contact-us')?>" class="d-block py-4 text-white fw-bold h5 m-0">CONTACT US</a>
+                    <a href="contact.html" class="d-block py-4 text-white fw-bold h5 m-0">CONTACT US</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 <section class="pt-5">
     <div class="container pt-5">
-        <h2 <?=$contentEditableStatus?> class="title1 text-center mb-5 fadeUp">Our Certificates</h2>
-        <div class="row justify-content-center">
-            <div class="col-md-10 fadePopup">
-                <img src="<?=base_url('assets/client/images/certificates-min.jpg')?>" alt="" class="w-100">
+        <?php if (!empty($page_contents_editable)) { ?>
+            <h2 contentEditable="true" id="certificates_section_heading" class="title1 text-center mb-5 fadeUp editable-content">Our Certificates</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-10 fadePopup">
+                    <label for="certificates_section_image" class="editable-content w-100">
+                        <img src="<?=base_url('assets/client/images/certificates-min.jpg')?>" alt="" class="w-100">
+                        <input type="file" id="certificates_section_image" class="hidden-image-input" onchange="previewImage(this)">
+                    </label>
+                </div>
             </div>
-        </div>
+        <?php } else { ?>
+            <h2 class="title1 text-center mb-5 fadeUp">Our Certificates</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-10 fadePopup">
+                    <img src="<?=base_url('assets/client/images/certificates-min.jpg')?>" alt="" class="w-100">
+                </div>
+            </div>
+        <?php } ?>
     </div>
 </section>
+
 <section class="py-5" style="background-color: #FDF6F4;">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-md-5">
-                <div class="fadePopup">
-                    <img src="<?=base_url('assets/client/images/welcome-min.jpg')?>" alt="" class="w-100 rounded-lg">
+            <?php if (!empty($page_contents_editable)) { ?>
+                <div class="col-md-5">
+                    <div class="fadePopup">
+                        <label for="about_us_section_image" class="editable-content w-100">
+                            <img src="<?=base_url('assets/client/images/welcome-min.jpg')?>" alt="" class="w-100 rounded-lg">
+                            <input type="file" id="about_us_section_image" class="hidden-image-input" onchange="previewImage(this)">
+                        </label>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-7 mt-4 mt-md-4 ps-lg-5">
-                <div class="title2sec mb-4 fadeUp">
-                    <small>ABOUT US</small>
-                    <h2>Welcome to A B Polypacks</h2>
+                <div class="col-md-7 mt-4 mt-md-4 ps-lg-5">
+                    <div class="title2sec mb-4 fadeUp">
+                        <small>ABOUT US</small>
+                        <h2 contentEditable="true" id="about_us_section_heading" class="editable-content">Welcome to A B Polypacks</h2>
+                    </div>
+                    <div class="fadeUp linheight2">
+                        <p contentEditable="true" id="about_us_section_description" class="editable-content">A B Polypacks is one of the fastest-growing, steadfast and dependable organizations in the field of packaging printing. Starting its journey in 2006 , the company has come a long way in establishing itself as a credible partner to world class multinational organizations like Coca Cola, Pepsico , Hindusthan Unilever. Situated in Lakhanpur Industrial Area, Mumbai Road , Howrah , West Bengal in acres of land and with the latest state of the art machines , the Company has already created a niche amongst the best Packaging Printing Companies in India.</p>
+                    </div>
+                    <div class="fadeUp">
+                        <a href="about.html" class="btnred">
+                            <span>READ MORE</span> 
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.5 5L11.7929 11.2929C12.1834 11.6834 12.1834 12.3166 11.7929 12.7071L5.5 19" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M13.5 5L19.7929 11.2929C20.1834 11.6834 20.1834 12.3166 19.7929 12.7071L13.5 19" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-                <div class="fadeUp linheight2">
-                    <p>A B Polypacks is one of the fastest-growing, steadfast and dependable organizations in the field of packaging printing. Starting its journey in 2006 , the company has come a long way in establishing itself as a credible partner to world class multinational organizations like Coca Cola, Pepsico , Hindusthan Unilever. Situated in Lakhanpur Industrial Area, Mumbai Road , Howrah , West Bengal in acres of land and with the latest state of the art machines , the Company has already created a niche amongst the best Packaging Printing Companies in India.</p>
+            <?php } else { ?>
+                <div class="col-md-5">
+                    <div class="fadePopup">
+                        <img src="<?=base_url('assets/client/images/welcome-min.jpg')?>" alt="" class="w-100 rounded-lg">
+                    </div>
                 </div>
-                <div class="fadeUp">
-                    <a href="about.html" class="btnred">
-                        <span>READ MORE</span> 
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5.5 5L11.7929 11.2929C12.1834 11.6834 12.1834 12.3166 11.7929 12.7071L5.5 19" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M13.5 5L19.7929 11.2929C20.1834 11.6834 20.1834 12.3166 19.7929 12.7071L13.5 19" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
+                <div class="col-md-7 mt-4 mt-md-4 ps-lg-5">
+                    <div class="title2sec mb-4 fadeUp">
+                        <small>ABOUT US</small>
+                        <h2>Welcome to A B Polypacks</h2>
+                    </div>
+                    <div class="fadeUp linheight2">
+                        <p>A B Polypacks is one of the fastest-growing, steadfast and dependable organizations in the field of packaging printing. Starting its journey in 2006 , the company has come a long way in establishing itself as a credible partner to world class multinational organizations like Coca Cola, Pepsico , Hindusthan Unilever. Situated in Lakhanpur Industrial Area, Mumbai Road , Howrah , West Bengal in acres of land and with the latest state of the art machines , the Company has already created a niche amongst the best Packaging Printing Companies in India.</p>
+                    </div>
+                    <div class="fadeUp">
+                        <a href="about.html" class="btnred">
+                            <span>READ MORE</span> 
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.5 5L11.7929 11.2929C12.1834 11.6834 12.1834 12.3166 11.7929 12.7071L5.5 19" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M13.5 5L19.7929 11.2929C20.1834 11.6834 20.1834 12.3166 19.7929 12.7071L13.5 19" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
 </section>
+
 <section class="pt-5 py-ms-5">
     <div class="container pb-md-5">
-        <h2 class="title1 text-center mb-5 fadeUp">Our Products</h2>
+        <?php if (!empty($page_contents_editable)) { ?>
+            <h2 contentEditable="true" id="products_section_heading" class="title1 text-center mb-5 fadeUp editable-content">Our Products</h2>
+        <?php } else { ?>
+                <h2 class="title1 text-center mb-5 fadeUp">Our Products</h2>
+        <?php } ?>
         <div class="homeproductwrp pb-5">
+
             <div class="row align-items-center">
                 <div class="col-md-6 homeprodcon">
-                    <h3 class="mb-2 fadeUp">Pouch for Snacks</h3>
-                    <div class="fadeUp linheight2">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type only five centuries, but also the leap into electronic typesetting.</p>
-                    </div>
+                    <?php if (!empty($page_contents_editable)) { ?>
+                        <h3 contentEditable="true" id="products_sub_section1_heading" class="mb-2 fadeUp editable-content">Laminates</h3>
+                        <div class="fadeUp linheight2">
+                            <p contentEditable="true" id="products_sub_section1_description" class="editable-content">Discover the perfect blend of strength and aesthetics with our laminates. Enhance the durability and visual appeal of your packaging solutions with our versatile laminate materials.</p>
+                        </div>
+                    <?php } else { ?>
+                        <h3 class="mb-2 fadeUp">Laminates</h3>
+                        <div class="fadeUp linheight2">
+                            <p>Discover the perfect blend of strength and aesthetics with our laminates. Enhance the durability and visual appeal of your packaging solutions with our versatile laminate materials.</p>
+                        </div>
+                    <?php } ?>
                     <div class="fadeUp">
                         <a href="food-packaging.html" class="btnred">
                             <span>LEARN MORE</span> 
@@ -135,58 +169,31 @@ background-attachment: fixed;">
                     </div>
                 </div>
                 <div class="col-md-6 homeprodthmbwrp">
-                    <img src="<?=base_url('assets/client/images/home-product-1-min.png')?>" alt="" class="w-100 p-5 fadePopup">
+                    <?php if (!empty($page_contents_editable)) { ?>
+                        <label for="products_sub_section1_image" class="editable-content w-100">
+                            <img src="<?=base_url('assets/client/images/wrapping-with-plastic.jpg')?>" alt="" class="w-100 p-5 fadePopup">
+                            <input type="file" id="products_sub_section1_image" class="hidden-image-input" onchange="previewImage(this)">
+                        </label>
+                    <?php } else { ?>
+                        <img src="<?=base_url('assets/client/images/wrapping-with-plastic.jpg')?>" alt="" class="w-100 p-5 fadePopup">
+                    <?php } ?>
                     <img src="<?=base_url('assets/client/images/product-shape.svg')?>" alt="" class="homeprodthmbbg">
                 </div>
             </div>
+
             <div class="row align-items-center">
                 <div class="col-md-6 homeprodcon">
-                    <h3 class="mb-2 fadeUp">Pouch for Grains</h3>
-                    <div class="fadeUp linheight2">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type only five centuries, but also the leap into electronic typesetting.</p>
-                    </div>
-                    <div class="fadeUp">
-                        <a href="health-care-and-agriculture.html" class="btnred">
-                            <span>LEARN MORE</span> 
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5.5 5L11.7929 11.2929C12.1834 11.6834 12.1834 12.3166 11.7929 12.7071L5.5 19" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M13.5 5L19.7929 11.2929C20.1834 11.6834 20.1834 12.3166 19.7929 12.7071L13.5 19" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6 homeprodthmbwrp">
-                    <img src="<?=base_url('assets/client/images/grains1.png')?>" alt="" class="w-100 p-5 fadePopup">
-                    <img src="<?=base_url('assets/client/images/product-shape.svg')?>" alt="" class="homeprodthmbbg">
-                </div>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-md-6 homeprodcon">
-                    <h3 class="mb-2 fadeUp">Pouch for Tea</h3>
-                    <div class="fadeUp linheight2">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type only five centuries, but also the leap into electronic typesetting.</p>
-                    </div>
-                    <div class="fadeUp">
-                        <a href="food-packaging.html" class="btnred">
-                            <span>LEARN MORE</span> 
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5.5 5L11.7929 11.2929C12.1834 11.6834 12.1834 12.3166 11.7929 12.7071L5.5 19" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M13.5 5L19.7929 11.2929C20.1834 11.6834 20.1834 12.3166 19.7929 12.7071L13.5 19" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6 homeprodthmbwrp">
-                    <img src="<?=base_url('assets/client/images/home-product-3-min.png')?>" alt="" class="w-100 p-5 fadePopup">
-                    <img src="<?=base_url('assets/client/images/product-shape.svg')?>" alt="" class="homeprodthmbbg">
-                </div>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-md-6 homeprodcon">
-                    <h3 class="mb-2 fadeUp">Pouch for Juice</h3>
-                    <div class="fadeUp linheight2">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type only five centuries, but also the leap into electronic typesetting.</p>
-                    </div>
+                    <?php if (!empty($page_contents_editable)) { ?>
+                        <h3 contentEditable="true" id="products_sub_section2_heading" class="mb-2 fadeUp editable-content">Various pouches </h3>
+                        <div class="fadeUp linheight2">
+                            <p contentEditable="true" id="products_sub_section2_description" class="editable-content">From stand-up pouches to zipper-sealed bags, explore our diverse range of pouches designed to preserve freshness and convenience for your products.</p>
+                        </div>
+                    <?php } else { ?>
+                        <h3 class="mb-2 fadeUp">Various pouches </h3>
+                        <div class="fadeUp linheight2">
+                            <p>From stand-up pouches to zipper-sealed bags, explore our diverse range of pouches designed to preserve freshness and convenience for your products.</p>
+                        </div>
+                    <?php } ?>
                     <div class="fadeUp">
                         <a href="beverages.html" class="btnred">
                             <span>LEARN MORE</span> 
@@ -198,13 +205,129 @@ background-attachment: fixed;">
                     </div>
                 </div>
                 <div class="col-md-6 homeprodthmbwrp">
-                    <img src="<?=base_url('assets/client/images/juice-bottol.png')?>" alt="" class="w-100 pt-5 pb-0 px-5 p-md-5 fadePopup">
+                    <?php if (!empty($page_contents_editable)) { ?>
+                        <label for="products_sub_section2_image" class="editable-content w-100">
+                            <img src="<?=base_url('assets/client/images/Various-pouches.jpg')?>" alt="" class="w-100 p-5 fadePopup">
+                            <input type="file" id="products_sub_section2_image" class="hidden-image-input" onchange="previewImage(this)">
+                        </label>
+                    <?php } else { ?>
+                        <img src="<?=base_url('assets/client/images/Various-pouches.jpg')?>" alt="" class="w-100 p-5 fadePopup">
+                    <?php } ?>
+                    <img src="<?=base_url('assets/client/images/product-shape.svg')?>" alt="" class="homeprodthmbbg">
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-md-6 homeprodcon">
+                    <?php if (!empty($page_contents_editable)) { ?>
+                        <h3 contentEditable="true" id="products_sub_section3_heading" class="mb-2 fadeUp editable-content">Shrink sleeves </h3>
+                        <div class="fadeUp linheight2">
+                            <p contentEditable="true" id="products_sub_section3_description" class="editable-content">Elevate your brand's visibility and product presentation with our custom-designed shrink sleeves. These labels conform to your containers, creating a seamless, eye-catching appearance.</p>
+                        </div>
+                    <?php } else { ?>
+                        <h3 class="mb-2 fadeUp">Shrink sleeves </h3>
+                        <div class="fadeUp linheight2">
+                            <p>Elevate your brand's visibility and product presentation with our custom-designed shrink sleeves. These labels conform to your containers, creating a seamless, eye-catching appearance.</p>
+                        </div>
+                    <?php } ?>
+                    <div class="fadeUp">
+                        <a href="liquid-packaging.html" class="btnred">
+                            <span>LEARN MORE</span> 
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.5 5L11.7929 11.2929C12.1834 11.6834 12.1834 12.3166 11.7929 12.7071L5.5 19" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M13.5 5L19.7929 11.2929C20.1834 11.6834 20.1834 12.3166 19.7929 12.7071L13.5 19" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 homeprodthmbwrp">
+                    <?php if (!empty($page_contents_editable)) { ?>
+                        <label for="products_sub_section3_image" class="editable-content w-100">
+                            <img src="<?=base_url('assets/client/images/Shrink-sleeves.jpg')?>" alt="" class="w-100 p-5 fadePopup">
+                            <input type="file" id="products_sub_section3_image" class="hidden-image-input" onchange="previewImage(this)">
+                        </label>
+                    <?php } else { ?>
+                        <img src="<?=base_url('assets/client/images/Shrink-sleeves.jpg')?>" alt="" class="w-100 p-5 fadePopup">
+                    <?php } ?>
+                    <img src="<?=base_url('assets/client/images/product-shape.svg')?>" alt="" class="homeprodthmbbg">
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-md-6 homeprodcon">
+                    <?php if (!empty($page_contents_editable)) { ?>
+                        <h3 contentEditable="true" id="products_sub_section4_heading" class="mb-2 fadeUp editable-content">Wrap around labels </h3>
+                        <div class="fadeUp linheight2">
+                            <p  contentEditable="true" id="products_sub_section4_description" class=" editable-content">Make your products stand out on the shelves with our wrap-around labels. These labels provide ample space for branding and essential product information, ensuring maximum impact.</p>
+                        </div>
+                    <?php } else { ?>
+                        <h3 class="mb-2 fadeUp">Wrap around labels </h3>
+                        <div class="fadeUp linheight2">
+                            <p>Make your products stand out on the shelves with our wrap-around labels. These labels provide ample space for branding and essential product information, ensuring maximum impact.</p>
+                        </div>
+                    <?php } ?>
+                    <div class="fadeUp">
+                        <a href="health-care-and-agriculture.html" class="btnred">
+                            <span>LEARN MORE</span> 
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.5 5L11.7929 11.2929C12.1834 11.6834 12.1834 12.3166 11.7929 12.7071L5.5 19" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M13.5 5L19.7929 11.2929C20.1834 11.6834 20.1834 12.3166 19.7929 12.7071L13.5 19" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 homeprodthmbwrp">
+                    <?php if (!empty($page_contents_editable)) { ?>
+                        <label for="products_sub_section4_image" class="editable-content w-100">
+                            <img src="<?=base_url('assets/client/images/Wrap-around-labels.jpg')?>" alt="" class="w-100 p-5 fadePopup">
+                            <input type="hidden" id="products_sub_section4_image" class="hidden-image-input" onchange="previewImage(this)">
+                        </label>
+                    <?php } else { ?>
+                        <img src="<?=base_url('assets/client/images/Wrap-around-labels.jpg')?>" alt="" class="w-100 p-5 fadePopup">
+                    <?php } ?>
+                    <img src="<?=base_url('assets/client/images/product-shape.svg')?>" alt="" class="homeprodthmbbg">
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-md-6 homeprodcon">
+                    <?php if (!empty($page_contents_editable)) { ?>
+                        <h3 contentEditable="true" id="products_sub_section5_heading" class="mb-2 fadeUp editable-content">Collation shrink film</h3>
+                        <div class="fadeUp linheight2">
+                            <p contentEditable="true" id="products_sub_section5_heading" class="editable-content">Streamline your packaging process with our collation shrink film. Securely bundle your products together while reducing waste, making distribution more efficient and eco-friendly.</p>
+                        </div>
+                    <?php } else { ?>
+                        <h3 class="mb-2 fadeUp">Collation shrink film</h3>
+                        <div class="fadeUp linheight2">
+                            <p>Streamline your packaging process with our collation shrink film. Securely bundle your products together while reducing waste, making distribution more efficient and eco-friendly.</p>
+                        </div>
+                    <?php } ?>
+                    <div class="fadeUp">
+                        <a href="personal-care-and-household.html" class="btnred">
+                            <span>LEARN MORE</span> 
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.5 5L11.7929 11.2929C12.1834 11.6834 12.1834 12.3166 11.7929 12.7071L5.5 19" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M13.5 5L19.7929 11.2929C20.1834 11.6834 20.1834 12.3166 19.7929 12.7071L13.5 19" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 homeprodthmbwrp">
+                    <?php if (!empty($page_contents_editable)) { ?>
+                        <label for="products_sub_section5_image" class="editable-content w-100">
+                            <img src="<?=base_url('assets/client/images/Collation-shrink-film.jpg')?>" alt="" class="w-100 p-5 fadePopup">
+                            <input type="hidden" id="products_sub_section5_image" class="hidden-image-input" onchange="previewImage(this)">
+                        </label>
+                    <?php } else { ?>
+                        <img src="<?=base_url('assets/client/images/Collation-shrink-film.jpg')?>" alt="" class="w-100 p-5 fadePopup">
+                    <?php } ?>
                     <img src="<?=base_url('assets/client/images/product-shape.svg')?>" alt="" class="homeprodthmbbg">
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 <section class="py-5" style="background-color: #FDF6F4;">
     <div class="container">
         <div class="title2sec mb-4 fadeUp">
@@ -267,6 +390,7 @@ background-attachment: fixed;">
         </div>
     </div>
 </section>
+
 <section class="py-5 countsecwrp" style="background-color: #D75427;">
     <div class="container py-md-4">
         <div class="row align-itwems-center">
@@ -329,6 +453,7 @@ background-attachment: fixed;">
         </div>
     </div>
 </section>
+
 <section class="py-5">
     <div class="container">
         <div class="title2sec mb-4 fadeUp">
@@ -589,6 +714,7 @@ background-attachment: fixed;">
         </div>
     </div>
 </section>
+
 <section class="contactsec py-5 overflow-hidden leftSlide" style="
 background-image: url(<?=base_url('assets/client/images/contact-bg-min.jpg')?>); 
 background-size: cover; 
@@ -661,3 +787,25 @@ background-repeat: no-repeat;">
         </div>
     </div>
 </section>
+
+<?php if (!empty($page_contents_editable)) { ?>
+<script>
+
+    function get_rendered_CMS_page_content() {
+        let CMS_page_content = new FormData;
+
+        let certificates_section_heading = $("#certificates_section_heading").text().trim();
+        if (certificates_section_heading) {
+            CMS_page_content.append("certificates_section_heading", certificates_section_heading);
+        }
+
+        let certificates_section_image = $("#certificates_section_image").prop("files")[0];
+        if (certificates_section_image) {
+            CMS_page_content.append("certificates_section_image", certificates_section_image);
+        }
+
+        return CMS_page_content;
+    }
+
+</script>
+<?php } ?>

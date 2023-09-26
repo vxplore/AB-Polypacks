@@ -63,7 +63,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="mt-3 text-end">
-                                <button type="submit" id="office_contact_details_form_submit_button" class="btn btn-primary">Save</button>
+                                <button type="submit" id="office_contact_details_form_submit_button" class="btn btn-primary" style="width:60.64px; height:38px;">Save</button>
                             </div>
                         </div>
                     </div>
@@ -123,7 +123,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="mt-3 text-end">
-                                <button type="submit" id="factory_contact_details_form_submit_button" class="btn btn-primary">Save</button>
+                                <button type="submit" id="factory_contact_details_form_submit_button" class="btn btn-primary" style="width:60.64px; height:38px;">Save</button>
                             </div>
                         </div>
                     </div>
@@ -139,8 +139,15 @@
     $("#office_contact_details_form").submit(function(e){
         e.preventDefault();
         let formData = new FormData(this);
-        let submit_button = $("#office_contact_details_form_submit_button");
-        saveContactInformations(this, formData, submit_button); 
+        let submitButton = $("#office_contact_details_form_submit_button");
+        saveContactInformations(this, formData, submitButton); 
+    });
+
+    $("#factory_contact_details_form").submit(function(e){
+        e.preventDefault();
+        let formData = new FormData(this);
+        let submitButton = $("#factory_contact_details_form_submit_button");
+        saveContactInformations(this, formData, submitButton); 
     });
 
     function saveContactInformations(form, formData, submitButton) {
