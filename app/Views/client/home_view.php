@@ -1,3 +1,7 @@
+<?php if (!empty($page_contents_editable)) {
+    echo "<input type='hidden' id='CMS_page_id' value='".$page_id."'>";
+}?>
+
 <section class="homebanner position-relative" >
     <div class="homeslider text-white">
         <div class="homesliderinr" style="background-image:url(<?=base_url('assets/client/images/Banner-Images/banner5.jpg')?>);">
@@ -280,7 +284,7 @@
                     <?php if (!empty($page_contents_editable)) { ?>
                         <label for="products_sub_section4_image" class="editable-content w-100">
                             <img src="<?=base_url('assets/client/images/Wrap-around-labels.jpg')?>" alt="" class="w-100 p-5 fadePopup">
-                            <input type="hidden" id="products_sub_section4_image" class="hidden-image-input" onchange="previewImage(this)">
+                            <input type="file" id="products_sub_section4_image" class="hidden-image-input" onchange="previewImage(this)">
                         </label>
                     <?php } else { ?>
                         <img src="<?=base_url('assets/client/images/Wrap-around-labels.jpg')?>" alt="" class="w-100 p-5 fadePopup">
@@ -294,7 +298,7 @@
                     <?php if (!empty($page_contents_editable)) { ?>
                         <h3 contentEditable="true" id="products_sub_section5_heading" class="mb-2 fadeUp editable-content">Collation shrink film</h3>
                         <div class="fadeUp linheight2">
-                            <p contentEditable="true" id="products_sub_section5_heading" class="editable-content">Streamline your packaging process with our collation shrink film. Securely bundle your products together while reducing waste, making distribution more efficient and eco-friendly.</p>
+                            <p contentEditable="true" id="products_sub_section5_description" class="editable-content">Streamline your packaging process with our collation shrink film. Securely bundle your products together while reducing waste, making distribution more efficient and eco-friendly.</p>
                         </div>
                     <?php } else { ?>
                         <h3 class="mb-2 fadeUp">Collation shrink film</h3>
@@ -316,7 +320,7 @@
                     <?php if (!empty($page_contents_editable)) { ?>
                         <label for="products_sub_section5_image" class="editable-content w-100">
                             <img src="<?=base_url('assets/client/images/Collation-shrink-film.jpg')?>" alt="" class="w-100 p-5 fadePopup">
-                            <input type="hidden" id="products_sub_section5_image" class="hidden-image-input" onchange="previewImage(this)">
+                            <input type="file" id="products_sub_section5_image" class="hidden-image-input" onchange="previewImage(this)">
                         </label>
                     <?php } else { ?>
                         <img src="<?=base_url('assets/client/images/Collation-shrink-film.jpg')?>" alt="" class="w-100 p-5 fadePopup">
@@ -792,19 +796,78 @@ background-repeat: no-repeat;">
 <script>
 
     function get_rendered_CMS_page_content() {
-        let CMS_page_content = new FormData;
+        let CMS_page_content = new FormData();
 
-        let certificates_section_heading = $("#certificates_section_heading").text().trim();
-        if (certificates_section_heading) {
-            CMS_page_content.append("certificates_section_heading", certificates_section_heading);
-        }
+        let text_content_ids = [
+            "certificates_section_heading",
+            "about_us_section_heading",
+            "about_us_section_description",
+            "products_section_heading",
+            "products_sub_section1_heading",
+            "products_sub_section1_description",
+            "products_sub_section2_heading",
+            "products_sub_section2_description",
+            "products_sub_section3_heading",
+            "products_sub_section3_description",
+            "products_sub_section4_heading",
+            "products_sub_section4_description",
+            "products_sub_section5_heading",
+            "products_sub_section5_description"
+        ];
+        text_content_ids.forEach((text_content_name, i) => {
+            let text_content = $("#"+text_content_name).text().trim();
+            if (text_content) {
+                CMS_page_content.append(text_content_name, text_content);
+            }
+        });
 
-        let certificates_section_image = $("#certificates_section_image").prop("files")[0];
-        if (certificates_section_image) {
-            CMS_page_content.append("certificates_section_image", certificates_section_image);
-        }
+        let file_content_ids = [
+            "certificates_section_image",
+            "about_us_section_image",
+            "products_sub_section1_image",
+            "products_sub_section2_image",
+            "products_sub_section3_image",
+            "products_sub_section4_image",
+            "products_sub_section5_image"
+        ];
+        file_content_ids.forEach((file_content_name, i) => {
+            let file_contents = $("#"+file_content_name).prop("files");
+            if (file_contents.length > 0) {
+                CMS_page_content.append(file_content_name, file_contents[0]);
+            }
+        });
 
         return CMS_page_content;
+    }
+
+    function save_CMS_page_content() {
+        let CMS_page_id = $("#CMS_page_id").val();
+        let CMS_page_content = get_rendered_CMS_page_content();
+        console.log(CMS_page_content);
+        
+        // let formDataObject = {};
+        // CMS_page_content.forEach((value, key) => {
+        //     formDataObject[key] = value;
+        // });
+
+        // console.log(formDataObject);
+
+        $.ajax({
+            url: "<?=base_url('/admin/pages/save-CMS-content/')?>"+CMS_page_id,
+            type: "POST",
+            data: CMS_page_content,
+            contentType: false,
+            processData: false,
+            error: function(a, b, c) {
+                toast("Something went wrong! Failed to save CMS page contents.", 3000);
+                console.log(a);
+                console.log(b);
+                console.log(c);
+            },
+            success: function(response) {
+                console.log(response);
+            }
+        });
     }
 
 </script>

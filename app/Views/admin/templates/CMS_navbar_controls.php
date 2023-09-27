@@ -1,5 +1,13 @@
 <link href="<?=base_url('assets/admin/vendor/bootstrap-icons/bootstrap-icons.css')?>" rel="stylesheet">
 <link href="<?=base_url('assets/admin/css/style.css')?>" rel="stylesheet">
+
+<!-- Toastify CSS File -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+<!-- Toastify JS File -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script type="text/javascript" src="<?=base_url('assets/admin/js/toast_message.js')?>"></script>
+
 <style>
 
     body {

@@ -39,6 +39,11 @@ class Admins_model extends Model {
         return $pages_table->set($data)->where($condition)->update();
     }
 
+    public function get_page_content_details_on_condition($condition) {
+        $page_CMS_contents_table = $this->db->table("page_CMS_contents");
+        return $page_CMS_contents_table->where($condition)->get()->getRow();
+    }
+
     public function add_banner_details($data) {
         $banners_table = $this->db->table("banners");
         return $banners_table->insert($data);

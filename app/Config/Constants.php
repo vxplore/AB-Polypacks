@@ -92,3 +92,16 @@ define('EVENT_PRIORITY_NORMAL', 100);
  * @deprecated Use \CodeIgniter\Events\Events::PRIORITY_HIGH instead.
  */
 define('EVENT_PRIORITY_HIGH', 10);
+
+
+// ==================
+// CMS Page IDs Start
+// ==================
+defined('HOME_PAGE_ID') || define('HOME_PAGE_ID', 'PAGE_2d056ffb8d5c41c49ea5e7e828af17ba_1694500106');
+defined('ABOUT_US_PAGE_ID') || define('ABOUT_US_PAGE_ID', 'PAGE_d048d66598fe42a282fa374c3fa6131c_1694500355');
+defined('INFRASTRUCTURE_PAGE_ID') || define('INFRASTRUCTURE_PAGE_ID', 'PAGE_dd468aacdc5c4d799212b1fabe3902da_1694500944');
+defined('QUALITY_PAGE_ID') || define('QUALITY_PAGE_ID', 'PAGE_3bc7377941444afd84e6e3fcfe7de792_1694501090');
+defined('CARRER_PAGE_ID') || define('CARRER_PAGE_ID', 'PAGE_3bc7377941444afd84e6e3fcfe7de792_1694501090');
+// ================
+// CMS Page IDs End
+// ================

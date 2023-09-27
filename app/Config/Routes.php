@@ -39,6 +39,7 @@ $routes->get('/admin/SEO/edit-content/(:any)', 'Admin\SEO::get_SEO_content_edit_
 $routes->post('/admin/SEO/save-content', 'Admin\SEO::save_SEO_content');
 
 $routes->get('/admin/pages/edit-content/(:any)', 'Admin\Pages::get_page_contents_edit_view/$1');
+$routes->post('/admin/pages/save-CMS-content/(:any)', 'Admin\Pages::save_CMS_contents/$1');
 
 $routes->get('/admin/banners', 'Admin\Banners::index');
 $routes->get('/admin/banners/add', 'Admin\Banners::get_banner_add_view');
