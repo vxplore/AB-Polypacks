@@ -19,11 +19,12 @@ class Pages extends Common {
     public function get_editable_page_view($page_id) {
         $condition = ["page_contents_editable" => "TRUE", "page_id" => $page_id];
         $page_details = $this->admin_model->get_page_details_on_condition($condition);
-        $page_rendering_data["page_id"] = $page_id;
-        $page_rendering_data["page_contents_editable"] = true;
-        $script_rendering_data = [];
 
         if (!empty($page_details->view_file_path)) {
+            $header_rendering_data["page_details"] = $page_details;
+            $page_rendering_data = $this->get_page_rendering_data($page_id);
+            $script_rendering_data = [];
+
             echo view("client/templates/header");
             echo view("admin/templates/CMS_navbar_controls", ["page_details" => $page_details]);
             echo view($page_details->view_file_path, $page_rendering_data);
@@ -33,6 +34,27 @@ class Pages extends Common {
         else {
             echo view("errors/html/error_404");
         }
+    }
+
+    private function get_page_rendering_data($page_id) {
+        $page_rendering_data = [];
+
+        if (!empty($page_id == HOME_PAGE_ID)) {
+            $page_rendering_data["list_of_banners"] = $this->client_model->get_list_of_banners();
+            $page_rendering_data["list_of_clients"] = $this->admin_model->get_list_of_clients();
+            $page_rendering_data["list_of_testimonials"] = $this->client_model->get_list_of_testimonials();
+            $page_rendering_data["contact_informations"] = $this->admin_model->get_contact_informations();
+        }
+
+        $page_contents_details = $this->admin_model->get_page_content_details_on_condition(["page_id" => $page_id]);
+        if (!empty($page_contents_details->page_cms_contents)) {
+            $page_contents_details->page_cms_contents = json_decode($page_contents_details->page_cms_contents);
+        }
+        $page_rendering_data["page_id"] = $page_id;
+        $page_rendering_data["page_contents_editable"] = true;
+        $page_rendering_data["page_contents"] = $page_contents_details;
+
+        return $page_rendering_data;
     }
 
     public function save_CMS_contents($page_id) {
@@ -47,7 +69,9 @@ class Pages extends Common {
 
         foreach ($allowed_file_inputs as $i => $file_input_name) {
             if (!empty($_FILES[$file_input_name])) {
-                $this->uploadable_file_data[$file_input_name] = $_FILES[$file_input_name];
+                $uploadable_file_details["name"] = $file_input_name;
+                $uploadable_file_details["image"] = $_FILES[$file_input_name];
+                $this->uploadable_file_data[] = $uploadable_file_details;
             }
         }
         foreach ($required_text_inputs as $i => $text_input_name) {
@@ -65,16 +89,74 @@ class Pages extends Common {
         }
 
         if ($this->error_occurred == false) {
+            $page_content_added = $page_content_saved = 0;
             $previous_page_details = $this->admin_model->get_page_content_details_on_condition(["page_id" => $page_id]);
-            $this->output = [
-                "status" => true,
-                "message" => "CMS Contents Saving Data get successfully.",
-                "data" => [
-                    "text_data" => $this->addable_text_data,
-                    "file_data" => $this->uploadable_file_data,
-                    "previous_page_details" => $previous_page_details
-                ]
-            ];
+            $previous_CMS_contents = (!empty($previous_page_details->page_cms_contents)) ? json_decode($previous_page_details->page_cms_contents, TRUE) : NULL;
+
+            if (!empty($previous_CMS_contents)) {
+                $deletable_CMS_images_paths = [];
+
+                if (!empty($this->uploadable_file_data)) {
+                    foreach ($this->uploadable_file_data as $i => $file_details) {
+                        if (!empty($previous_CMS_contents[$file_details["name"]])) {
+                            $deletable_CMS_images_paths[$file_details["name"]] = $previous_CMS_contents[$file_details["name"]];
+                        }
+                    }
+
+                    $uploaded_CMS_images_paths = $this->upload_CMS_images($this->uploadable_file_data);
+                    $new_CMS_contents = array_merge($this->addable_text_data, $uploaded_CMS_images_paths);
+                }
+                else {
+                    $new_CMS_contents = $this->addable_text_data;
+                }
+
+                foreach ($new_CMS_contents as $content_name => $content_value) {
+                    if (array_key_exists($content_name, $previous_CMS_contents)) {
+                        $previous_CMS_contents[$content_name] = $content_value;
+                    }
+                    else {
+                        $previous_CMS_contents[$content_name] = $content_value;
+                    }
+                }
+
+                $condition = ["page_id" => $page_id];
+                $data = ["page_cms_contents" => json_encode($previous_CMS_contents)];
+                $page_content_saved = $this->admin_model->update_page_content_details($data, $condition);
+                if ($page_content_saved) {
+                    if (!empty($deletable_CMS_images_paths)) {
+                        $this->delete_CMS_images($deletable_CMS_images_paths);
+                    }
+                }
+                else {
+                    if (!empty($uploaded_CMS_images_paths)) {
+                        $this->delete_CMS_images($uploaded_CMS_images_paths);
+                    }
+                }
+            }
+            else {
+                $new_CMS_contents = $this->addable_text_data;
+                $uploaded_CMS_images_paths = $this->upload_CMS_images($this->uploadable_file_data);
+                $page_CMS_contents = array_merge($new_CMS_contents, $uploaded_CMS_images_paths);
+
+                $data = [
+                    "page_id" => $page_id,
+                    "page_cms_contents" => json_encode($page_CMS_contents)
+                ];
+                $page_content_added = $this->admin_model->add_new_page_content($data);
+            }
+
+            if ($page_content_added || $page_content_saved) {
+                $this->output = [
+                    "status" => true,
+                    "message" => "CMS Content Saved Successfully."
+                ];
+            }
+            else {
+                $this->output = [
+                    "status" => false,
+                    "message" => "Failed to save CMS Content! Please try again later."
+                ];
+            }
         }
 
         return $this->response->setJSON($this->output);
@@ -86,6 +168,8 @@ class Pages extends Common {
                 "certificates_section_heading",
                 "about_us_section_heading",
                 "about_us_section_description",
+                "our_sustainability_section_heading",
+                "our_sustainability_section_description",
                 "products_section_heading",
                 "products_sub_section1_heading",
                 "products_sub_section1_description",
@@ -108,6 +192,7 @@ class Pages extends Common {
             $file_content_names = [
                 "certificates_section_image",
                 "about_us_section_image",
+                "our_sustainability_section_image",
                 "products_sub_section1_image",
                 "products_sub_section2_image",
                 "products_sub_section3_image",
@@ -117,6 +202,28 @@ class Pages extends Common {
         }
 
         return (!empty($file_content_names)) ? $file_content_names : [];
+    }
+
+    private function upload_CMS_images($uploadable_CMS_images) {
+        $upload_directory_path = "uploads/CMS_content_images/";
+        $uploaded_CMS_images_paths = [];
+
+        foreach ($uploadable_CMS_images as $i => $details) {
+            if (!empty($details["image"]["name"])) {
+                $uploaded_image_path = $this->upload_image($details["image"], $upload_directory_path);
+                if (!empty($uploaded_image_path)) {
+                    $uploaded_CMS_images_paths[$details["name"]] = $uploaded_image_path;
+                }
+            }
+        }
+
+        return $uploaded_CMS_images_paths;
+    }
+
+    private function delete_CMS_images($deletable_files) {
+        foreach ($deletable_files as $file_name => $file_path) {
+            $this->delete_image($file_path);
+        }
     }
 
     public function save_SEO_content() {

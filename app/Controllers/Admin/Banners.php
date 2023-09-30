@@ -43,53 +43,35 @@ class Banners extends Common {
         $output = [];
         $post_data = $this->request->getPost();
 
-        if (!$this->validation->run($post_data, 'new_banner_adding_rules')) {
-            $this->output = [
-                "status" => false,
-                "message" => "Something went wrong! Please try again later.",
-                "data" => new \stdClass,
-                "errors" => $this->validation->getErrors()
-            ];
-        }
-        else {
-            if ($this->check_admin_logged_in()) {
-                if (!empty($_FILES["image"]["name"])) {
-                    $banner_image = $_FILES["image"];
-                    $uploaded_image_path = $this->upload_image($banner_image, "uploads/banner_images/");
-                    if (!empty($uploaded_image_path)) {
-                        $total_banners_count = $this->admin_model->get_total_banners_count();
-                        $banner_id = $this->GUID("BANNER");
-                        $data = [
-                            "banner_id" => $banner_id,
-                            "title" => $post_data["title"],
-                            "description" => $post_data["description"],
-                            "image" => $uploaded_image_path,
-                            "link" => (!empty($post_data["link"])) ? $post_data["link"] : NULL,
-                            "appearing_order" => intval($total_banners_count + 1)
-                        ];
+        if ($this->check_admin_logged_in()) {
+            if (!empty($_FILES["image"]["name"])) {
+                $banner_image = $_FILES["image"];
+                $uploaded_image_path = $this->upload_image($banner_image, "uploads/banner_images/");
+                if (!empty($uploaded_image_path)) {
+                    $total_banners_count = $this->admin_model->get_total_banners_count();
+                    $banner_id = $this->GUID("BANNER");
+                    $data = [
+                        "banner_id" => $banner_id,
+                        "title" => (!empty($post_data["title"])) ? $post_data["title"] : NULL,
+                        "description" => (!empty($post_data["description"])) ? $post_data["description"] : NULL,
+                        "image" => $uploaded_image_path,
+                        "link" => (!empty($post_data["link"])) ? $post_data["link"] : NULL,
+                        "appearing_order" => intval($total_banners_count + 1)
+                    ];
 
-                        $banner_added = $this->admin_model->add_banner_details($data);
-                        if ($banner_added) {
-                            $this->output = [
-                                "status" => true,
-                                "message" => "New Banner Added Successfully.",
-                                "data" => ["redirect_to" => base_url('admin/banners')],
-                                "errors" => $this->validation->getErrors()
-                            ];
-                        }
-                        else {
-                            $this->output = [
-                                "status" => false,
-                                "message" => "Database Error Occurred! Failed to Add New Banner.",
-                                "data" => new \stdClass,
-                                "errors" => $this->validation->getErrors()
-                            ];
-                        }
+                    $banner_added = $this->admin_model->add_banner_details($data);
+                    if ($banner_added) {
+                        $this->output = [
+                            "status" => true,
+                            "message" => "New Banner Added Successfully.",
+                            "data" => ["redirect_to" => base_url('admin/banners')],
+                            "errors" => $this->validation->getErrors()
+                        ];
                     }
                     else {
                         $this->output = [
                             "status" => false,
-                            "message" => "Failed to Upload Banner Image! Please try again later.",
+                            "message" => "Database Error Occurred! Failed to Add New Banner.",
                             "data" => new \stdClass,
                             "errors" => $this->validation->getErrors()
                         ];
@@ -98,7 +80,7 @@ class Banners extends Common {
                 else {
                     $this->output = [
                         "status" => false,
-                        "message" => "Please Upload an Image to Add New Banner.",
+                        "message" => "Failed to Upload Banner Image! Please try again later.",
                         "data" => new \stdClass,
                         "errors" => $this->validation->getErrors()
                     ];
@@ -107,11 +89,19 @@ class Banners extends Common {
             else {
                 $this->output = [
                     "status" => false,
-                    "message" => "Session Expired! Please login and try again.",
+                    "message" => "Please Upload an Image to Add New Banner.",
                     "data" => new \stdClass,
                     "errors" => $this->validation->getErrors()
                 ];
             }
+        }
+        else {
+            $this->output = [
+                "status" => false,
+                "message" => "Session Expired! Please login and try again.",
+                "data" => new \stdClass,
+                "errors" => $this->validation->getErrors()
+            ];
         }
 
         return $this->response->setJSON($this->output);
@@ -165,7 +155,7 @@ class Banners extends Common {
 
                 $condition = ["banner_id" => $post_data["banner_id"]];
                 $data = [
-                    "title" => $post_data["title"],
+                    "title" => (!empty($post_data["title"])) ? $post_data["title"] : NULL,
                     "description" => (!empty($post_data["description"])) ? $post_data["description"] : NULL,
                     "link" => (!empty($post_data["link"])) ? $post_data["link"] : NULL
                 ];

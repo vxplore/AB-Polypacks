@@ -1,46 +1,224 @@
+<?php function render_rating_HTML($rating) {
+    $rating_HTML = "";
+    $full_star = "<i class='bi bi-star-fill text-warning'></i>";
+    $half_star = "<i class='bi bi-star-half text-warning'></i>";
+
+    $rating_array = explode(".", $rating);
+    $value = $rating_array[0];
+    $rem = (!empty($rating_array[1])) ? $rating_array[1] : 0;
+    for ($i=1; $i<=$value; $i++) {
+        $rating_HTML .= $full_star;
+    }
+    if ($rem > 0) {
+        $rating_HTML .= $half_star;
+    }
+
+    return $rating_HTML;
+}
+
+if (!empty($page_contents->page_cms_contents)) {
+    $CMS_contents = $page_contents->page_cms_contents;
+    
+    if (!empty($CMS_contents->certificates_section_heading)) {
+        $certificates_section_heading = $CMS_contents->certificates_section_heading;
+    } else {
+        $certificates_section_heading = "";
+    }
+
+    if (!empty($CMS_contents->certificates_section_image)) {
+        $certificates_section_image = base_url($CMS_contents->certificates_section_image);
+    } else {
+        $certificates_section_image = "";
+    }
+
+    if (!empty($CMS_contents->about_us_section_image)) {
+        $about_us_section_image = base_url($CMS_contents->about_us_section_image);
+    } else {
+        $about_us_section_image = "";
+    }
+
+    if (!empty($CMS_contents->about_us_section_heading)) {
+        $about_us_section_heading = $CMS_contents->about_us_section_heading;
+    } else {
+        $about_us_section_heading = "";
+    }
+
+    if (!empty($CMS_contents->about_us_section_description)) {
+        $about_us_section_description = $CMS_contents->about_us_section_description;
+    } else {
+        $about_us_section_description = "";
+    }
+
+    if (!empty($CMS_contents->our_sustainability_section_image)) {
+        $our_sustainability_section_image = base_url($CMS_contents->our_sustainability_section_image);
+    } else {
+        $our_sustainability_section_image = "";
+    }
+
+    if (!empty($CMS_contents->our_sustainability_section_heading)) {
+        $our_sustainability_section_heading = $CMS_contents->our_sustainability_section_heading;
+    } else {
+        $our_sustainability_section_heading = "";
+    }
+
+    if (!empty($CMS_contents->our_sustainability_section_description)) {
+        $our_sustainability_section_description = $CMS_contents->our_sustainability_section_description;
+    } else {
+        $our_sustainability_section_description = "";
+    }
+
+    if (!empty($CMS_contents->products_section_heading)) {
+        $products_section_heading = $CMS_contents->products_section_heading;
+    } else {
+        $products_section_heading = "";
+    }
+
+    if (!empty($CMS_contents->products_sub_section1_heading)) {
+        $products_sub_section1_heading = $CMS_contents->products_sub_section1_heading;
+    } else {
+        $products_sub_section1_heading = "";
+    }
+
+    if (!empty($CMS_contents->products_sub_section1_description)) {
+        $products_sub_section1_description = $CMS_contents->products_sub_section1_description;
+    } else {
+        $products_sub_section1_description = "";
+    }
+
+    if (!empty($CMS_contents->products_sub_section1_image)) {
+        $products_sub_section1_image = base_url($CMS_contents->products_sub_section1_image);
+    } else {
+        $products_sub_section1_image = "";
+    }
+
+    if (!empty($CMS_contents->products_sub_section2_heading)) {
+        $products_sub_section2_heading = $CMS_contents->products_sub_section2_heading;
+    } else {
+        $products_sub_section2_heading = "";
+    }
+
+    if (!empty($CMS_contents->products_sub_section2_description)) {
+        $products_sub_section2_description = $CMS_contents->products_sub_section2_description;
+    } else {
+        $products_sub_section2_description = "";
+    }
+
+    if (!empty($CMS_contents->products_sub_section2_image)) {
+        $products_sub_section2_image = base_url($CMS_contents->products_sub_section2_image);
+    } else {
+        $products_sub_section2_image = "";
+    }
+
+    if (!empty($CMS_contents->products_sub_section3_heading)) {
+        $products_sub_section3_heading = $CMS_contents->products_sub_section3_heading;
+    } else {
+        $products_sub_section1_heading = "";
+    }
+
+    if (!empty($CMS_contents->products_sub_section3_description)) {
+        $products_sub_section3_description = $CMS_contents->products_sub_section3_description;
+    } else {
+        $products_sub_section3_description = "";
+    }
+
+    if (!empty($CMS_contents->products_sub_section3_image)) {
+        $products_sub_section3_image = base_url($CMS_contents->products_sub_section3_image);
+    } else {
+        $products_sub_section3_image = "";
+    }
+
+    if (!empty($CMS_contents->products_sub_section4_heading)) {
+        $products_sub_section4_heading = $CMS_contents->products_sub_section4_heading;
+    } else {
+        $products_sub_section4_heading = "";
+    }
+
+    if (!empty($CMS_contents->products_sub_section4_description)) {
+        $products_sub_section4_description = $CMS_contents->products_sub_section4_description;
+    } else {
+        $products_sub_section4_description = "";
+    }
+
+    if (!empty($CMS_contents->products_sub_section4_image)) {
+        $products_sub_section4_image = base_url($CMS_contents->products_sub_section4_image);
+    } else {
+        $products_sub_section4_image = "";
+    }
+
+    if (!empty($CMS_contents->products_sub_section5_heading)) {
+        $products_sub_section5_heading = $CMS_contents->products_sub_section5_heading;
+    } else {
+        $products_sub_section5_heading = "";
+    }
+
+    if (!empty($CMS_contents->products_sub_section5_description)) {
+        $products_sub_section5_description = $CMS_contents->products_sub_section5_description;
+    } else {
+        $products_sub_section5_description = "";
+    }
+
+    if (!empty($CMS_contents->products_sub_section5_image)) {
+        $products_sub_section5_image = base_url($CMS_contents->products_sub_section5_image);
+    } else {
+        $products_sub_section5_image = "";
+    }
+
+}
+
+if (!empty($contact_informations->office)) {
+    $office_contact_info = $contact_informations->office;
+
+    if (!empty($office_contact_info->company_name)) {
+        $company_name = $office_contact_info->company_name;
+    } else {
+        $company_name = "";
+    }
+
+    if (!empty($office_contact_info->phone)) {
+        $office_phone_number = $office_contact_info->phone;
+    } else {
+        $office_phone_number = "";
+    }
+
+    if (!empty($office_contact_info->email)) {
+        $office_email_address = $office_contact_info->email;
+    } else {
+        $office_email_address = "";
+    }
+
+    if (!empty($office_contact_info->address)) {
+        $office_address = $office_contact_info->address;
+    } else {
+        $office_address = "";
+    }
+}?>
+
 <?php if (!empty($page_contents_editable)) {
     echo "<input type='hidden' id='CMS_page_id' value='".$page_id."'>";
 }?>
 
-<section class="homebanner position-relative" >
+<section class="homebanner position-relative">
+    <?php if (!empty($list_of_banners)) { ?>
     <div class="homeslider text-white">
-        <div class="homesliderinr" style="background-image:url(<?=base_url('assets/client/images/Banner-Images/banner5.jpg')?>);">
+        <?php foreach ($list_of_banners as $i => $banner_details) { ?>
+        <div class="homesliderinr" style="background-image:url(<?=base_url($banner_details->image)?>);">
+            <?php if (!empty($banner_details->title) || !empty($banner_details->description)) { ?>
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-7 text-center text-md-start">
                         <div class="hmslidertxt fadeUp">
-                            <h2 class="mb-3">Champions of Circular Harmony</h2>
-                            <p>Achieving Your Vision, Sustainably. Flexible Packaging Tailored To your Brand</p>
+                            <h2 class="mb-3"><?=$banner_details->title?></h2>
+                            <?=$banner_details->description?>
                         </div>
                     </div>
                 </div>
             </div>
+            <?php } ?>
         </div>
-        <div class="homesliderinr" style="background-image:url(<?=base_url('assets/client/images/Banner-Images/banner7.jpg')?>);">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-7 text-center text-md-start">
-                        <div class="hmslidertxt fadeUp">
-                            <h2 class="mb-3">Eco-Friendly Materials </h2>
-                            <p>We prioritize nature-friendly materials in our packaging solutions. From biodegradable plastics to recycled paper, our products are designed with the planet in mind.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="homesliderinr" style="background-image:url(<?=base_url('assets/client/images/Banner-Images/Innovation-Meets-Sustainability.jpg')?>);">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-7 text-center text-md-start">
-                        <div class="hmslidertxt fadeUp">
-                            <h2 class="mb-3">Innovation Meets Sustainability</h2>
-                            <p>We believe that innovation should not come at the cost of the environment. Our cutting-edge technology marries creativity with eco-consciousness.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php } ?>
     </div>
+    <?php } ?>
+
     <div class="bnrbtninfo text-center">
         <div class="container">
             <div class="row">
@@ -61,20 +239,20 @@
 <section class="pt-5">
     <div class="container pt-5">
         <?php if (!empty($page_contents_editable)) { ?>
-            <h2 contentEditable="true" id="certificates_section_heading" class="title1 text-center mb-5 fadeUp editable-content">Our Certificates</h2>
+            <h2 contentEditable="true" id="certificates_section_heading" class="title1 text-center mb-5 fadeUp editable-content"><?=$certificates_section_heading?></h2>
             <div class="row justify-content-center">
                 <div class="col-md-10 fadePopup">
                     <label for="certificates_section_image" class="editable-content w-100">
-                        <img src="<?=base_url('assets/client/images/certificates-min.jpg')?>" alt="" class="w-100">
+                        <img src="<?=$certificates_section_image?>" alt="" class="w-100">
                         <input type="file" id="certificates_section_image" class="hidden-image-input" onchange="previewImage(this)">
                     </label>
                 </div>
             </div>
         <?php } else { ?>
-            <h2 class="title1 text-center mb-5 fadeUp">Our Certificates</h2>
+            <h2 class="title1 text-center mb-5 fadeUp"><?=$certificates_section_heading?></h2>
             <div class="row justify-content-center">
                 <div class="col-md-10 fadePopup">
-                    <img src="<?=base_url('assets/client/images/certificates-min.jpg')?>" alt="" class="w-100">
+                    <img src="<?=$certificates_section_image?>" alt="" class="w-100">
                 </div>
             </div>
         <?php } ?>
@@ -88,7 +266,7 @@
                 <div class="col-md-5">
                     <div class="fadePopup">
                         <label for="about_us_section_image" class="editable-content w-100">
-                            <img src="<?=base_url('assets/client/images/welcome-min.jpg')?>" alt="" class="w-100 rounded-lg">
+                            <img src="<?=$about_us_section_image?>" alt="" class="w-100 rounded-lg">
                             <input type="file" id="about_us_section_image" class="hidden-image-input" onchange="previewImage(this)">
                         </label>
                     </div>
@@ -96,10 +274,10 @@
                 <div class="col-md-7 mt-4 mt-md-4 ps-lg-5">
                     <div class="title2sec mb-4 fadeUp">
                         <small>ABOUT US</small>
-                        <h2 contentEditable="true" id="about_us_section_heading" class="editable-content">Welcome to A B Polypacks</h2>
+                        <h2 contentEditable="true" id="about_us_section_heading" class="editable-content"><?=$about_us_section_heading?></h2>
                     </div>
                     <div class="fadeUp linheight2">
-                        <p contentEditable="true" id="about_us_section_description" class="editable-content">A B Polypacks is one of the fastest-growing, steadfast and dependable organizations in the field of packaging printing. Starting its journey in 2006 , the company has come a long way in establishing itself as a credible partner to world class multinational organizations like Coca Cola, Pepsico , Hindusthan Unilever. Situated in Lakhanpur Industrial Area, Mumbai Road , Howrah , West Bengal in acres of land and with the latest state of the art machines , the Company has already created a niche amongst the best Packaging Printing Companies in India.</p>
+                        <p contentEditable="true" id="about_us_section_description" class="editable-content"><?=$about_us_section_description?></p>
                     </div>
                     <div class="fadeUp">
                         <a href="about.html" class="btnred">
@@ -109,21 +287,38 @@
                                 <path d="M13.5 5L19.7929 11.2929C20.1834 11.6834 20.1834 12.3166 19.7929 12.7071L13.5 19" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </a>
+                    </div>
+                </div>
+                <div class="col-md-7 ps-lg-5">
+                    <div class="title2sec mb-4 fadeUp">
+                        <small>SUSTAINABILITY</small>
+                        <h2 contentEditable="true" id="our_sustainability_section_heading" class="editable-content"><?=$our_sustainability_section_heading?></h2>
+                    </div>
+                    <div class="fadeUp linheight2">
+                        <p contentEditable="true" id="our_sustainability_section_description" class="editable-content"><?=$our_sustainability_section_description?></p>
+                    </div>
+                </div>
+                <div class="col-md-5 mt-4 mt-md-4">
+                    <div class="fadePopup">
+                        <label for="our_sustainability_section_image" class="editable-content w-100">
+                            <img src="<?=$our_sustainability_section_image?>" alt="" class="w-100 rounded-lg">
+                            <input type="file" id="our_sustainability_section_image" class="hidden-image-input" onchange="previewImage(this)">
+                        </label>
                     </div>
                 </div>
             <?php } else { ?>
                 <div class="col-md-5">
                     <div class="fadePopup">
-                        <img src="<?=base_url('assets/client/images/welcome-min.jpg')?>" alt="" class="w-100 rounded-lg">
+                        <img src="<?=$about_us_section_image?>" alt="" class="w-100 rounded-lg">
                     </div>
                 </div>
                 <div class="col-md-7 mt-4 mt-md-4 ps-lg-5">
                     <div class="title2sec mb-4 fadeUp">
                         <small>ABOUT US</small>
-                        <h2>Welcome to A B Polypacks</h2>
+                        <h2><?=$about_us_section_heading?></h2>
                     </div>
                     <div class="fadeUp linheight2">
-                        <p>A B Polypacks is one of the fastest-growing, steadfast and dependable organizations in the field of packaging printing. Starting its journey in 2006 , the company has come a long way in establishing itself as a credible partner to world class multinational organizations like Coca Cola, Pepsico , Hindusthan Unilever. Situated in Lakhanpur Industrial Area, Mumbai Road , Howrah , West Bengal in acres of land and with the latest state of the art machines , the Company has already created a niche amongst the best Packaging Printing Companies in India.</p>
+                        <p><?=$about_us_section_description?></p>
                     </div>
                     <div class="fadeUp">
                         <a href="about.html" class="btnred">
@@ -133,6 +328,21 @@
                                 <path d="M13.5 5L19.7929 11.2929C20.1834 11.6834 20.1834 12.3166 19.7929 12.7071L13.5 19" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </a>
+                    </div>
+                </div>
+                <div class="col-md-7 ps-lg-5">
+                    <div class="title2sec mb-4 fadeUp">
+                        <small>SUSTAINABILITY</small>
+                        <h2><?=$our_sustainability_section_heading?></h2>
+                    </div>
+                    <div class="fadeUp linheight2">
+                        <p><?=$our_sustainability_section_description?></p>
+                    </div>
+                    
+                </div>
+                <div class="col-md-5 mt-4 mt-md-4">
+                    <div class="fadePopup">
+                        <img src="<?=$our_sustainability_section_image?>" alt="" class="w-100 rounded-lg">
                     </div>
                 </div>
             <?php } ?>
@@ -143,23 +353,23 @@
 <section class="pt-5 py-ms-5">
     <div class="container pb-md-5">
         <?php if (!empty($page_contents_editable)) { ?>
-            <h2 contentEditable="true" id="products_section_heading" class="title1 text-center mb-5 fadeUp editable-content">Our Products</h2>
+            <h2 contentEditable="true" id="products_section_heading" class="title1 text-center mb-5 fadeUp editable-content"><?=$products_section_heading?></h2>
         <?php } else { ?>
-                <h2 class="title1 text-center mb-5 fadeUp">Our Products</h2>
+                <h2 class="title1 text-center mb-5 fadeUp"><?=$products_section_heading?></h2>
         <?php } ?>
         <div class="homeproductwrp pb-5">
 
             <div class="row align-items-center">
                 <div class="col-md-6 homeprodcon">
                     <?php if (!empty($page_contents_editable)) { ?>
-                        <h3 contentEditable="true" id="products_sub_section1_heading" class="mb-2 fadeUp editable-content">Laminates</h3>
+                        <h3 contentEditable="true" id="products_sub_section1_heading" class="mb-2 fadeUp editable-content"><?=$products_sub_section1_heading?></h3>
                         <div class="fadeUp linheight2">
-                            <p contentEditable="true" id="products_sub_section1_description" class="editable-content">Discover the perfect blend of strength and aesthetics with our laminates. Enhance the durability and visual appeal of your packaging solutions with our versatile laminate materials.</p>
+                            <p contentEditable="true" id="products_sub_section1_description" class="editable-content"><?=$products_sub_section1_description?></p>
                         </div>
                     <?php } else { ?>
-                        <h3 class="mb-2 fadeUp">Laminates</h3>
+                        <h3 class="mb-2 fadeUp"><?=$products_sub_section1_heading?></h3>
                         <div class="fadeUp linheight2">
-                            <p>Discover the perfect blend of strength and aesthetics with our laminates. Enhance the durability and visual appeal of your packaging solutions with our versatile laminate materials.</p>
+                            <p><?=$products_sub_section1_description?></p>
                         </div>
                     <?php } ?>
                     <div class="fadeUp">
@@ -175,11 +385,11 @@
                 <div class="col-md-6 homeprodthmbwrp">
                     <?php if (!empty($page_contents_editable)) { ?>
                         <label for="products_sub_section1_image" class="editable-content w-100">
-                            <img src="<?=base_url('assets/client/images/wrapping-with-plastic.jpg')?>" alt="" class="w-100 p-5 fadePopup">
+                            <img src="<?=$products_sub_section1_image?>" alt="" class="w-100 p-5 fadePopup">
                             <input type="file" id="products_sub_section1_image" class="hidden-image-input" onchange="previewImage(this)">
                         </label>
                     <?php } else { ?>
-                        <img src="<?=base_url('assets/client/images/wrapping-with-plastic.jpg')?>" alt="" class="w-100 p-5 fadePopup">
+                        <img src="<?=$products_sub_section1_image?>" alt="" class="w-100 p-5 fadePopup">
                     <?php } ?>
                     <img src="<?=base_url('assets/client/images/product-shape.svg')?>" alt="" class="homeprodthmbbg">
                 </div>
@@ -188,14 +398,14 @@
             <div class="row align-items-center">
                 <div class="col-md-6 homeprodcon">
                     <?php if (!empty($page_contents_editable)) { ?>
-                        <h3 contentEditable="true" id="products_sub_section2_heading" class="mb-2 fadeUp editable-content">Various pouches </h3>
+                        <h3 contentEditable="true" id="products_sub_section2_heading" class="mb-2 fadeUp editable-content"><?=$products_sub_section2_heading?></h3>
                         <div class="fadeUp linheight2">
-                            <p contentEditable="true" id="products_sub_section2_description" class="editable-content">From stand-up pouches to zipper-sealed bags, explore our diverse range of pouches designed to preserve freshness and convenience for your products.</p>
+                            <p contentEditable="true" id="products_sub_section2_description" class="editable-content"><?=$products_sub_section2_description?></p>
                         </div>
                     <?php } else { ?>
-                        <h3 class="mb-2 fadeUp">Various pouches </h3>
+                        <h3 class="mb-2 fadeUp"><?=$products_sub_section2_heading?></h3>
                         <div class="fadeUp linheight2">
-                            <p>From stand-up pouches to zipper-sealed bags, explore our diverse range of pouches designed to preserve freshness and convenience for your products.</p>
+                            <p><?=$products_sub_section2_description?></p>
                         </div>
                     <?php } ?>
                     <div class="fadeUp">
@@ -211,11 +421,11 @@
                 <div class="col-md-6 homeprodthmbwrp">
                     <?php if (!empty($page_contents_editable)) { ?>
                         <label for="products_sub_section2_image" class="editable-content w-100">
-                            <img src="<?=base_url('assets/client/images/Various-pouches.jpg')?>" alt="" class="w-100 p-5 fadePopup">
+                            <img src="<?=$products_sub_section2_image?>" alt="" class="w-100 p-5 fadePopup">
                             <input type="file" id="products_sub_section2_image" class="hidden-image-input" onchange="previewImage(this)">
                         </label>
                     <?php } else { ?>
-                        <img src="<?=base_url('assets/client/images/Various-pouches.jpg')?>" alt="" class="w-100 p-5 fadePopup">
+                        <img src="<?=$products_sub_section2_image?>" alt="" class="w-100 p-5 fadePopup">
                     <?php } ?>
                     <img src="<?=base_url('assets/client/images/product-shape.svg')?>" alt="" class="homeprodthmbbg">
                 </div>
@@ -224,14 +434,14 @@
             <div class="row align-items-center">
                 <div class="col-md-6 homeprodcon">
                     <?php if (!empty($page_contents_editable)) { ?>
-                        <h3 contentEditable="true" id="products_sub_section3_heading" class="mb-2 fadeUp editable-content">Shrink sleeves </h3>
+                        <h3 contentEditable="true" id="products_sub_section3_heading" class="mb-2 fadeUp editable-content"><?=$products_sub_section3_heading?></h3>
                         <div class="fadeUp linheight2">
-                            <p contentEditable="true" id="products_sub_section3_description" class="editable-content">Elevate your brand's visibility and product presentation with our custom-designed shrink sleeves. These labels conform to your containers, creating a seamless, eye-catching appearance.</p>
+                            <p contentEditable="true" id="products_sub_section3_description" class="editable-content"><?=$products_sub_section3_description?></p>
                         </div>
                     <?php } else { ?>
-                        <h3 class="mb-2 fadeUp">Shrink sleeves </h3>
+                        <h3 class="mb-2 fadeUp"><?=$products_sub_section3_heading?></h3>
                         <div class="fadeUp linheight2">
-                            <p>Elevate your brand's visibility and product presentation with our custom-designed shrink sleeves. These labels conform to your containers, creating a seamless, eye-catching appearance.</p>
+                            <p><?=$products_sub_section3_description?></p>
                         </div>
                     <?php } ?>
                     <div class="fadeUp">
@@ -247,11 +457,11 @@
                 <div class="col-md-6 homeprodthmbwrp">
                     <?php if (!empty($page_contents_editable)) { ?>
                         <label for="products_sub_section3_image" class="editable-content w-100">
-                            <img src="<?=base_url('assets/client/images/Shrink-sleeves.jpg')?>" alt="" class="w-100 p-5 fadePopup">
+                            <img src="<?=$products_sub_section3_image?>" alt="" class="w-100 p-5 fadePopup">
                             <input type="file" id="products_sub_section3_image" class="hidden-image-input" onchange="previewImage(this)">
                         </label>
                     <?php } else { ?>
-                        <img src="<?=base_url('assets/client/images/Shrink-sleeves.jpg')?>" alt="" class="w-100 p-5 fadePopup">
+                        <img src="<?=$products_sub_section3_image?>" alt="" class="w-100 p-5 fadePopup">
                     <?php } ?>
                     <img src="<?=base_url('assets/client/images/product-shape.svg')?>" alt="" class="homeprodthmbbg">
                 </div>
@@ -260,14 +470,14 @@
             <div class="row align-items-center">
                 <div class="col-md-6 homeprodcon">
                     <?php if (!empty($page_contents_editable)) { ?>
-                        <h3 contentEditable="true" id="products_sub_section4_heading" class="mb-2 fadeUp editable-content">Wrap around labels </h3>
+                        <h3 contentEditable="true" id="products_sub_section4_heading" class="mb-2 fadeUp editable-content"><?=$products_sub_section4_heading?></h3>
                         <div class="fadeUp linheight2">
-                            <p  contentEditable="true" id="products_sub_section4_description" class=" editable-content">Make your products stand out on the shelves with our wrap-around labels. These labels provide ample space for branding and essential product information, ensuring maximum impact.</p>
+                            <p contentEditable="true" id="products_sub_section4_description" class=" editable-content"><?=$products_sub_section4_description?></p>
                         </div>
                     <?php } else { ?>
-                        <h3 class="mb-2 fadeUp">Wrap around labels </h3>
+                        <h3 class="mb-2 fadeUp"><?=$products_sub_section4_heading?></h3>
                         <div class="fadeUp linheight2">
-                            <p>Make your products stand out on the shelves with our wrap-around labels. These labels provide ample space for branding and essential product information, ensuring maximum impact.</p>
+                            <p><?=$products_sub_section4_description?></p>
                         </div>
                     <?php } ?>
                     <div class="fadeUp">
@@ -283,11 +493,11 @@
                 <div class="col-md-6 homeprodthmbwrp">
                     <?php if (!empty($page_contents_editable)) { ?>
                         <label for="products_sub_section4_image" class="editable-content w-100">
-                            <img src="<?=base_url('assets/client/images/Wrap-around-labels.jpg')?>" alt="" class="w-100 p-5 fadePopup">
+                            <img src="<?=$products_sub_section4_image?>" alt="" class="w-100 p-5 fadePopup">
                             <input type="file" id="products_sub_section4_image" class="hidden-image-input" onchange="previewImage(this)">
                         </label>
                     <?php } else { ?>
-                        <img src="<?=base_url('assets/client/images/Wrap-around-labels.jpg')?>" alt="" class="w-100 p-5 fadePopup">
+                        <img src="<?=$products_sub_section4_image?>" alt="" class="w-100 p-5 fadePopup">
                     <?php } ?>
                     <img src="<?=base_url('assets/client/images/product-shape.svg')?>" alt="" class="homeprodthmbbg">
                 </div>
@@ -296,14 +506,14 @@
             <div class="row align-items-center">
                 <div class="col-md-6 homeprodcon">
                     <?php if (!empty($page_contents_editable)) { ?>
-                        <h3 contentEditable="true" id="products_sub_section5_heading" class="mb-2 fadeUp editable-content">Collation shrink film</h3>
+                        <h3 contentEditable="true" id="products_sub_section5_heading" class="mb-2 fadeUp editable-content"><?=$products_sub_section5_heading?></h3>
                         <div class="fadeUp linheight2">
-                            <p contentEditable="true" id="products_sub_section5_description" class="editable-content">Streamline your packaging process with our collation shrink film. Securely bundle your products together while reducing waste, making distribution more efficient and eco-friendly.</p>
+                            <p contentEditable="true" id="products_sub_section5_description" class="editable-content"><?=$products_sub_section5_description?></p>
                         </div>
                     <?php } else { ?>
-                        <h3 class="mb-2 fadeUp">Collation shrink film</h3>
+                        <h3 class="mb-2 fadeUp"><?=$products_sub_section5_heading?></h3>
                         <div class="fadeUp linheight2">
-                            <p>Streamline your packaging process with our collation shrink film. Securely bundle your products together while reducing waste, making distribution more efficient and eco-friendly.</p>
+                            <p><?=$products_sub_section5_description?></p>
                         </div>
                     <?php } ?>
                     <div class="fadeUp">
@@ -319,11 +529,11 @@
                 <div class="col-md-6 homeprodthmbwrp">
                     <?php if (!empty($page_contents_editable)) { ?>
                         <label for="products_sub_section5_image" class="editable-content w-100">
-                            <img src="<?=base_url('assets/client/images/Collation-shrink-film.jpg')?>" alt="" class="w-100 p-5 fadePopup">
+                            <img src="<?=$products_sub_section5_image?>" alt="" class="w-100 p-5 fadePopup">
                             <input type="file" id="products_sub_section5_image" class="hidden-image-input" onchange="previewImage(this)">
                         </label>
                     <?php } else { ?>
-                        <img src="<?=base_url('assets/client/images/Collation-shrink-film.jpg')?>" alt="" class="w-100 p-5 fadePopup">
+                        <img src="<?=$products_sub_section5_image?>" alt="" class="w-100 p-5 fadePopup">
                     <?php } ?>
                     <img src="<?=base_url('assets/client/images/product-shape.svg')?>" alt="" class="homeprodthmbbg">
                 </div>
@@ -332,6 +542,7 @@
     </div>
 </section>
 
+<?php if (!empty($list_of_clients)) { ?>
 <section class="py-5" style="background-color: #FDF6F4;">
     <div class="container">
         <div class="title2sec mb-4 fadeUp">
@@ -340,60 +551,18 @@
         </div>
         <div class="fadeUp">
             <div class="clientslogoslider">
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="<?=base_url('assets/client/images/client-logo1-min.png')?>" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="<?=base_url('assets/client/images/client-logo2-min.png')?>" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="<?=base_url('assets/client/images/client-logo3-min.png')?>" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="<?=base_url('assets/client/images/client-logo4-min.png')?>" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="<?=base_url('assets/client/images/client-logo5-min.png')?>" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="<?=base_url('assets/client/images/client-logo6-min.png')?>" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="<?=base_url('assets/client/images/client-logo7-min.png')?>" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="<?=base_url('assets/client/images/client-logo8-min.png')?>" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="<?=base_url('assets/client/images/client-logo3-min.png')?>" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="<?=base_url('assets/client/images/client-logo4-min.png')?>" alt="">
-                    </div>
-                </div>
+                <?php foreach ($list_of_clients as $i => $client_details) { ?>
+                    <div class="clientslogosec">
+                        <div class="clientslogo">
+                            <img class="" src="<?=base_url($client_details->image)?>" alt="">
+                        </div>
+                    </div>   
+                <?php } ?>
             </div>
         </div>
     </div>
 </section>
+<?php } ?>
 
 <section class="py-5 countsecwrp" style="background-color: #D75427;">
     <div class="container py-md-4">
@@ -458,6 +627,7 @@
     </div>
 </section>
 
+<?php if (!empty($list_of_testimonials)) { ?>
 <section class="py-5">
     <div class="container">
         <div class="title2sec mb-4 fadeUp">
@@ -466,258 +636,42 @@
         </div>
         <div class="fadeUp">
             <div class="testislider">
-                <div class="m-3">
-                    <div class="testithmb p-3 shadow rounded">
-                        <div class="linheight2">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy textLorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy textLorem Ipsum.</p>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="d-flex gap-3 align-items-center">
-                                <div class="testiimg rounded-pill">
-                                    <img src="<?=base_url('assets/client/images/testiimg-1-min.png')?>" alt="">
-                                </div>
-                                <div class="testicon">
-                                    <h3>NATALIE KAMERON</h3>
-                                    <div class="d-flex gap-1">
-                                        <svg version="1.0" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                                            <path fill="#ffd000" d="M62.799,23.737c-0.47-1.399-1.681-2.419-3.139-2.642l-16.969-2.593L35.069,2.265
-                                            C34.419,0.881,33.03,0,31.504,0c-1.527,0-2.915,0.881-3.565,2.265l-7.623,16.238L3.347,21.096c-1.458,0.223-2.669,1.242-3.138,2.642
-                                            c-0.469,1.4-0.115,2.942,0.916,4l12.392,12.707l-2.935,17.977c-0.242,1.488,0.389,2.984,1.62,3.854
-                                            c1.23,0.87,2.854,0.958,4.177,0.228l15.126-8.365l15.126,8.365c0.597,0.33,1.254,0.492,1.908,0.492c0.796,0,1.592-0.242,2.269-0.72
-                                            c1.231-0.869,1.861-2.365,1.619-3.854l-2.935-17.977l12.393-12.707C62.914,26.68,63.268,25.138,62.799,23.737z"/>
-                                        </svg>
-                                        <svg version="1.0" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                                            <path fill="#ffd000" d="M62.799,23.737c-0.47-1.399-1.681-2.419-3.139-2.642l-16.969-2.593L35.069,2.265
-                                            C34.419,0.881,33.03,0,31.504,0c-1.527,0-2.915,0.881-3.565,2.265l-7.623,16.238L3.347,21.096c-1.458,0.223-2.669,1.242-3.138,2.642
-                                            c-0.469,1.4-0.115,2.942,0.916,4l12.392,12.707l-2.935,17.977c-0.242,1.488,0.389,2.984,1.62,3.854
-                                            c1.23,0.87,2.854,0.958,4.177,0.228l15.126-8.365l15.126,8.365c0.597,0.33,1.254,0.492,1.908,0.492c0.796,0,1.592-0.242,2.269-0.72
-                                            c1.231-0.869,1.861-2.365,1.619-3.854l-2.935-17.977l12.393-12.707C62.914,26.68,63.268,25.138,62.799,23.737z"/>
-                                        </svg>
-                                        <svg version="1.0" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                                            <path fill="#ffd000" d="M62.799,23.737c-0.47-1.399-1.681-2.419-3.139-2.642l-16.969-2.593L35.069,2.265
-                                            C34.419,0.881,33.03,0,31.504,0c-1.527,0-2.915,0.881-3.565,2.265l-7.623,16.238L3.347,21.096c-1.458,0.223-2.669,1.242-3.138,2.642
-                                            c-0.469,1.4-0.115,2.942,0.916,4l12.392,12.707l-2.935,17.977c-0.242,1.488,0.389,2.984,1.62,3.854
-                                            c1.23,0.87,2.854,0.958,4.177,0.228l15.126-8.365l15.126,8.365c0.597,0.33,1.254,0.492,1.908,0.492c0.796,0,1.592-0.242,2.269-0.72
-                                            c1.231-0.869,1.861-2.365,1.619-3.854l-2.935-17.977l12.393-12.707C62.914,26.68,63.268,25.138,62.799,23.737z"/>
-                                        </svg>
-                                        <svg version="1.0" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                                            <path fill="#ffd000" d="M62.799,23.737c-0.47-1.399-1.681-2.419-3.139-2.642l-16.969-2.593L35.069,2.265
-                                            C34.419,0.881,33.03,0,31.504,0c-1.527,0-2.915,0.881-3.565,2.265l-7.623,16.238L3.347,21.096c-1.458,0.223-2.669,1.242-3.138,2.642
-                                            c-0.469,1.4-0.115,2.942,0.916,4l12.392,12.707l-2.935,17.977c-0.242,1.488,0.389,2.984,1.62,3.854
-                                            c1.23,0.87,2.854,0.958,4.177,0.228l15.126-8.365l15.126,8.365c0.597,0.33,1.254,0.492,1.908,0.492c0.796,0,1.592-0.242,2.269-0.72
-                                            c1.231-0.869,1.861-2.365,1.619-3.854l-2.935-17.977l12.393-12.707C62.914,26.68,63.268,25.138,62.799,23.737z"/>
-                                        </svg>
-                                        <svg version="1.0" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                                            <path fill="#ffd000" d="M62.799,23.737c-0.47-1.399-1.681-2.419-3.139-2.642l-16.969-2.593L35.069,2.265
-                                            C34.419,0.881,33.03,0,31.504,0c-1.527,0-2.915,0.881-3.565,2.265l-7.623,16.238L3.347,21.096c-1.458,0.223-2.669,1.242-3.138,2.642
-                                            c-0.469,1.4-0.115,2.942,0.916,4l12.392,12.707l-2.935,17.977c-0.242,1.488,0.389,2.984,1.62,3.854
-                                            c1.23,0.87,2.854,0.958,4.177,0.228l15.126-8.365l15.126,8.365c0.597,0.33,1.254,0.492,1.908,0.492c0.796,0,1.592-0.242,2.269-0.72
-                                            c1.231-0.869,1.861-2.365,1.619-3.854l-2.935-17.977l12.393-12.707C62.914,26.68,63.268,25.138,62.799,23.737z"/>
-                                        </svg>
+                <?php foreach ($list_of_testimonials as $i => $testimonial_details) { ?>
+                    <div class="m-3">
+                        <div class="testithmb p-3 shadow rounded">
+                            <div class="testimonial-message linheight2">
+                                <p><?=$testimonial_details->testimonial?></p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="d-flex gap-3 align-items-center">
+                                    <div class="testiimg rounded-pill">
+                                        <img src="<?=base_url($testimonial_details->customer_image)?>" alt="">
+                                    </div>
+                                    <div class="testicon">
+                                        <h3><?=$testimonial_details->customer_name?></h3>
+                                        <div class="d-flex gap-1">
+                                            <?php $rating_HTML = render_rating_HTML($testimonial_details->rating);
+                                            echo $rating_HTML; ?>
+                                        </div>
                                     </div>
                                 </div>
+                                <svg height="35px" width="35px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"  xml:space="preserve">
+                                    <path fill="#cccccc" d="M119.472,66.59C53.489,66.59,0,120.094,0,186.1c0,65.983,53.489,119.487,119.472,119.487
+                                c0,0-0.578,44.392-36.642,108.284c-4.006,12.802,3.135,26.435,15.945,30.418c9.089,2.859,18.653,0.08,24.829-6.389
+                                c82.925-90.7,115.385-197.448,115.385-251.8C238.989,120.094,185.501,66.59,119.472,66.59z"/>
+                                    <path fill="#cccccc" d="M392.482,66.59c-65.983,0-119.472,53.505-119.472,119.51c0,65.983,53.489,119.487,119.472,119.487
+                                c0,0-0.578,44.392-36.642,108.284c-4.006,12.802,3.136,26.435,15.945,30.418c9.089,2.859,18.653,0.08,24.828-6.389
+                                C479.539,347.2,512,240.452,512,186.1C512,120.094,458.511,66.59,392.482,66.59z"/>
+                                </svg>
                             </div>
-                            <svg height="35px" width="35px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"  xml:space="preserve">
-                                <path fill="#cccccc" d="M119.472,66.59C53.489,66.59,0,120.094,0,186.1c0,65.983,53.489,119.487,119.472,119.487
-                            c0,0-0.578,44.392-36.642,108.284c-4.006,12.802,3.135,26.435,15.945,30.418c9.089,2.859,18.653,0.08,24.829-6.389
-                            c82.925-90.7,115.385-197.448,115.385-251.8C238.989,120.094,185.501,66.59,119.472,66.59z"/>
-                                <path fill="#cccccc" d="M392.482,66.59c-65.983,0-119.472,53.505-119.472,119.51c0,65.983,53.489,119.487,119.472,119.487
-                            c0,0-0.578,44.392-36.642,108.284c-4.006,12.802,3.136,26.435,15.945,30.418c9.089,2.859,18.653,0.08,24.828-6.389
-                            C479.539,347.2,512,240.452,512,186.1C512,120.094,458.511,66.59,392.482,66.59z"/>
-                            </svg>
                         </div>
                     </div>
-                </div>
-                <div class="m-3">
-                    <div class="testithmb p-3 shadow rounded">
-                        <div class="linheight2">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy textLorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy textLorem Ipsum.</p>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="d-flex gap-3 align-items-center">
-                                <div class="testiimg rounded-pill">
-                                    <img src="<?=base_url('assets/client/images/testiimg-1-min.png')?>" alt="">
-                                </div>
-                                <div class="testicon">
-                                    <h3>NATALIE KAMERON</h3>
-                                    <div class="d-flex gap-1">
-                                        <svg version="1.0" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                                            <path fill="#ffd000" d="M62.799,23.737c-0.47-1.399-1.681-2.419-3.139-2.642l-16.969-2.593L35.069,2.265
-                                            C34.419,0.881,33.03,0,31.504,0c-1.527,0-2.915,0.881-3.565,2.265l-7.623,16.238L3.347,21.096c-1.458,0.223-2.669,1.242-3.138,2.642
-                                            c-0.469,1.4-0.115,2.942,0.916,4l12.392,12.707l-2.935,17.977c-0.242,1.488,0.389,2.984,1.62,3.854
-                                            c1.23,0.87,2.854,0.958,4.177,0.228l15.126-8.365l15.126,8.365c0.597,0.33,1.254,0.492,1.908,0.492c0.796,0,1.592-0.242,2.269-0.72
-                                            c1.231-0.869,1.861-2.365,1.619-3.854l-2.935-17.977l12.393-12.707C62.914,26.68,63.268,25.138,62.799,23.737z"/>
-                                        </svg>
-                                        <svg version="1.0" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                                            <path fill="#ffd000" d="M62.799,23.737c-0.47-1.399-1.681-2.419-3.139-2.642l-16.969-2.593L35.069,2.265
-                                            C34.419,0.881,33.03,0,31.504,0c-1.527,0-2.915,0.881-3.565,2.265l-7.623,16.238L3.347,21.096c-1.458,0.223-2.669,1.242-3.138,2.642
-                                            c-0.469,1.4-0.115,2.942,0.916,4l12.392,12.707l-2.935,17.977c-0.242,1.488,0.389,2.984,1.62,3.854
-                                            c1.23,0.87,2.854,0.958,4.177,0.228l15.126-8.365l15.126,8.365c0.597,0.33,1.254,0.492,1.908,0.492c0.796,0,1.592-0.242,2.269-0.72
-                                            c1.231-0.869,1.861-2.365,1.619-3.854l-2.935-17.977l12.393-12.707C62.914,26.68,63.268,25.138,62.799,23.737z"/>
-                                        </svg>
-                                        <svg version="1.0" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                                            <path fill="#ffd000" d="M62.799,23.737c-0.47-1.399-1.681-2.419-3.139-2.642l-16.969-2.593L35.069,2.265
-                                            C34.419,0.881,33.03,0,31.504,0c-1.527,0-2.915,0.881-3.565,2.265l-7.623,16.238L3.347,21.096c-1.458,0.223-2.669,1.242-3.138,2.642
-                                            c-0.469,1.4-0.115,2.942,0.916,4l12.392,12.707l-2.935,17.977c-0.242,1.488,0.389,2.984,1.62,3.854
-                                            c1.23,0.87,2.854,0.958,4.177,0.228l15.126-8.365l15.126,8.365c0.597,0.33,1.254,0.492,1.908,0.492c0.796,0,1.592-0.242,2.269-0.72
-                                            c1.231-0.869,1.861-2.365,1.619-3.854l-2.935-17.977l12.393-12.707C62.914,26.68,63.268,25.138,62.799,23.737z"/>
-                                        </svg>
-                                        <svg version="1.0" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                                            <path fill="#ffd000" d="M62.799,23.737c-0.47-1.399-1.681-2.419-3.139-2.642l-16.969-2.593L35.069,2.265
-                                            C34.419,0.881,33.03,0,31.504,0c-1.527,0-2.915,0.881-3.565,2.265l-7.623,16.238L3.347,21.096c-1.458,0.223-2.669,1.242-3.138,2.642
-                                            c-0.469,1.4-0.115,2.942,0.916,4l12.392,12.707l-2.935,17.977c-0.242,1.488,0.389,2.984,1.62,3.854
-                                            c1.23,0.87,2.854,0.958,4.177,0.228l15.126-8.365l15.126,8.365c0.597,0.33,1.254,0.492,1.908,0.492c0.796,0,1.592-0.242,2.269-0.72
-                                            c1.231-0.869,1.861-2.365,1.619-3.854l-2.935-17.977l12.393-12.707C62.914,26.68,63.268,25.138,62.799,23.737z"/>
-                                        </svg>
-                                        <svg version="1.0" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                                            <path fill="#ffd000" d="M62.799,23.737c-0.47-1.399-1.681-2.419-3.139-2.642l-16.969-2.593L35.069,2.265
-                                            C34.419,0.881,33.03,0,31.504,0c-1.527,0-2.915,0.881-3.565,2.265l-7.623,16.238L3.347,21.096c-1.458,0.223-2.669,1.242-3.138,2.642
-                                            c-0.469,1.4-0.115,2.942,0.916,4l12.392,12.707l-2.935,17.977c-0.242,1.488,0.389,2.984,1.62,3.854
-                                            c1.23,0.87,2.854,0.958,4.177,0.228l15.126-8.365l15.126,8.365c0.597,0.33,1.254,0.492,1.908,0.492c0.796,0,1.592-0.242,2.269-0.72
-                                            c1.231-0.869,1.861-2.365,1.619-3.854l-2.935-17.977l12.393-12.707C62.914,26.68,63.268,25.138,62.799,23.737z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <svg height="35px" width="35px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"  xml:space="preserve">
-                                <path fill="#cccccc" d="M119.472,66.59C53.489,66.59,0,120.094,0,186.1c0,65.983,53.489,119.487,119.472,119.487
-                            c0,0-0.578,44.392-36.642,108.284c-4.006,12.802,3.135,26.435,15.945,30.418c9.089,2.859,18.653,0.08,24.829-6.389
-                            c82.925-90.7,115.385-197.448,115.385-251.8C238.989,120.094,185.501,66.59,119.472,66.59z"/>
-                                <path fill="#cccccc" d="M392.482,66.59c-65.983,0-119.472,53.505-119.472,119.51c0,65.983,53.489,119.487,119.472,119.487
-                            c0,0-0.578,44.392-36.642,108.284c-4.006,12.802,3.136,26.435,15.945,30.418c9.089,2.859,18.653,0.08,24.828-6.389
-                            C479.539,347.2,512,240.452,512,186.1C512,120.094,458.511,66.59,392.482,66.59z"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                <div class="m-3">
-                    <div class="testithmb p-3 shadow rounded">
-                        <div class="linheight2">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy textLorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy textLorem Ipsum.</p>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="d-flex gap-3 align-items-center">
-                                <div class="testiimg rounded-pill">
-                                    <img src="<?=base_url('assets/client/images/testiimg-1-min.png')?>" alt="">
-                                </div>
-                                <div class="testicon">
-                                    <h3>NATALIE KAMERON</h3>
-                                    <div class="d-flex gap-1">
-                                        <svg version="1.0" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                                            <path fill="#ffd000" d="M62.799,23.737c-0.47-1.399-1.681-2.419-3.139-2.642l-16.969-2.593L35.069,2.265
-                                            C34.419,0.881,33.03,0,31.504,0c-1.527,0-2.915,0.881-3.565,2.265l-7.623,16.238L3.347,21.096c-1.458,0.223-2.669,1.242-3.138,2.642
-                                            c-0.469,1.4-0.115,2.942,0.916,4l12.392,12.707l-2.935,17.977c-0.242,1.488,0.389,2.984,1.62,3.854
-                                            c1.23,0.87,2.854,0.958,4.177,0.228l15.126-8.365l15.126,8.365c0.597,0.33,1.254,0.492,1.908,0.492c0.796,0,1.592-0.242,2.269-0.72
-                                            c1.231-0.869,1.861-2.365,1.619-3.854l-2.935-17.977l12.393-12.707C62.914,26.68,63.268,25.138,62.799,23.737z"/>
-                                        </svg>
-                                        <svg version="1.0" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                                            <path fill="#ffd000" d="M62.799,23.737c-0.47-1.399-1.681-2.419-3.139-2.642l-16.969-2.593L35.069,2.265
-                                            C34.419,0.881,33.03,0,31.504,0c-1.527,0-2.915,0.881-3.565,2.265l-7.623,16.238L3.347,21.096c-1.458,0.223-2.669,1.242-3.138,2.642
-                                            c-0.469,1.4-0.115,2.942,0.916,4l12.392,12.707l-2.935,17.977c-0.242,1.488,0.389,2.984,1.62,3.854
-                                            c1.23,0.87,2.854,0.958,4.177,0.228l15.126-8.365l15.126,8.365c0.597,0.33,1.254,0.492,1.908,0.492c0.796,0,1.592-0.242,2.269-0.72
-                                            c1.231-0.869,1.861-2.365,1.619-3.854l-2.935-17.977l12.393-12.707C62.914,26.68,63.268,25.138,62.799,23.737z"/>
-                                        </svg>
-                                        <svg version="1.0" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                                            <path fill="#ffd000" d="M62.799,23.737c-0.47-1.399-1.681-2.419-3.139-2.642l-16.969-2.593L35.069,2.265
-                                            C34.419,0.881,33.03,0,31.504,0c-1.527,0-2.915,0.881-3.565,2.265l-7.623,16.238L3.347,21.096c-1.458,0.223-2.669,1.242-3.138,2.642
-                                            c-0.469,1.4-0.115,2.942,0.916,4l12.392,12.707l-2.935,17.977c-0.242,1.488,0.389,2.984,1.62,3.854
-                                            c1.23,0.87,2.854,0.958,4.177,0.228l15.126-8.365l15.126,8.365c0.597,0.33,1.254,0.492,1.908,0.492c0.796,0,1.592-0.242,2.269-0.72
-                                            c1.231-0.869,1.861-2.365,1.619-3.854l-2.935-17.977l12.393-12.707C62.914,26.68,63.268,25.138,62.799,23.737z"/>
-                                        </svg>
-                                        <svg version="1.0" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                                            <path fill="#ffd000" d="M62.799,23.737c-0.47-1.399-1.681-2.419-3.139-2.642l-16.969-2.593L35.069,2.265
-                                            C34.419,0.881,33.03,0,31.504,0c-1.527,0-2.915,0.881-3.565,2.265l-7.623,16.238L3.347,21.096c-1.458,0.223-2.669,1.242-3.138,2.642
-                                            c-0.469,1.4-0.115,2.942,0.916,4l12.392,12.707l-2.935,17.977c-0.242,1.488,0.389,2.984,1.62,3.854
-                                            c1.23,0.87,2.854,0.958,4.177,0.228l15.126-8.365l15.126,8.365c0.597,0.33,1.254,0.492,1.908,0.492c0.796,0,1.592-0.242,2.269-0.72
-                                            c1.231-0.869,1.861-2.365,1.619-3.854l-2.935-17.977l12.393-12.707C62.914,26.68,63.268,25.138,62.799,23.737z"/>
-                                        </svg>
-                                        <svg version="1.0" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                                            <path fill="#ffd000" d="M62.799,23.737c-0.47-1.399-1.681-2.419-3.139-2.642l-16.969-2.593L35.069,2.265
-                                            C34.419,0.881,33.03,0,31.504,0c-1.527,0-2.915,0.881-3.565,2.265l-7.623,16.238L3.347,21.096c-1.458,0.223-2.669,1.242-3.138,2.642
-                                            c-0.469,1.4-0.115,2.942,0.916,4l12.392,12.707l-2.935,17.977c-0.242,1.488,0.389,2.984,1.62,3.854
-                                            c1.23,0.87,2.854,0.958,4.177,0.228l15.126-8.365l15.126,8.365c0.597,0.33,1.254,0.492,1.908,0.492c0.796,0,1.592-0.242,2.269-0.72
-                                            c1.231-0.869,1.861-2.365,1.619-3.854l-2.935-17.977l12.393-12.707C62.914,26.68,63.268,25.138,62.799,23.737z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <svg height="35px" width="35px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"  xml:space="preserve">
-                                <path fill="#cccccc" d="M119.472,66.59C53.489,66.59,0,120.094,0,186.1c0,65.983,53.489,119.487,119.472,119.487
-                            c0,0-0.578,44.392-36.642,108.284c-4.006,12.802,3.135,26.435,15.945,30.418c9.089,2.859,18.653,0.08,24.829-6.389
-                            c82.925-90.7,115.385-197.448,115.385-251.8C238.989,120.094,185.501,66.59,119.472,66.59z"/>
-                                <path fill="#cccccc" d="M392.482,66.59c-65.983,0-119.472,53.505-119.472,119.51c0,65.983,53.489,119.487,119.472,119.487
-                            c0,0-0.578,44.392-36.642,108.284c-4.006,12.802,3.136,26.435,15.945,30.418c9.089,2.859,18.653,0.08,24.828-6.389
-                            C479.539,347.2,512,240.452,512,186.1C512,120.094,458.511,66.59,392.482,66.59z"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                <div class="m-3">
-                    <div class="testithmb p-3 shadow rounded">
-                        <div class="linheight2">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy textLorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy textLorem Ipsum.</p>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="d-flex gap-3 align-items-center">
-                                <div class="testiimg rounded-pill">
-                                    <img src="<?=base_url('assets/client/images/testiimg-1-min.png')?>" alt="">
-                                </div>
-                                <div class="testicon">
-                                    <h3>NATALIE KAMERON</h3>
-                                    <div class="d-flex gap-1">
-                                        <svg version="1.0" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                                            <path fill="#ffd000" d="M62.799,23.737c-0.47-1.399-1.681-2.419-3.139-2.642l-16.969-2.593L35.069,2.265
-                                            C34.419,0.881,33.03,0,31.504,0c-1.527,0-2.915,0.881-3.565,2.265l-7.623,16.238L3.347,21.096c-1.458,0.223-2.669,1.242-3.138,2.642
-                                            c-0.469,1.4-0.115,2.942,0.916,4l12.392,12.707l-2.935,17.977c-0.242,1.488,0.389,2.984,1.62,3.854
-                                            c1.23,0.87,2.854,0.958,4.177,0.228l15.126-8.365l15.126,8.365c0.597,0.33,1.254,0.492,1.908,0.492c0.796,0,1.592-0.242,2.269-0.72
-                                            c1.231-0.869,1.861-2.365,1.619-3.854l-2.935-17.977l12.393-12.707C62.914,26.68,63.268,25.138,62.799,23.737z"/>
-                                        </svg>
-                                        <svg version="1.0" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                                            <path fill="#ffd000" d="M62.799,23.737c-0.47-1.399-1.681-2.419-3.139-2.642l-16.969-2.593L35.069,2.265
-                                            C34.419,0.881,33.03,0,31.504,0c-1.527,0-2.915,0.881-3.565,2.265l-7.623,16.238L3.347,21.096c-1.458,0.223-2.669,1.242-3.138,2.642
-                                            c-0.469,1.4-0.115,2.942,0.916,4l12.392,12.707l-2.935,17.977c-0.242,1.488,0.389,2.984,1.62,3.854
-                                            c1.23,0.87,2.854,0.958,4.177,0.228l15.126-8.365l15.126,8.365c0.597,0.33,1.254,0.492,1.908,0.492c0.796,0,1.592-0.242,2.269-0.72
-                                            c1.231-0.869,1.861-2.365,1.619-3.854l-2.935-17.977l12.393-12.707C62.914,26.68,63.268,25.138,62.799,23.737z"/>
-                                        </svg>
-                                        <svg version="1.0" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                                            <path fill="#ffd000" d="M62.799,23.737c-0.47-1.399-1.681-2.419-3.139-2.642l-16.969-2.593L35.069,2.265
-                                            C34.419,0.881,33.03,0,31.504,0c-1.527,0-2.915,0.881-3.565,2.265l-7.623,16.238L3.347,21.096c-1.458,0.223-2.669,1.242-3.138,2.642
-                                            c-0.469,1.4-0.115,2.942,0.916,4l12.392,12.707l-2.935,17.977c-0.242,1.488,0.389,2.984,1.62,3.854
-                                            c1.23,0.87,2.854,0.958,4.177,0.228l15.126-8.365l15.126,8.365c0.597,0.33,1.254,0.492,1.908,0.492c0.796,0,1.592-0.242,2.269-0.72
-                                            c1.231-0.869,1.861-2.365,1.619-3.854l-2.935-17.977l12.393-12.707C62.914,26.68,63.268,25.138,62.799,23.737z"/>
-                                        </svg>
-                                        <svg version="1.0" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                                            <path fill="#ffd000" d="M62.799,23.737c-0.47-1.399-1.681-2.419-3.139-2.642l-16.969-2.593L35.069,2.265
-                                            C34.419,0.881,33.03,0,31.504,0c-1.527,0-2.915,0.881-3.565,2.265l-7.623,16.238L3.347,21.096c-1.458,0.223-2.669,1.242-3.138,2.642
-                                            c-0.469,1.4-0.115,2.942,0.916,4l12.392,12.707l-2.935,17.977c-0.242,1.488,0.389,2.984,1.62,3.854
-                                            c1.23,0.87,2.854,0.958,4.177,0.228l15.126-8.365l15.126,8.365c0.597,0.33,1.254,0.492,1.908,0.492c0.796,0,1.592-0.242,2.269-0.72
-                                            c1.231-0.869,1.861-2.365,1.619-3.854l-2.935-17.977l12.393-12.707C62.914,26.68,63.268,25.138,62.799,23.737z"/>
-                                        </svg>
-                                        <svg version="1.0" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
-                                            <path fill="#ffd000" d="M62.799,23.737c-0.47-1.399-1.681-2.419-3.139-2.642l-16.969-2.593L35.069,2.265
-                                            C34.419,0.881,33.03,0,31.504,0c-1.527,0-2.915,0.881-3.565,2.265l-7.623,16.238L3.347,21.096c-1.458,0.223-2.669,1.242-3.138,2.642
-                                            c-0.469,1.4-0.115,2.942,0.916,4l12.392,12.707l-2.935,17.977c-0.242,1.488,0.389,2.984,1.62,3.854
-                                            c1.23,0.87,2.854,0.958,4.177,0.228l15.126-8.365l15.126,8.365c0.597,0.33,1.254,0.492,1.908,0.492c0.796,0,1.592-0.242,2.269-0.72
-                                            c1.231-0.869,1.861-2.365,1.619-3.854l-2.935-17.977l12.393-12.707C62.914,26.68,63.268,25.138,62.799,23.737z"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <svg height="35px" width="35px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"  xml:space="preserve">
-                                <path fill="#cccccc" d="M119.472,66.59C53.489,66.59,0,120.094,0,186.1c0,65.983,53.489,119.487,119.472,119.487
-                            c0,0-0.578,44.392-36.642,108.284c-4.006,12.802,3.135,26.435,15.945,30.418c9.089,2.859,18.653,0.08,24.829-6.389
-                            c82.925-90.7,115.385-197.448,115.385-251.8C238.989,120.094,185.501,66.59,119.472,66.59z"/>
-                                <path fill="#cccccc" d="M392.482,66.59c-65.983,0-119.472,53.505-119.472,119.51c0,65.983,53.489,119.487,119.472,119.487
-                            c0,0-0.578,44.392-36.642,108.284c-4.006,12.802,3.136,26.435,15.945,30.418c9.089,2.859,18.653,0.08,24.828-6.389
-                            C479.539,347.2,512,240.452,512,186.1C512,120.094,458.511,66.59,392.482,66.59z"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
+                <?php } ?>
             </div>
         </div>
     </div>
 </section>
+<?php } ?>
 
 <section class="contactsec py-5 overflow-hidden leftSlide" style="
 background-image: url(<?=base_url('assets/client/images/contact-bg-min.jpg')?>); 
@@ -727,9 +681,9 @@ background-repeat: no-repeat;">
         <div class="row">
             <div class="col-md-6 text-white fadeLeft">
                 <h2 class="title1 text-white">Contact Us</h2>
-                <big class="d-block mb-4 text-white">A.B. POLYPACKS PVT. LTD</big>
+                <big class="d-block mb-4 text-white"><?=$company_name?></big>
                 <div class="contactfiledwrp mb-4">
-                    <a href="tel:+91 33 2262 4678" class="d-flex align-items-center gap-3 mb-3 text-white">
+                    <a href="tel:<?=$office_phone_number?>" class="d-flex align-items-center gap-3 mb-3 text-white">
                         <div class="contactico">
                             <svg width="14" height="20" viewBox="0 0 14 20">
                                 <g id="mobile-svgrepo-com" transform="translate(-5 -2)">
@@ -738,9 +692,9 @@ background-repeat: no-repeat;">
                                 </g>
                             </svg>
                         </div>
-                        <span>+91 33 2262 4678</span>
+                        <span><?=$office_phone_number?></span>
                     </a>
-                    <a href="mailto:info@abpolypacks.com" class="d-flex align-items-center gap-3 mb-3 text-white">
+                    <a href="mailto:<?=$office_email_address?>" class="d-flex align-items-center gap-3 mb-3 text-white">
                         <div class="contactico">
                             <svg width="18" height="16" viewBox="0 0 21.5 18.5">
                                 <g id="style_fill" data-name="style=fill" transform="translate(-1.25 -2.75)">
@@ -750,7 +704,7 @@ background-repeat: no-repeat;">
                                 </g>
                             </svg>
                         </div>
-                        <span>info@abpolypacks.com</span>
+                        <span><?=$office_email_address?></span>
                     </a>
                     <a href="https://goo.gl/maps/L7P3zgMmCfH8dumm6" target="_blank" class="d-flex align-items-center gap-3 mb-3 text-white">
                         <div class="contactico">
@@ -758,7 +712,7 @@ background-repeat: no-repeat;">
                                 <path id="location-svgrepo-com" d="M20.621,8.45A8.626,8.626,0,0,0,12,1.75h-.01a8.624,8.624,0,0,0-8.62,6.69c-1.17,5.16,1.99,9.53,4.85,12.28a5.422,5.422,0,0,0,7.55,0C18.631,17.97,21.791,13.61,20.621,8.45ZM12,13.46a3.15,3.15,0,1,1,3.15-3.15A3.15,3.15,0,0,1,12,13.46Z" transform="translate(-3.121 -1.75)" fill="#07a3e0"/>
                             </svg>
                         </div>
-                        <span>No. 4, N. S. Road, <br>1st Floor Kolkata – 700001</span>
+                        <span><?=$office_address?></span>
                     </a>
                 </div>
                 <div class="socblack d-flex gap-3 align-items-center">
@@ -802,6 +756,8 @@ background-repeat: no-repeat;">
             "certificates_section_heading",
             "about_us_section_heading",
             "about_us_section_description",
+            "our_sustainability_section_heading",
+            "our_sustainability_section_description",
             "products_section_heading",
             "products_sub_section1_heading",
             "products_sub_section1_description",
@@ -824,6 +780,7 @@ background-repeat: no-repeat;">
         let file_content_ids = [
             "certificates_section_image",
             "about_us_section_image",
+            "our_sustainability_section_image",
             "products_sub_section1_image",
             "products_sub_section2_image",
             "products_sub_section3_image",
@@ -838,36 +795,6 @@ background-repeat: no-repeat;">
         });
 
         return CMS_page_content;
-    }
-
-    function save_CMS_page_content() {
-        let CMS_page_id = $("#CMS_page_id").val();
-        let CMS_page_content = get_rendered_CMS_page_content();
-        console.log(CMS_page_content);
-        
-        // let formDataObject = {};
-        // CMS_page_content.forEach((value, key) => {
-        //     formDataObject[key] = value;
-        // });
-
-        // console.log(formDataObject);
-
-        $.ajax({
-            url: "<?=base_url('/admin/pages/save-CMS-content/')?>"+CMS_page_id,
-            type: "POST",
-            data: CMS_page_content,
-            contentType: false,
-            processData: false,
-            error: function(a, b, c) {
-                toast("Something went wrong! Failed to save CMS page contents.", 3000);
-                console.log(a);
-                console.log(b);
-                console.log(c);
-            },
-            success: function(response) {
-                console.log(response);
-            }
-        });
     }
 
 </script>

@@ -52,7 +52,7 @@ jQuery(document).ready(function($){
 });
 
     $('.homeslider').slick({
-        dots: false,
+        dots: true,
         arrows: true,
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -178,5 +178,9 @@ jQuery(document).ready(function($){
         }
     });
 
+
+    $('[data-fancybox="gallery"]').fancybox({
+        // Options will go here
+        });
 
 });

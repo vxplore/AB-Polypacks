@@ -1,8 +1,8 @@
 <header class="header">
     <div class="container">
         <div class="d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo">
-                <img src="<?=base_url('assets/client/images/logo.png')?>" alt="Locaguide logo" width="80">
+            <a href="<?=base_url()?>" class="logo">
+                <img src="<?=base_url('assets/client/images/logo.png')?>" alt="AB Polypacks Logo" width="80">
             </a>
             <div class="d-flex align-items-center mnuwrp gap-4">
                 <nav class="nav">
@@ -12,113 +12,68 @@
                                 <a class="active" href="<?=base_url()?>">Home</a>
                             </li>
                             <li>
-                                <a href="<?=base_url('about')?>">About Us</a>
+                                <a href="<?=base_url('products')?>">Our Products</a>
                                 <ul>
                                     <li>
-                                        <a href="#">Values + </a>
-                                        <ul>
-                                            <li>
-                                                <a href="<?=base_url('about')?>#Mission&Vission">Mission & Vission</a>
-                                            </li>
-                                            <li>
-                                                <a href="<?=base_url('about')?>#Integrity">Integrity</a>
-                                            </li>
-                                            <li>
-                                                <a href="<?=base_url('about')?>#TeamWork">Team Work</a>
-                                            </li>
-                                            <li>
-                                                <a href="<?=base_url('about')?>#SafetyMeasures">Safety Measures</a>
-                                            </li>
-                                                <li>
-                                                <a href="<?=base_url('about')?>#CustomerSatisfaction">Customer Satisfaction</a>
-                                            </li>
-                                        </ul>
+                                        <a href="#">Food Packaging</a>
                                     </li>
                                     <li>
-                                        <a href="<?=base_url('about')?>#QualityPolicy">Quality Policy</a>
+                                        <a href="#">Beverages</a>
                                     </li>
                                     <li>
-                                        <a href="<?=base_url('about')?>#Sustainability">Sustainability</a>
+                                        <a href="#">Liquid Packaging</a>
                                     </li>
                                     <li>
-                                        <a href="<?=base_url('about')?>#Certification">Certification</a>
+                                        <a href="#">Health Care & Agriculture</a>
                                     </li>
                                     <li>
-                                        <a href="<?=base_url('about')?>#Clientele">Clientele</a>
-                                    </li>
-                                </ul>
-                                <img src="<?=base_url('assets/images/down.svg')?>" alt="" width="17">
-                            </li>
-                            <li>
-                                <a href="<?=base_url('products')?>">Products</a>
-                                <ul>
-                                    <li>
-                                        <a href="food-packaging.html">Food Packaging</a>
+                                        <a href="#">Personal Care & Household</a>
                                     </li>
                                     <li>
-                                        <a href="beverages.html">Beverages</a>
+                                        <a href="#">Spices</a>
                                     </li>
                                     <li>
-                                        <a href="liquid-packaging.html">Liquid Packaging</a>
-                                    </li>
-                                    <li>
-                                        <a href="health-care-and-agriculture.html">Health Care & Agriculture</a>
-                                    </li>
-                                    <li>
-                                        <a href="personal-care-and-household.html">Personal Care & Household</a>
-                                    </li>
-                                    <li>
-                                        <a href="spices.html">Spices</a>
-                                    </li>
-                                    <li>
-                                        <a href="collation-shrink-films.html">Collation Shrink Films</a>
+                                        <a href="#">Collation Shrink Films</a>
                                     </li>
                                 </ul>
                                 <img src="<?=base_url('assets/client/images/down.svg')?>" alt="" width="17">
                             </li>
                             <li>
-                                <a href="<?=base_url('infrastructure')?>">Infrastructure</a>
+                                <a href="<?=base_url('infrastructure-and-quality')?>">Infrastructure and quality </a>
                                 <ul>
                                     <li>
-                                        <a href="<?=base_url('infrastructure')?>#QualityControlLab">Quality Control Lab</a>
+                                        <a href="<?=base_url('infrastructure-and-quality')?>#QualityControlLab">Quality Control Lab</a>
                                     </li>
                                     <li>
-                                        <a href="<?=base_url('infrastructure')?>#BlownPolyFilmUnit">Blown Poly Film Unit</a>
+                                        <a href="<?=base_url('infrastructure-and-quality')?>#BlownPolyFilmUnit">Blown Poly Film Unit</a>
                                     </li>
                                     <li>
-                                        <a href="<?=base_url('infrastructure')?>#PrintingUnit">Printing Unit</a>
+                                        <a href="<?=base_url('infrastructure-and-quality')?>#PrintingUnit">Printing Unit</a>
                                     </li>
                                     <li>
-                                        <a href="<?=base_url('infrastructure')?>#LaminationUnit">Lamination Unit</a>
+                                        <a href="<?=base_url('infrastructure-and-quality')?>#LaminationUnit">Lamination Unit</a>
                                     </li>
                                     <li>
-                                        <a href="<?=base_url('infrastructure')?>#SlittingUnit">Slitting Unit</a>
+                                        <a href="<?=base_url('infrastructure-and-quality')?>#SlittingUnit">Slitting Unit</a>
                                     </li>
                                     <li>
-                                        <a href="<?=base_url('infrastructure')?>#ShrinkSleeveUnit">Shrink Sleeve Unit</a>
+                                        <a href="<?=base_url('infrastructure-and-quality')?>#ShrinkSleeveUnit">Shrink Sleeve Unit</a>
                                     </li>
                                     <li>
-                                        <a href="<?=base_url('infrastructure')?>#PouchingUnit">Pouching Unit</a>
+                                        <a href="<?=base_url('infrastructure-and-quality')?>#PouchingUnit">Pouching Unit</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?=base_url('infrastructure-and-quality')?>#Quality">Quality</a>
                                     </li>
                                     
                                 </ul>
                                 <img src="<?=base_url('assets/client/images/down.svg')?>" alt="" width="17">
                             </li>
-                            <li>
-                                <a href="<?=base_url('quality')?>">Quality</a>
-                            </li>
+                            
                             <li>
                                 <a href="<?=base_url('carrer')?>">Career</a>
                             </li>
-                            <li>
-                                <a href="<?=base_url('client')?>">Client</a>
-                            </li>
-                            <li>
-                                <a href="<?=base_url('blog')?>">Blog</a>
-                            </li>
-                            <li>
-                                <a href="<?=base_url('contact-us')?>">Contact US</a>
-                            </li>
+                            
                         </ul>
                     </div>
                     <div class="mnucls"></div>

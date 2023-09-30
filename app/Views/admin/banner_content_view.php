@@ -56,7 +56,7 @@ else {
                             <div class="form-floating mb-3">
                                 <input type="text" name="title" id="title" class="form-control" 
                                 placeholder="Enter Banner Title Here..." 
-                                value="<?=(!empty($banner_details->title)) ? $banner_details->title : ''?>" required>
+                                value="<?=(!empty($banner_details->title)) ? $banner_details->title : ''?>">
                                 <label for="title">Title</label>
                             </div>
                         </div>

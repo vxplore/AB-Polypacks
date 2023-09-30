@@ -41,6 +41,11 @@
                         <?=(!empty($banner_details->appearing_order)) ? $banner_details->appearing_order : $i+1;?>
                       </td>
                       <td scope="row">
+                        <?php if (!empty($banner_details->title)) {
+                          echo $banner_details->title; 
+                        } else {
+                          echo "<span style='font-weight:600; color:#CCC;'>N/A</span>"; 
+                        }?>
                         <?=$banner_details->title?>
                       </td>
                       <td scope="row">

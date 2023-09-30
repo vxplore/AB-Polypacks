@@ -60,13 +60,8 @@ class Validation extends BaseConfig
         'meta_description' => 'required'
     ];
 
-    public array $new_banner_adding_rules = [
-        'title' => 'required'
-    ];
-
     public array $banner_editing_rules = [
-        'banner_id' => 'required',
-        'title' => 'required'
+        'banner_id' => 'required'
     ];
 
     public array $banner_status_changing_rules = [

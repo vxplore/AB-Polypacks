@@ -39,9 +39,19 @@ class Admins_model extends Model {
         return $pages_table->set($data)->where($condition)->update();
     }
 
+    public function add_new_page_content($data) {
+        $page_CMS_contents_table = $this->db->table("page_CMS_contents");
+        return $page_CMS_contents_table->insert($data);
+    }
+
     public function get_page_content_details_on_condition($condition) {
         $page_CMS_contents_table = $this->db->table("page_CMS_contents");
         return $page_CMS_contents_table->where($condition)->get()->getRow();
+    }
+
+    public function update_page_content_details($data, $condition) {
+        $page_CMS_contents_table = $this->db->table("page_CMS_contents");
+        return $page_CMS_contents_table->set($data)->where($condition)->update();
     }
 
     public function add_banner_details($data) {

@@ -1,12 +1,12 @@
-<section class="innerpagebanner py-5 position-relative" style="
-background-image: url(<?=base_url('assets/client/images/homehero-bg.jpg')?>); 
+<section class="innerpagebanner position-relative" style="
+background-image: url(<?=base_url('assets/client/images/Inner-Banners/products.jpg')?>); 
 background-size: cover; 
-background-repeat: no-repeat;">
+background-repeat: no-repeat; padding: 120px 0;">
     <div class="container py-4">
         <h1 class="mb-3 text-center fadeUp">Our Products</h1>
         <nav class="fadeUp" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center">
-                <li class="breadcrumb-item"><a href="<?=base_url()?>">Home</a></li>
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Our Products</li>
             </ol>
         </nav>
@@ -24,97 +24,30 @@ background-repeat: no-repeat;">
         </div>
     </a>
 </section>
+
+<?php if (!empty($list_of_product_categories)) { ?>
 <section class="py-5" id="scrollsec">
     <div class="container">
         <div class="row justify-content-center">
+            <?php foreach ($list_of_product_categories as $i => $product_category_details) { ?>
             <div class="col-md-6 col-lg-3 mt-4 fadeUp">
-                <a href="food-packaging.html">
-                <div class="produccatbox p-3 bg-white text-center">
+                <a href="#">
+                    <div class="produccatbox p-3 bg-white text-center">
                         <div class="card border-0 card__three">
                             <figure class="card__img overflow-hidden">
-                            <img src="<?=base_url('assets/client/images/product-category/FOOD-PACKAGING.jpg')?>" class="w-100" />
+                            <img src="<?=base_url($product_category_details->image)?>" class="w-100" />
                             </figure>
-                            <h3 class="h4">FOOD PACKAGING</h3>
+                            <h3 class="h4"><?=$product_category_details->name?></h3>
                         </div>
-                </div>
-            </a>
-                </div>
-                <div class="col-md-6 col-lg-3 mt-4 fadeUp">
-                <a href="beverages.html">
-                <div class="produccatbox p-3 bg-white text-center">
-                        <div class="card border-0 card__three">
-                            <figure class="card__img overflow-hidden">
-                            <img src="<?=base_url('assets/client/images/product-category/beverages.jpg')?>" class="w-100" />
-                            </figure>
-                            <h3 class="h4">BEVERAGES</h3>
-                        </div>
-                </div>
-            </a>
-                </div>
-            
-                <div class="col-md-6 col-lg-3 mt-4 fadeUp">
-                <a href="liquid-packaging.html">
-                <div class="produccatbox p-3 bg-white text-center">
-                        <div class="card border-0 card__three">
-                            <figure class="card__img overflow-hidden">
-                            <img src="<?=base_url('assets/client/images/product-category/liquid.jpg')?>" class="w-100" />
-                            </figure>
-                            <h3 class="h4">LIQUID PACKAGING                               </h3>
-                        </div>
-                </div>
-            </a>
-                </div>
-                <div class="col-md-6 col-lg-3 mt-4 fadeUp">
-                <a href="health-care-and-agriculture.html">
-                <div class="produccatbox p-3 bg-white text-center">
-                        <div class="card border-0 card__three">
-                            <figure class="card__img overflow-hidden">
-                            <img src="<?=base_url('assets/client/images/product-category/agriculture.jpg')?>" class="w-100" />
-                            </figure>
-                            <h3 class="h4">HEALTH CARE & AGRICULTURE                               </h3>
-                        </div>
-                </div>
-            </a>
-                </div>
-                <div class="col-md-6 col-lg-3 mt-4 fadeUp">
-                <a href="personal-care-and-household.html">
-                <div class="produccatbox p-3 bg-white text-center">
-                        <div class="card border-0 card__three">
-                            <figure class="card__img overflow-hidden">
-                            <img src="<?=base_url('assets/client/images/product-category/households.jpg')?>" class="w-100" />
-                            </figure>
-                            <h3 class="h4">PERSONAL CARE & HOUSEHOLD                               </h3>
-                        </div>
-                </div>
-            </a>
-                </div>
-                <div class="col-md-6 col-lg-3 mt-4 fadeUp">
-                <a href="spices.html">
-                <div class="produccatbox p-3 bg-white text-center">
-                        <div class="card border-0 card__three">
-                            <figure class="card__img overflow-hidden">
-                            <img src="<?=base_url('assets/client/images/product-category/spices.jpg')?>" class="w-100" />
-                            </figure>
-                            <h3 class="h4">SPICES</h3>
-                        </div>
-                </div>
-            </a>
-                </div>
-                <div class="col-md-6 col-lg-3 mt-4 fadeUp">
-                <a href="collation-shrink-films.html">
-                <div class="produccatbox p-3 bg-white text-center">
-                        <div class="card border-0 card__three">
-                            <figure class="card__img overflow-hidden">
-                            <img src="<?=base_url('assets/client/images/product-category/shrinks.jpg')?>" class="w-100" />
-                            </figure>
-                            <h3 class="h4">COLLATION SHRINK FILMS                               </h3>
-                        </div>
-                </div>
-            </a>
-                </div>
+                    </div>
+                </a>
+            </div>
+            <?php } ?>
         </div>
     </div>
 </section>
+<?php } ?>
+
 <!-- <section class="py-5">
     <div class="container py-5">
         <div class="homeproductwrp pb-5">

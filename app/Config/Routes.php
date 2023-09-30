@@ -6,25 +6,6 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
-// ===========================
-// Client Website Routes Start
-// ===========================
-$routes->get('/', 'Client\Home::index');
-$routes->get('/about', 'Client\About::index');
-$routes->get('/products', 'Client\Products::index');
-$routes->get('/infrastructure', 'Client\Infrastructure::index');
-$routes->get('/quality', 'Client\Quality::index');
-$routes->get('/carrer', 'Client\Carrer::index');
-$routes->get('/client', 'Client\Client::index');
-$routes->get('/blog', 'Client\Blog::index');
-$routes->get('/contact-us', 'Client\Contact_us::index');
-$routes->get('/privacy-policy', 'Client\Privacy_policy::index');
-$routes->get('/terms-and-conditions', 'Client\Terms_and_conditions::index');
-// =========================
-// Client Website Routes End
-// =========================
-
-
 // ========================
 // Admin Panel Routes Start
 // ========================
@@ -82,3 +63,19 @@ $routes->post('/admin/contact-details/edit', 'Admin\Contacts::save_contact_infor
 // ======================
 // Admin Panel Routes End
 // ======================
+
+// ===========================
+// Client Website Routes Start
+// ===========================
+$routes->get('/products', 'Client\Products::index');
+$routes->get('/products/(:any)', 'Client\Products::index/$1');
+$routes->get('/infrastructure', 'Client\Infrastructure::index');
+$routes->get('/carrer', 'Client\Carrer::index');
+$routes->get('/privacy-policy', 'Client\Privacy_policy::index');
+$routes->get('/terms-and-conditions', 'Client\Terms_and_conditions::index');
+
+$routes->get('/', 'Client\Home::index');
+$routes->get('/(:any)', 'Client\Home::index/$1');
+// =========================
+// Client Website Routes End
+// =========================
