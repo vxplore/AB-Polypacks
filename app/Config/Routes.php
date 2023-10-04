@@ -69,8 +69,8 @@ $routes->post('/admin/contact-details/edit', 'Admin\Contacts::save_contact_infor
 // ===========================
 $routes->get('/products', 'Client\Products::index');
 $routes->get('/products/(:any)', 'Client\Products::index/$1');
-$routes->get('/infrastructure', 'Client\Infrastructure::index');
 $routes->get('/carrer', 'Client\Carrer::index');
+$routes->get('/contact-us', 'Client\Contact_us::index');
 $routes->get('/privacy-policy', 'Client\Privacy_policy::index');
 $routes->get('/terms-and-conditions', 'Client\Terms_and_conditions::index');
 

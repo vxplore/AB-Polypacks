@@ -1,14 +1,40 @@
-<section class="innerpagebanner py-5 position-relative" style="
-background-image: url(images/homehero-bg.jpg); 
+<?php if (!empty($category_details)) {
+    if (!empty($category_details->page_background_image)) {
+        $page_background_image = base_url($category_details->page_background_image);
+    } else {
+        $page_background_image = "";
+    }
+
+    if (!empty($category_details->page_heading)) {
+        $page_heading = $category_details->page_heading;
+    } else {
+        $page_heading = "";
+    }
+
+    if (!empty($category_details->name)) {
+        $category_name = $category_details->name;
+    } else {
+        $category_name = "";
+    }
+
+    if (!empty($category_details->description)) {
+        $category_description = $category_details->description;
+    } else {
+        $category_description = "";
+    }
+} ?>
+
+<section class="innerpagebanner position-relative" style="
+background-image: url(<?=$page_background_image?>); 
 background-size: cover; 
-background-repeat: no-repeat;">
+background-repeat: no-repeat; padding: 120px 0;">
     <div class="container py-4">
-        <h1 class="mb-3 text-center fadeUp">Food Packaging</h1>
+        <h1 class="mb-3 text-center fadeUp"><?=$page_heading?></h1>
         <nav class="fadeUp" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                 <li class="breadcrumb-item"><a href="product-list.html">Products</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Food Packaging</li>
+                <li class="breadcrumb-item active" aria-current="page"><?=$category_name?></li>
             </ol>
         </nav>
     </div>
@@ -25,37 +51,38 @@ background-repeat: no-repeat;">
         </div>
     </a>
 </section>
+
 <section class="py-5" id="scrollsec">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6 p-3 fadePopup">
-                <img src="images/product-details-1.jpg" alt="" class="w-100">
-            </div>
-            <div class="col-md-6 fadeLeft">
-                <p>Conformance to applicable regulations is mandatory in food packaging as considerations may include: use of hazard analysis and critical control points, verification and validation protocols, Good manufacturing practices, use of an effective quality management system, track and trace systems, and requirements for label content. Special food contact materials are used when the package is in direct contact with the food product. Depending on the packaging operation and the food, packaging machinery often needs to be specified daily wash-down and cleaning procedures.</p>
-                <p>Health risks of materials and chemicals used in food packaging need to be carefully controlled. Carcinogens, toxic chemicals, mutagens, etc. need to be eliminated from food contact and potential migration into foods.</p>
-                <p>The Company keeps in mind all the safety measures required when it is related to food and we are proud to state that our delivery is full proof to the risks and potential health hazards that may occur if not acted with required awareness.</p>
+        <h2 class="text-center mb-3 fadeUp in-view"><?=$category_name?></h2>
+        <div class="row justify-content-center mb-3 fadeUp in-view">
+            <div class="col-md-8">
+                <p class="d-block text-center"><?=$category_description?></p>
             </div>
         </div>
     </div>
 </section>
-<section class="howmuchsec overflow-hidden">
-    <div class="row m-0 align-items-center">
-        <div class="col-md-4 p-0 howmuchimg position-relative">
-            <img src="images/productdetailsinfo.jpg" alt="" class="w-100">
-        </div>
-        <div class="col-md-8 p-5 howmuch">
-            <h2 class="mb-2 fadeUp">Our Strength</h2>
-            <big class="d-block fadeUp mb-3">A mammoth 50,000 square feet well-planned factory with highly fabricated & ultra-modern production facilities, Quality Assurance Laboratory with all the modern and the latest equipment with a production capacity of over 400 MT per month.</big>
-            <ul class="mb-2 fadeUp">
-                <li>ISO 9001: 2015 and FSSC 22000:2017 Certified.</li>
-                <li>Roto -gravure printing facility with contemporary features like auto-registration, web-video defect detection system and reverse station option.</li>
-                <li>Solvent-free and solvent-based Lamination facilities.</li>
-                <li>Multilayer Polyethylene Film Manufacturing facility.</li>
-            </ul>
+
+<?php if (!empty($list_of_products)) { ?>
+<section class="pb-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <?php foreach ($list_of_products as $i => $product_details) { ?>
+                <div class="col-md-4 mt-4 text-center fadeUp in-view">
+                    <div class="productdtlbox rounded bg-white border h-100 p-3">
+                        <div class="overflow-hidden mb-3">
+                            <img src="<?=(!empty($product_details->image)) ? base_url($product_details->image) : ''?>" alt="" class="w-100">
+                        </div>
+                        <h4 class="mt-auto"><?=(!empty($product_details->name)) ? $product_details->name : ''?></h4>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
     </div>
 </section>
+<?php } ?>
+
+<?php if (!empty($list_of_clients)) { ?>
 <section class="py-5" style="background-color: #FDF6F4;">
     <div class="container">
         <div class="title2sec mb-4 fadeUp">
@@ -64,57 +91,15 @@ background-repeat: no-repeat;">
         </div>
         <div class="fadeUp">
             <div class="clientslogoslider">
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="images/client-logo1-min.png" alt="">
+                <?php foreach ($list_of_clients as $i => $client_details) { ?>
+                    <div class="clientslogosec">
+                        <div class="clientslogo">
+                            <img class="" src="<?=(!empty($client_details->image)) ? base_url($client_details->image) : ''?>" alt="">
+                        </div>
                     </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="images/client-logo2-min.png" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="images/client-logo3-min.png" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="images/client-logo4-min.png" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="images/client-logo5-min.png" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="images/client-logo6-min.png" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="images/client-logo7-min.png" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="images/client-logo8-min.png" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="images/client-logo3-min.png" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="images/client-logo4-min.png" alt="">
-                    </div>
-                </div>
+                <?php } ?>
             </div>
         </div>
     </div>
 </section>
+<?php } ?>

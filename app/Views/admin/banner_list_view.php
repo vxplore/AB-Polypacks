@@ -46,7 +46,6 @@
                         } else {
                           echo "<span style='font-weight:600; color:#CCC;'>N/A</span>"; 
                         }?>
-                        <?=$banner_details->title?>
                       </td>
                       <td scope="row">
                         <?php if (!empty($banner_details->description)) {

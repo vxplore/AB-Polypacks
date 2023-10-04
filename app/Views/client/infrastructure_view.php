@@ -1,12 +1,32 @@
-<section class="innerpagebanner py-5 position-relative" style="
-background-image: url(<?=base_url('assets/client/images/homehero-bg.jpg')?>); 
+<?php if (!empty($page_contents)) {
+
+    if (!empty($page_contents->page_background_image)) {
+        $page_background_image = base_url($page_contents->page_background_image);
+    } else {
+        $page_background_image = "";
+    }
+
+    if (!empty($page_contents->page_heading)) {
+        $page_heading = $page_contents->page_heading;
+    } else {
+        $page_heading = "";
+    }
+
+}?>
+
+<?php if (!empty($page_contents_editable)) {
+    echo "<input type='hidden' id='CMS_page_id' value='".$page_id."'>";
+}?>
+
+<section class="innerpagebanner position-relative" style="
+background-image: url(<?=$page_background_image?>); 
 background-size: cover; 
-background-repeat: no-repeat;">
+background-repeat: no-repeat; padding: 120px 0;">
     <div class="container py-4">
-        <h1 class="mb-3 text-center fadeUp">Infrastructure</h1>
+        <h1 class="mb-3 text-center fadeUp"><?=$page_heading?></h1>
         <nav class="fadeUp" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center">
-                <li class="breadcrumb-item"><a href="<?=base_url()?>">Home</a></li>
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Infrastructure</li>
             </ol>
         </nav>
@@ -24,6 +44,7 @@ background-repeat: no-repeat;">
         </div>
     </a>
 </section>
+
 <section class="py-5" id="scrollsec">
     <div class="container">
         <h2 class="text-center mb-3 fadeUp">Our Quality Infrastructure</h2>

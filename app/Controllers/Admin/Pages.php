@@ -39,7 +39,7 @@ class Pages extends Common {
     private function get_page_rendering_data($page_id) {
         $page_rendering_data = [];
 
-        if (!empty($page_id == HOME_PAGE_ID)) {
+        if (!empty($page_id) && $page_id == HOME_PAGE_ID) {
             $page_rendering_data["list_of_banners"] = $this->client_model->get_list_of_banners();
             $page_rendering_data["list_of_clients"] = $this->admin_model->get_list_of_clients();
             $page_rendering_data["list_of_testimonials"] = $this->client_model->get_list_of_testimonials();

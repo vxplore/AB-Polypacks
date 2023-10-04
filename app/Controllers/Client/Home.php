@@ -10,10 +10,11 @@ class Home extends Common {
         $page_details = $this->admin_model->get_page_details_on_condition(["slug" => $page_slug]);
         if (!empty($page_details->page_id && $page_details->view_file_path)) {
             $header_rendering_data["page_details"] = $page_details;
+            $navbar_rendering_data["list_of_product_categories"] = $this->client_model->get_list_of_product_categories();
             $page_rendering_data = $this->get_page_rendering_data($page_details->page_id);
 
             echo view('client/templates/header', $header_rendering_data);
-            echo view('client/templates/navbar');
+            echo view('client/templates/navbar', $navbar_rendering_data);
             echo view($page_details->view_file_path, $page_rendering_data);
             echo view('client/templates/footer');
             echo view('client/templates/footer_links');
@@ -26,7 +27,7 @@ class Home extends Common {
     private function get_page_rendering_data($page_id) {
         $page_rendering_data = [];
 
-        if (!empty($page_id == HOME_PAGE_ID)) {
+        if (!empty($page_id) && $page_id == HOME_PAGE_ID) {
             $page_rendering_data["list_of_banners"] = $this->client_model->get_list_of_banners();
             $page_rendering_data["list_of_clients"] = $this->admin_model->get_list_of_clients();
             $page_rendering_data["list_of_testimonials"] = $this->client_model->get_list_of_testimonials();

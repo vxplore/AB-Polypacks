@@ -205,7 +205,7 @@ if (!empty($contact_informations->office)) {
             <?php if (!empty($banner_details->title) || !empty($banner_details->description)) { ?>
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-7 text-center text-md-start">
+                    <div class="col-md-8 text-center text-md-start">
                         <div class="hmslidertxt fadeUp">
                             <h2 class="mb-3"><?=$banner_details->title?></h2>
                             <?=$banner_details->description?>
@@ -223,13 +223,13 @@ if (!empty($contact_informations->office)) {
         <div class="container">
             <div class="row">
                 <div class="col-4 fadeUp" style="background-color: #D75427;">
-                    <a href="product-list.html" class="d-block py-4 text-white fw-bold h5 m-0">PRODUCTS</a>
+                    <a href="<?=base_url('products')?>" class="d-block py-3 py-md-4 text-white fw-bold h5 m-0">PRODUCTS</a>
                 </div>
                 <div class="col-4 fadeUp" style="background-color: #0D9AD7;">
-                    <a href="career.html" class="d-block py-4 text-white fw-bold h5 m-0">CAREERS</a>
+                    <a href="<?=base_url('career')?>" class="d-block py-3 py-md-4 text-white fw-bold h5 m-0">CAREERS</a>
                 </div>
                 <div class="col-4 fadeUp" style="background-color: #D75427;">
-                    <a href="contact.html" class="d-block py-4 text-white fw-bold h5 m-0">CONTACT US</a>
+                    <a href="<?=base_url('contact-us')?>" class="d-block py-3 py-md-4 text-white fw-bold h5 m-0">CONTACT US</a>
                 </div>
             </div>
         </div>
