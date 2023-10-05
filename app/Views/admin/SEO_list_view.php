@@ -60,7 +60,6 @@
 <script>
 
   let SEO_data_listing_table = new DataTable("#SEO_data_listing_table", {
-    "order": [[0,"DESC"]],
     "language": {
       "emptyTable": "No SEO Data Found!"
     }

@@ -1,12 +1,42 @@
-<section class="innerpagebanner py-5 position-relative" style="
-background-image: url(<?=base_url('assets/client/images/homehero-bg.jpg')?>); 
+<?php if (!empty($page_contents)) {
+
+    if (!empty($page_contents->page_background_image)) {
+        $page_background_image = base_url($page_contents->page_background_image);
+    } else {
+        $page_background_image = "";
+    }
+
+    if (!empty($page_contents->page_heading)) {
+        $page_heading = $page_contents->page_heading;
+    } else {
+        $page_heading = "";
+    }
+
+    if (!empty($page_contents->page_cms_contents)) {
+        $CMS_contents = $page_contents->page_cms_contents;
+
+        if (!empty($CMS_contents->career_development_image)) {
+            $career_development_image = base_url($CMS_contents->career_development_image);
+        } else {
+            $career_development_image = "";
+        }
+    }
+
+} ?>
+
+<?php if (!empty($page_contents_editable)) {
+    echo "<input type='hidden' id='CMS_page_id' value='".$page_id."'>";
+}?>
+
+<section class="innerpagebanner position-relative" style="
+background-image: url(<?=$page_background_image?>); 
 background-size: cover; 
-background-repeat: no-repeat;">
+background-repeat: no-repeat; padding: 120px 0;">
     <div class="container py-4">
-        <h1 class="mb-3 text-center fadeUp">Career</h1>
+        <h1 class="mb-3 text-center fadeUp"><?=$page_heading?></h1>
         <nav class="fadeUp" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center">
-                <li class="breadcrumb-item"><a href="<?=base_url()?>">Home</a></li>
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Career</li>
             </ol>
         </nav>
@@ -79,8 +109,37 @@ background-repeat: no-repeat;">
                 </div>
             </div>
             <div class="col-lg-6 p-3 fadePopup">
-                <img src="<?=base_url('assets/client/images/career_development.jpg')?>" alt="" class="w-100">
+                <?php if (!empty($page_contents_editable)) { ?>
+                    <label for="career_development_image" class="editable-content w-100">
+                        <img src="<?=$career_development_image?>" alt="" class="w-100">
+                        <input type="file" id="career_development_image" class="hidden-image-input" onchange="previewImage(this)">
+                    </label>
+                <?php } else { ?>
+                    <img src="<?=$career_development_image?>" alt="" class="w-100">
+                <?php } ?>
             </div>
         </div>
     </div>
 </section>
+
+<?php if (!empty($page_contents_editable)) { ?>
+<script>
+
+    function get_rendered_CMS_page_content() {
+        let CMS_page_content = new FormData();
+
+        let file_content_ids = [
+            "career_development_image"
+        ];
+        file_content_ids.forEach((file_content_name, i) => {
+            let file_contents = $("#"+file_content_name).prop("files");
+            if (file_contents.length > 0) {
+                CMS_page_content.append(file_content_name, file_contents[0]);
+            }
+        });
+
+        return CMS_page_content;
+    }
+
+</script>
+<?php } ?>

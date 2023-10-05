@@ -716,29 +716,23 @@ background-repeat: no-repeat;">
                     </a>
                 </div>
                 <div class="socblack d-flex gap-3 align-items-center">
-                    <a href="" target="_blank">
+                    <a href="https://www.facebook.com/profile.php?id=100095289108636" target="_blank">
                         <svg id="XMLID_834_" width="9" height="18" viewBox="0 0 10.5 20.786">
-                            <path id="XMLID_835_" d="M77.038,11.07h2.278v9.38a.335.335,0,0,0,.335.335h3.863a.335.335,0,0,0,.335-.335V11.115H86.47a.335.335,0,0,0,.333-.3l.4-3.453a.335.335,0,0,0-.333-.374H83.851V4.826c0-.653.351-.983,1.044-.983h1.973a.335.335,0,0,0,.335-.335V.338A.335.335,0,0,0,86.867,0H84.149c-.019,0-.062,0-.125,0a5.209,5.209,0,0,0-3.406,1.284A3.572,3.572,0,0,0,79.43,4.459V6.991H77.038a.335.335,0,0,0-.335.335v3.409A.335.335,0,0,0,77.038,11.07Z" transform="translate(-76.703 0)" fill="#fff"/>
+                            <path id="XMLID_835_" d="M77.038,11.07h2.278v9.38a.335.335,0,0,0,.335.335h3.863a.335.335,0,0,0,.335-.335V11.115H86.47a.335.335,0,0,0,.333-.3l.4-3.453a.335.335,0,0,0-.333-.374H83.851V4.826c0-.653.351-.983,1.044-.983h1.973a.335.335,0,0,0,.335-.335V.338A.335.335,0,0,0,86.867,0H84.149c-.019,0-.062,0-.125,0a5.209,5.209,0,0,0-3.406,1.284A3.572,3.572,0,0,0,79.43,4.459V6.991H77.038a.335.335,0,0,0-.335.335v3.409A.335.335,0,0,0,77.038,11.07Z" transform="translate(-76.703 0)" fill="#fff"></path>
                         </svg>
                     </a>
-                    <a href="" target="_blank">
-                        <svg id="XMLID_826_" width="18" height="16" viewBox="0 0 24.45 20.018">
-                            <path id="XMLID_827_" d="M23.894,30.407a9.269,9.269,0,0,1-1.183.431,5.227,5.227,0,0,0,1.064-1.872.394.394,0,0,0-.577-.459,9.306,9.306,0,0,1-2.751,1.087,5.251,5.251,0,0,0-8.923,3.751,5.354,5.354,0,0,0,.043.678,13.438,13.438,0,0,1-9.223-4.893.394.394,0,0,0-.646.051,5.256,5.256,0,0,0,.538,6.041,4.447,4.447,0,0,1-.7-.314.394.394,0,0,0-.586.336c0,.023,0,.047,0,.07a5.267,5.267,0,0,0,2.569,4.514c-.133-.013-.267-.033-.4-.058a.394.394,0,0,0-.449.508A5.247,5.247,0,0,0,6.514,43.8,9.286,9.286,0,0,1,1.55,45.213a9.5,9.5,0,0,1-1.112-.065.394.394,0,0,0-.259.724,14.155,14.155,0,0,0,7.654,2.244,13.617,13.617,0,0,0,10.55-4.634,14.688,14.688,0,0,0,3.656-9.572c0-.144,0-.289-.007-.434a10.2,10.2,0,0,0,2.348-2.487.394.394,0,0,0-.488-.58Z" transform="translate(0.002 -28.097)" fill="#fff"/>
-                        </svg>
-                    </a>
-                    <a href="" target="_blank">
+                    
+                    <a href="https://www.instagram.com/ab.polypacks/" target="_blank">
                         <svg width="17" height="17" viewBox="0 0 21 22">
                             <g id="instagram-svgrepo-com_1_" data-name="instagram-svgrepo-com (1)" transform="translate(0.569 1.159)">
-                                <rect id="Rectangle_213" data-name="Rectangle 213" width="19" height="20" rx="5" transform="translate(0.431 -0.159)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-                                <path id="Path_102" data-name="Path 102" d="M15.874,11.316A3.937,3.937,0,1,1,12.557,8,3.937,3.937,0,0,1,15.874,11.316Z" transform="translate(-2.096 -2.234)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-                                <line id="Line_30" data-name="Line 30" x2="0.01" transform="translate(15.255 4.289)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                <rect id="Rectangle_213" data-name="Rectangle 213" width="19" height="20" rx="5" transform="translate(0.431 -0.159)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></rect>
+                                <path id="Path_102" data-name="Path 102" d="M15.874,11.316A3.937,3.937,0,1,1,12.557,8,3.937,3.937,0,0,1,15.874,11.316Z" transform="translate(-2.096 -2.234)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+                                <line id="Line_30" data-name="Line 30" x2="0.01" transform="translate(15.255 4.289)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></line>
                             </g>
                         </svg>
                     </a>
-                    <a href="" target="_blank">
-                        <svg id="XMLID_822_" width="20" height="15" viewBox="0 0 27.065 19.047">
-                            <path id="XMLID_823_" d="M26.01,47.552c-.977-1.161-2.781-1.635-6.225-1.635H7.28c-3.524,0-5.358.5-6.331,1.741C0,48.863,0,50.64,0,53.1v4.686c0,4.763,1.126,7.181,7.28,7.181h12.5c2.987,0,4.643-.418,5.714-1.443,1.1-1.051,1.567-2.767,1.567-5.738V53.1C27.065,50.505,26.992,48.719,26.01,47.552Zm-8.634,8.536L11.7,59.055a.873.873,0,0,1-1.277-.774V52.365A.873.873,0,0,1,11.7,51.59l5.678,2.949a.873.873,0,0,1,0,1.549Z" transform="translate(0 -45.917)" fill="#fff"/>
-                        </svg>
+                    <a href="https://www.linkedin.com/company/a-b-polypacks" target="_blank">
+                        <svg id="Bold" enable-background="new 0 0 24 24" fill="#fff" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="m23.994 24v-.001h.006v-8.802c0-4.306-.927-7.623-5.961-7.623-2.42 0-4.044 1.328-4.707 2.587h-.07v-2.185h-4.773v16.023h4.97v-7.934c0-2.089.396-4.109 2.983-4.109 2.549 0 2.587 2.384 2.587 4.243v7.801z"></path><path d="m.396 7.977h4.976v16.023h-4.976z"></path><path d="m2.882 0c-1.591 0-2.882 1.291-2.882 2.882s1.291 2.909 2.882 2.909 2.882-1.318 2.882-2.909c-.001-1.591-1.292-2.882-2.882-2.882z"></path></svg>
                     </a>
                 </div>
             </div>

@@ -25,4 +25,9 @@ class Clients_model extends Model {
         return $product_categories_table->where(["status" => "ACTIVE"])->orderBy("appearing_order", "ASC")->get()->getResult();
     }
 
+    public function get_office_contact_informations() {
+        $contact_informations = $this->db->table("contact_informations");
+        return $contact_informations->where(["type" => "OFFICE"])->get()->getRow();
+    }
+
 }

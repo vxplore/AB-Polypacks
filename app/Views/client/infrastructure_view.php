@@ -12,6 +12,148 @@
         $page_heading = "";
     }
 
+    if (!empty($page_contents->page_cms_contents)) {
+        $CMS_contents = $page_contents->page_cms_contents;
+
+        if (!empty($CMS_contents->main_section_heading)) {
+            $main_section_heading = $CMS_contents->main_section_heading;
+        } else {
+            $main_section_heading = "";
+        }
+
+        if (!empty($CMS_contents->main_section_description)) {
+            $main_section_description = $CMS_contents->main_section_description;
+        } else {
+            $main_section_description = "";
+        }
+
+        if (!empty($CMS_contents->sub_section1_heading)) {
+            $sub_section1_heading = $CMS_contents->sub_section1_heading;
+        } else {
+            $sub_section1_heading = "";
+        }
+
+        if (!empty($CMS_contents->sub_section1_description)) {
+            $sub_section1_description = $CMS_contents->sub_section1_description;
+        } else {
+            $sub_section1_description = "";
+        }
+
+        if (!empty($CMS_contents->sub_section1_image)) {
+            $sub_section1_image = base_url($CMS_contents->sub_section1_image);
+        } else {
+            $sub_section1_image = "";
+        }
+
+        if (!empty($CMS_contents->sub_section2_heading)) {
+            $sub_section2_heading = $CMS_contents->sub_section2_heading;
+        } else {
+            $sub_section2_heading = "";
+        }
+
+        if (!empty($CMS_contents->sub_section2_description)) {
+            $sub_section2_description = $CMS_contents->sub_section2_description;
+        } else {
+            $sub_section2_description = "";
+        }
+
+        if (!empty($CMS_contents->sub_section2_image)) {
+            $sub_section2_image = base_url($CMS_contents->sub_section2_image);
+        } else {
+            $sub_section2_image = "";
+        }
+
+        if (!empty($CMS_contents->sub_section3_heading)) {
+            $sub_section3_heading = $CMS_contents->sub_section3_heading;
+        } else {
+            $sub_section3_heading = "";
+        }
+
+        if (!empty($CMS_contents->sub_section3_description)) {
+            $sub_section3_description = $CMS_contents->sub_section3_description;
+        } else {
+            $sub_section3_description = "";
+        }
+
+        if (!empty($CMS_contents->sub_section3_image)) {
+            $sub_section3_image = base_url($CMS_contents->sub_section3_image);
+        } else {
+            $sub_section3_image = "";
+        }
+
+        if (!empty($CMS_contents->sub_section4_heading)) {
+            $sub_section4_heading = $CMS_contents->sub_section4_heading;
+        } else {
+            $sub_section4_heading = "";
+        }
+
+        if (!empty($CMS_contents->sub_section4_description)) {
+            $sub_section4_description = $CMS_contents->sub_section4_description;
+        } else {
+            $sub_section4_description = "";
+        }
+
+        if (!empty($CMS_contents->sub_section4_image)) {
+            $sub_section4_image = base_url($CMS_contents->sub_section4_image);
+        } else {
+            $sub_section4_image = "";
+        }
+
+        if (!empty($CMS_contents->sub_section5_heading)) {
+            $sub_section5_heading = $CMS_contents->sub_section5_heading;
+        } else {
+            $sub_section5_heading = "";
+        }
+
+        if (!empty($CMS_contents->sub_section5_description)) {
+            $sub_section5_description = $CMS_contents->sub_section5_description;
+        } else {
+            $sub_section5_description = "";
+        }
+
+        if (!empty($CMS_contents->sub_section5_image)) {
+            $sub_section5_image = base_url($CMS_contents->sub_section5_image);
+        } else {
+            $sub_section5_image = "";
+        }
+
+        if (!empty($CMS_contents->sub_section6_heading)) {
+            $sub_section6_heading = $CMS_contents->sub_section6_heading;
+        } else {
+            $sub_section6_heading = "";
+        }
+
+        if (!empty($CMS_contents->sub_section6_description)) {
+            $sub_section6_description = $CMS_contents->sub_section6_description;
+        } else {
+            $sub_section6_description = "";
+        }
+
+        if (!empty($CMS_contents->sub_section6_image)) {
+            $sub_section6_image = base_url($CMS_contents->sub_section6_image);
+        } else {
+            $sub_section6_image = "";
+        }
+
+        if (!empty($CMS_contents->sub_section7_heading)) {
+            $sub_section7_heading = $CMS_contents->sub_section7_heading;
+        } else {
+            $sub_section7_heading = "";
+        }
+
+        if (!empty($CMS_contents->sub_section7_description)) {
+            $sub_section7_description = $CMS_contents->sub_section7_description;
+        } else {
+            $sub_section7_description = "";
+        }
+
+        if (!empty($CMS_contents->sub_section7_image)) {
+            $sub_section7_image = base_url($CMS_contents->sub_section7_image);
+        } else {
+            $sub_section7_image = "";
+        }
+    }
+
 }?>
 
 <?php if (!empty($page_contents_editable)) {
@@ -47,90 +189,242 @@ background-repeat: no-repeat; padding: 120px 0;">
 
 <section class="py-5" id="scrollsec">
     <div class="container">
-        <h2 class="text-center mb-3 fadeUp">Our Quality Infrastructure</h2>
-        <div class="row justify-content-center mb-3 fadeUp">
-            <div class="col-md-8">
-                <big class="d-block text-center">With a Manufacturing facility that is spread over 1.5 Lakh Sq. Ft. we boast of quality as well as quantity, which adds to our reliability even more.
-
-                    Moreover, we possess World’s Best machines for Printing, Lamination, Blown Film, Shrink Labels and Pouching which ensures our products to be a class apart than our competitors.
-                    
-                    From Granules to the end product, we have got you covered..</big>
+        <?php if (!empty($page_contents_editable)) { ?>
+            <h2 contentEditable="true" id="main_section_heading" class="text-center mb-3 fadeUp editable-content"><?=$main_section_heading?></h2>
+            <div class="row justify-content-center mb-3 fadeUp">
+                <div class="col-md-8">
+                    <big contentEditable="true" id="main_section_description" class="d-block text-center editable-content"><?=$main_section_description?></big>
+                </div>
             </div>
-        </div>
+        <?php } else { ?>
+            <h2 class="text-center mb-3 fadeUp"><?=$main_section_heading?></h2>
+            <div class="row justify-content-center mb-3 fadeUp">
+                <div class="col-md-8">
+                    <big class="d-block text-center"><?=$main_section_description?></big>
+                </div>
+            </div>
+        <?php } ?>
+
         <div class="row align-items-center" id="QualityControlLab">
             <div class="col-md-6 fadeLeft howmuch">
-                    <h3 class="mb-3">QUALITY CONTROL LAB                    </h3>
-                <p>With in-house quality checking facility, the quality control department is leading the quality of raw, in-process and finished products in a superior manner. The department has the provision of testing and measuring the Gramm age of the substrates, thickness, width, tensile strength, elongation, dart impact strength, bond strength, seal strength, shrinkage percentage, scuff resistance, co-efficient of friction, color shade matching, LAB value, vacuum leak, compression leak, moisture content of solvent, viscosity, specific gravity, surface tension of films.                    </p>
+                <?php if (!empty($page_contents_editable)) { ?>
+                    <h3 contentEditable="true" id="sub_section1_heading" class="mb-3 editable-content"><?=$sub_section1_heading?></h3>
+                    <p contentEditable="true" id="sub_section1_description" class="editable-content"><?=$sub_section1_description?></p>
+                <?php } else { ?>
+                    <h3 class="mb-3"><?=$sub_section1_heading?></h3>
+                    <p><?=$sub_section1_description?></p>
+                <?php } ?>
             </div>
             <div class="col-md-6 p-3 fadePopup">
-                <img src="<?=base_url('assets/client/images/infrastructure-thmb.jpg')?>" alt="" class="w-100">
+                <?php if (!empty($page_contents_editable)) { ?>
+                    <label for="sub_section1_image" class="editable-content w-100">
+                        <img src="<?=$sub_section1_image?>" alt="" class="w-100">
+                        <input type="file" id="sub_section1_image" class="hidden-image-input" onchange="previewImage(this)">
+                    </label>
+                <?php } else { ?>
+                    <img src="<?=$sub_section1_image?>" alt="" class="w-100">
+                <?php } ?>
             </div>
         </div>
     </div>
 </section>
+
 <section class="bg-light py-5">
     <div class="container">
         <div class="row m-0 bg-white align-items-center" id="BlownPolyFilmUnit">
-            <div class="col-md-6 p-0 fadeUp">
-                <img src="<?=base_url('assets/client/images/blown_poly_film_unit.jpg')?>" alt="" class="w-100">
+            <div class="col-md-4 p-0 fadeUp">
+                <?php if (!empty($page_contents_editable)) { ?>
+                    <label for="sub_section2_image" class="editable-content w-100">
+                        <img src="<?=$sub_section2_image?>" alt="" class="w-100">
+                        <input type="file" id="sub_section2_image" class="hidden-image-input" onchange="previewImage(this)">
+                    </label>
+                <?php } else { ?>
+                    <img src="<?=$sub_section2_image?>" alt="" class="w-100">
+                <?php } ?>
             </div>
-            <div class="col-md-6 p-3 p-md-5 fadeUp">
-                <h3 class="mb-3">BLOWN POLY FILM UNIT</h3>
-                <p>The blown polyethylene film unit has the production capacity of 10000 MT per annum. We manufacture best quality three-layer polyethylene film from polyethylene granules with world best machines like WINDMÖLLER & HÖLSCHER.                    </p>
-                <p>We manufacture LDPE collation shrink films which are used for bulk packaging of soft drink bottles and blown lamination grade films which are used for further lamination process.                    </p>
+            <div class="col-md-8 col-lg-8 p-3 p-md-5 fadeUp">
+                <?php if (!empty($page_contents_editable)) { ?>
+                    <h3 contentEditable="true" id="sub_section2_heading" class="mb-3 editable-content"><?=$sub_section2_heading?></h3>
+                    <div contentEditable="true" id="sub_section2_description" class="editable-content">
+                        <?=$sub_section2_description?>
+                    </div>
+                <?php } else { ?>
+                    <h3 class="mb-3"><?=$sub_section2_heading?></h3>
+                    <div>
+                        <?=$sub_section2_description?>
+                    </div>
+                <?php } ?>
             </div>
         </div>
         <div class="row m-0 flex-row-reverse bg-white align-items-center" id="ShrinkSleeveUnit">
-            <div class="col-md-6 p-0 fadeUp">
-                <img src="<?=base_url('assets/client/images/SHRINK-SLEEVE-UNIT.jpg')?>" alt="" class="w-100">
+            <div class="col-md-4 p-0 fadeUp">
+                <?php if (!empty($page_contents_editable)) { ?>
+                    <label for="sub_section3_image" class="editable-content w-100">
+                        <img src="<?=$sub_section3_image?>" alt="" class="w-100">
+                        <input type="file" id="sub_section3_image" class="hidden-image-input" onchange="previewImage(this)">
+                    </label>
+                <?php } else { ?>
+                    <img src="<?=$sub_section3_image?>" alt="" class="w-100">
+                <?php } ?>
             </div>
-            <div class="col-md-6 p-3 p-md-5 fadeUp">
-                <h3 class="mb-3">SHRINK SLEEVE UNIT</h3>
-                <p>Today’s market demand for shrink sleeves is growing rapidly and to support the rising demand we have highly precise, fully automatic with both side auto turret system machines like Karlville. We have machineries with 500MPM production capacity. Which produce Seamless full-body shrink sleeves take to the shape of the package on the application of heat to provide 360-degree product decoration and also ensures unmatched durability and tamper-proof evide nce. Thus it gives products maximum aesthetic impact and marketing exposure.                    </p>
+            <div class="col-md-8 col-lg-8 p-3 p-md-5 fadeUp">
+                <?php if (!empty($page_contents_editable)) { ?>
+                    <h3 contentEditable="true" id="sub_section3_heading" class="mb-3 editable-content"><?=$sub_section3_heading?></h3>
+                    <p contentEditable="true" id="sub_section3_description" class="editable-content"><?=$sub_section3_description?></p>
+                <?php } else { ?>
+                    <h3 class="mb-3"><?=$sub_section3_heading?></h3>
+                    <p><?=$sub_section3_description?></p>
+                <?php } ?>
             </div>
         </div>
         <div class="row m-0 bg-white align-items-center" id="LaminationUnit">
-            <div class="col-md-6 p-0 fadeUp">
-                <img src="<?=base_url('assets/client/images/LAMINATION-UNIT.jpg')?>" alt="" class="w-100">
+            <div class="col-md-4 p-0 fadeUp">
+                <?php if (!empty($page_contents_editable)) { ?>
+                    <label for="sub_section4_image" class="editable-content w-100">
+                        <img src="<?=$sub_section4_image?>" alt="" class="w-100">
+                        <input type="file" id="sub_section4_image" class="hidden-image-input" onchange="previewImage(this)">
+                    </label>
+                <?php } else { ?>
+                    <img src="<?=$sub_section4_image?>" alt="" class="w-100">
+                <?php } ?>
             </div>
-            <div class="col-md-6 p-3 p-md-5 fadeUp">
-                <h3 class="mb-3">LAMINATION UNIT</h3>
-                <p><b>We have three types of lamination processes:                    </b></p>
-                <ul>
-                    <li>Solvent base lamination.</li>
-                    <li>Solvent less lamination.                        </li>
-                    <li>Extrusion coating lamination.                        </li>
-                </ul>
-                <p>We can laminates multi-layer films with a speed of up to 375 MPM. To produce high quality packaging materials we have highly precise, fully automatic with corona treatment facilities machines like Nordmeccanica. We laminates two or more films bonded together to achieve desired properties such as moisture and oxygen barrier protection, enhance shelf life, heat seal ability, and printability.                    </p>
+            <div class="col-md-8 col-lg-8 p-3 p-md-5 fadeUp">
+                <?php if (!empty($page_contents_editable)) { ?>
+                    <h3 contentEditable="true" id="sub_section4_heading" class="mb-3 editable-content"><?=$sub_section4_heading?></h3>
+                    <div contentEditable="true" id="sub_section4_description" class="editable-content">
+                        <?=$sub_section4_description?>
+                    </div>
+                <?php } else { ?>
+                    <h3 class="mb-3"><?=$sub_section4_heading?></h3>
+                    <div>
+                        <?=$sub_section4_description?>
+                    </div>
+                <?php } ?>
             </div>
         </div>
         <div class="row m-0 flex-row-reverse bg-white align-items-center" id="PouchingUnit">
-            <div class="col-md-6 p-0 fadeUp">
-                <img src="<?=base_url('assets/client/images/POUCHING-UNIT.jpg')?>" alt="" class="w-100">
+            <div class="col-md-4 p-0 fadeUp">
+                <?php if (!empty($page_contents_editable)) { ?>
+                    <label for="sub_section5_image" class="editable-content w-100">
+                        <img src="<?=$sub_section5_image?>" alt="" class="w-100">
+                        <input type="file" id="sub_section5_image" class="hidden-image-input" onchange="previewImage(this)">
+                    </label>
+                <?php } else { ?>
+                    <img src="<?=$sub_section5_image?>" alt="" class="w-100">
+                <?php } ?>
             </div>
-            <div class="col-md-6 p-3 p-md-5 fadeUp">
-                <h3 class="mb-3">POUCHING UNIT</h3>
-                <p>We manufacture Various types of pouches like three side sealed pouch, central seal pouch, stand up pouches, pillow pouches, spout pouches, re-sealable pouches with re-closable zippers, pouches with carry handles, shaped pouches. To maintain top quality pouch we have fully automatic with latest technology machineries made of <b>Dalian Totani Corporation</b>. We can produce 20 lakh pouch per day.                    </p>
+            <div class="col-md-8 col-lg-8 p-3 p-md-5 fadeUp">
+                <?php if (!empty($page_contents_editable)) { ?>
+                    <h3 contentEditable="true" id="sub_section5_heading" class="mb-3 editable-content"><?=$sub_section5_heading?></h3>
+                    <p contentEditable="true" id="sub_section5_description" class="editable-content">
+                        <?=$sub_section5_description?>
+                    </p>
+                <?php } else { ?>
+                    <h3 class="mb-3"><?=$sub_section5_heading?></h3>
+                    <p><?=$sub_section5_description?></p>
+                <?php } ?>
             </div>
         </div>
         <div class="row m-0 bg-white align-items-center" id="PrintingUnit">
-            <div class="col-md-6 p-0 fadeUp">
-                <img src="<?=base_url('assets/client/images/PRINTING-UNIT.jpg')?>" alt="" class="w-100">
+            <div class="col-md-4 p-0 fadeUp">
+                <?php if (!empty($page_contents_editable)) { ?>
+                    <label for="sub_section6_image" class="editable-content w-100">
+                        <img src="<?=$sub_section6_image?>" alt="" class="w-100">
+                        <input type="file" id="sub_section6_image" class="hidden-image-input" onchange="previewImage(this)">
+                    </label>
+                <?php } else { ?>
+                    <img src="<?=$sub_section6_image?>" alt="" class="w-100">
+                <?php } ?>
             </div>
-            <div class="col-md-6 p-3 p-md-5 fadeUp">
-                <h3 class="mb-3">PRINTING UNIT</h3>
-                <p>Having three numbers of rotogravure printing machine with production capacity of 500 MPM. We can print up to 9 colour with world best machines like WINDMÖLLER & HÖLSCHER.</p>
-                <p>We have turn bar facility with highly precise auto registration, auto viscosity control systems for best quality print. We can print on polyester, PVC, PET-G, shrink film, BOPP film, Foil, Paper.</p>
+            <div class="col-md-8 col-lg-8 p-3 p-md-5 fadeUp">
+                <?php if (!empty($page_contents_editable)) { ?>
+                    <h3 contentEditable="true" id="sub_section6_heading" class="mb-3 editable-content"><?=$sub_section6_heading?></h3>
+                    <div contentEditable="true" id="sub_section6_description" class="editable-content">
+                        <?=$sub_section6_description?>
+                    </div>
+                <?php } else { ?>
+                    <h3 class="mb-3"><?=$sub_section6_heading?></h3>
+                    <div>
+                        <?=$sub_section6_description?>
+                    </div>
+                <?php } ?>
             </div>
         </div>
         <div class="row m-0 flex-row-reverse bg-white align-items-center" id="SlittingUnit">
-            <div class="col-md-6 p-0 fadeUp">
-                <img src="<?=base_url('assets/client/images/Slitting.jpg')?>" alt="" class="w-100">
+            <div class="col-md-4 p-0 fadeUp">
+                <?php if (!empty($page_contents_editable)) { ?>
+                    <label for="sub_section7_image" class="editable-content w-100">
+                        <img src="<?=$sub_section7_image?>" alt="" class="w-100">
+                        <input type="file" id="sub_section7_image" class="hidden-image-input" onchange="previewImage(this)">
+                    </label>
+                <?php } else { ?>
+                    <img src="<?=$sub_section7_image?>" alt="" class="w-100">
+                <?php } ?>
             </div>
-            <div class="col-md-6 p-3 p-md-5 fadeUp">
-                <h3 class="mb-3">SLITTING UNIT</h3>
-                <p>To produce proper size of products we have three slitting machine with a capacity of 40 ton per day. For high quality and uninterrupted production we have highly precise fully automatic, 700 MPM turret type slitting machines. </p>
+            <div class="col-md-8 col-lg-8 p-3 p-md-5 fadeUp">
+                <?php if (!empty($page_contents_editable)) { ?>
+                    <h3 contentEditable="true" id="sub_section7_heading" class="mb-3 editable-content"><?=$sub_section7_heading?></h3>
+                    <p contentEditable="true" id="sub_section7_description" class="editable-content">
+                        <?=$sub_section7_description?>
+                    </p>
+                <?php } else { ?>
+                    <h3 class="mb-3"><?=$sub_section7_heading?></h3>
+                    <p><?=$sub_section7_description?></p>
+                <?php } ?>
             </div>
         </div>
     </div>
 </section>
+
+<?php if (!empty($page_contents_editable)) { ?>
+<script>
+
+    function get_rendered_CMS_page_content() {
+        let CMS_page_content = new FormData();
+
+        let HTML_content_ids = [
+            "main_section_heading",
+            "main_section_description",
+            "sub_section1_heading",
+            "sub_section1_description",
+            "sub_section2_heading",
+            "sub_section2_description",
+            "sub_section3_heading",
+            "sub_section3_description",
+            "sub_section4_heading",
+            "sub_section4_description",
+            "sub_section5_heading",
+            "sub_section5_description",
+            "sub_section6_heading",
+            "sub_section6_description",
+            "sub_section7_heading",
+            "sub_section7_description"
+        ];
+        HTML_content_ids.forEach((HTML_content_name, i) => {
+            let HTML_content = $("#"+HTML_content_name).html();
+            if (HTML_content) {
+                CMS_page_content.append(HTML_content_name, HTML_content);
+            }
+        });
+
+        let file_content_ids = [
+            "sub_section1_image",
+            "sub_section2_image",
+            "sub_section3_image",
+            "sub_section4_image",
+            "sub_section5_image",
+            "sub_section6_image",
+            "sub_section7_image"
+        ];
+        file_content_ids.forEach((file_content_name, i) => {
+            let file_contents = $("#"+file_content_name).prop("files");
+            if (file_contents.length > 0) {
+                CMS_page_content.append(file_content_name, file_contents[0]);
+            }
+        });
+
+        return CMS_page_content;
+    }
+
+</script>
+<?php } ?>

@@ -183,6 +183,26 @@ class Pages extends Common {
                 "products_sub_section5_description"
             ];
         }
+        else if ($page_id == INFRASTRUCTURE_PAGE_ID) {
+            $text_content_names = [
+                "main_section_heading",
+                "main_section_description",
+                "sub_section1_heading",
+                "sub_section1_description",
+                "sub_section2_heading",
+                "sub_section2_description",
+                "sub_section3_heading",
+                "sub_section3_description",
+                "sub_section4_heading",
+                "sub_section4_description",
+                "sub_section5_heading",
+                "sub_section5_description",
+                "sub_section6_heading",
+                "sub_section6_description",
+                "sub_section7_heading",
+                "sub_section7_description"  
+            ];
+        }
 
         return (!empty($text_content_names)) ? $text_content_names : [];
     }
@@ -198,6 +218,22 @@ class Pages extends Common {
                 "products_sub_section3_image",
                 "products_sub_section4_image",
                 "products_sub_section5_image"
+            ];
+        }
+        else if ($page_id == INFRASTRUCTURE_PAGE_ID) {
+            $file_content_names = [
+                "sub_section1_image",
+                "sub_section2_image",
+                "sub_section3_image",
+                "sub_section4_image",
+                "sub_section5_image",
+                "sub_section6_image",
+                "sub_section7_image"
+            ];
+        }
+        else if ($page_id == CAREER_PAGE_ID) {
+            $file_content_names = [
+                "career_development_image"
             ];
         }
 

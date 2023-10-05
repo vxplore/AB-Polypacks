@@ -40,10 +40,14 @@ class Products extends Common {
         if (!empty($page_view_path) && !empty($page_rendering_data)) {
             $navbar_rendering_data["list_of_product_categories"] = $this->client_model->get_list_of_product_categories();
 
+            $office_contact_info = $this->client_model->get_office_contact_informations();
+            $navbar_rendering_data["office_contact_info"] = $office_contact_info;
+            $footer_rendering_data["office_contact_info"] = $office_contact_info;
+
             echo view('client/templates/header', $header_rendering_data);
             echo view('client/templates/navbar', $navbar_rendering_data);
             echo view($page_view_path, $page_rendering_data);
-            echo view('client/templates/footer');
+            echo view('client/templates/footer', $footer_rendering_data);
             echo view('client/templates/footer_links');
         }
         else {
