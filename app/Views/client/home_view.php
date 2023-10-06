@@ -205,9 +205,9 @@ if (!empty($contact_informations->office)) {
             <?php if (!empty($banner_details->title) || !empty($banner_details->description)) { ?>
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-md-8 text-center text-md-start">
+                    <div class="col-md-6 text-center text-md-start">
                         <div class="hmslidertxt fadeUp">
-                            <h2 class="mb-3"><?=$banner_details->title?></h2>
+                            <?=$banner_details->title?>
                             <?=$banner_details->description?>
                         </div>
                     </div>

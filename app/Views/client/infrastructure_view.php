@@ -209,10 +209,12 @@ background-repeat: no-repeat; padding: 120px 0;">
             <div class="col-md-6 fadeLeft howmuch">
                 <?php if (!empty($page_contents_editable)) { ?>
                     <h3 contentEditable="true" id="sub_section1_heading" class="mb-3 editable-content"><?=$sub_section1_heading?></h3>
-                    <p contentEditable="true" id="sub_section1_description" class="editable-content"><?=$sub_section1_description?></p>
+                    <div contentEditable="true" id="sub_section1_description" class="editable-content">
+                        <?=$sub_section1_description?>
+                    </div>
                 <?php } else { ?>
                     <h3 class="mb-3"><?=$sub_section1_heading?></h3>
-                    <p><?=$sub_section1_description?></p>
+                    <div><?=$sub_section1_description?></div>
                 <?php } ?>
             </div>
             <div class="col-md-6 p-3 fadePopup">
@@ -256,24 +258,28 @@ background-repeat: no-repeat; padding: 120px 0;">
                 <?php } ?>
             </div>
         </div>
-        <div class="row m-0 flex-row-reverse bg-white align-items-center" id="ShrinkSleeveUnit">
+        <div class="row m-0 bg-white align-items-center" id="PrintingUnit">
             <div class="col-md-4 p-0 fadeUp">
                 <?php if (!empty($page_contents_editable)) { ?>
-                    <label for="sub_section3_image" class="editable-content w-100">
-                        <img src="<?=$sub_section3_image?>" alt="" class="w-100">
-                        <input type="file" id="sub_section3_image" class="hidden-image-input" onchange="previewImage(this)">
+                    <label for="sub_section6_image" class="editable-content w-100">
+                        <img src="<?=$sub_section6_image?>" alt="" class="w-100">
+                        <input type="file" id="sub_section6_image" class="hidden-image-input" onchange="previewImage(this)">
                     </label>
                 <?php } else { ?>
-                    <img src="<?=$sub_section3_image?>" alt="" class="w-100">
+                    <img src="<?=$sub_section6_image?>" alt="" class="w-100">
                 <?php } ?>
             </div>
             <div class="col-md-8 col-lg-8 p-3 p-md-5 fadeUp">
                 <?php if (!empty($page_contents_editable)) { ?>
-                    <h3 contentEditable="true" id="sub_section3_heading" class="mb-3 editable-content"><?=$sub_section3_heading?></h3>
-                    <p contentEditable="true" id="sub_section3_description" class="editable-content"><?=$sub_section3_description?></p>
+                    <h3 contentEditable="true" id="sub_section6_heading" class="mb-3 editable-content"><?=$sub_section6_heading?></h3>
+                    <div contentEditable="true" id="sub_section6_description" class="editable-content">
+                        <?=$sub_section6_description?>
+                    </div>
                 <?php } else { ?>
-                    <h3 class="mb-3"><?=$sub_section3_heading?></h3>
-                    <p><?=$sub_section3_description?></p>
+                    <h3 class="mb-3"><?=$sub_section6_heading?></h3>
+                    <div>
+                        <?=$sub_section6_description?>
+                    </div>
                 <?php } ?>
             </div>
         </div>
@@ -302,54 +308,6 @@ background-repeat: no-repeat; padding: 120px 0;">
                 <?php } ?>
             </div>
         </div>
-        <div class="row m-0 flex-row-reverse bg-white align-items-center" id="PouchingUnit">
-            <div class="col-md-4 p-0 fadeUp">
-                <?php if (!empty($page_contents_editable)) { ?>
-                    <label for="sub_section5_image" class="editable-content w-100">
-                        <img src="<?=$sub_section5_image?>" alt="" class="w-100">
-                        <input type="file" id="sub_section5_image" class="hidden-image-input" onchange="previewImage(this)">
-                    </label>
-                <?php } else { ?>
-                    <img src="<?=$sub_section5_image?>" alt="" class="w-100">
-                <?php } ?>
-            </div>
-            <div class="col-md-8 col-lg-8 p-3 p-md-5 fadeUp">
-                <?php if (!empty($page_contents_editable)) { ?>
-                    <h3 contentEditable="true" id="sub_section5_heading" class="mb-3 editable-content"><?=$sub_section5_heading?></h3>
-                    <p contentEditable="true" id="sub_section5_description" class="editable-content">
-                        <?=$sub_section5_description?>
-                    </p>
-                <?php } else { ?>
-                    <h3 class="mb-3"><?=$sub_section5_heading?></h3>
-                    <p><?=$sub_section5_description?></p>
-                <?php } ?>
-            </div>
-        </div>
-        <div class="row m-0 bg-white align-items-center" id="PrintingUnit">
-            <div class="col-md-4 p-0 fadeUp">
-                <?php if (!empty($page_contents_editable)) { ?>
-                    <label for="sub_section6_image" class="editable-content w-100">
-                        <img src="<?=$sub_section6_image?>" alt="" class="w-100">
-                        <input type="file" id="sub_section6_image" class="hidden-image-input" onchange="previewImage(this)">
-                    </label>
-                <?php } else { ?>
-                    <img src="<?=$sub_section6_image?>" alt="" class="w-100">
-                <?php } ?>
-            </div>
-            <div class="col-md-8 col-lg-8 p-3 p-md-5 fadeUp">
-                <?php if (!empty($page_contents_editable)) { ?>
-                    <h3 contentEditable="true" id="sub_section6_heading" class="mb-3 editable-content"><?=$sub_section6_heading?></h3>
-                    <div contentEditable="true" id="sub_section6_description" class="editable-content">
-                        <?=$sub_section6_description?>
-                    </div>
-                <?php } else { ?>
-                    <h3 class="mb-3"><?=$sub_section6_heading?></h3>
-                    <div>
-                        <?=$sub_section6_description?>
-                    </div>
-                <?php } ?>
-            </div>
-        </div>
         <div class="row m-0 flex-row-reverse bg-white align-items-center" id="SlittingUnit">
             <div class="col-md-4 p-0 fadeUp">
                 <?php if (!empty($page_contents_editable)) { ?>
@@ -370,6 +328,50 @@ background-repeat: no-repeat; padding: 120px 0;">
                 <?php } else { ?>
                     <h3 class="mb-3"><?=$sub_section7_heading?></h3>
                     <p><?=$sub_section7_description?></p>
+                <?php } ?>
+            </div>
+        </div>
+        <div class="row m-0 flex-row-reverse bg-white align-items-center" id="ShrinkSleeveUnit">
+            <div class="col-md-4 p-0 fadeUp">
+                <?php if (!empty($page_contents_editable)) { ?>
+                    <label for="sub_section3_image" class="editable-content w-100">
+                        <img src="<?=$sub_section3_image?>" alt="" class="w-100">
+                        <input type="file" id="sub_section3_image" class="hidden-image-input" onchange="previewImage(this)">
+                    </label>
+                <?php } else { ?>
+                    <img src="<?=$sub_section3_image?>" alt="" class="w-100">
+                <?php } ?>
+            </div>
+            <div class="col-md-8 col-lg-8 p-3 p-md-5 fadeUp">
+                <?php if (!empty($page_contents_editable)) { ?>
+                    <h3 contentEditable="true" id="sub_section3_heading" class="mb-3 editable-content"><?=$sub_section3_heading?></h3>
+                    <p contentEditable="true" id="sub_section3_description" class="editable-content"><?=$sub_section3_description?></p>
+                <?php } else { ?>
+                    <h3 class="mb-3"><?=$sub_section3_heading?></h3>
+                    <p><?=$sub_section3_description?></p>
+                <?php } ?>
+            </div>
+        </div>
+        <div class="row m-0 flex-row-reverse bg-white align-items-center" id="PouchingUnit">
+            <div class="col-md-4 p-0 fadeUp">
+                <?php if (!empty($page_contents_editable)) { ?>
+                    <label for="sub_section5_image" class="editable-content w-100">
+                        <img src="<?=$sub_section5_image?>" alt="" class="w-100">
+                        <input type="file" id="sub_section5_image" class="hidden-image-input" onchange="previewImage(this)">
+                    </label>
+                <?php } else { ?>
+                    <img src="<?=$sub_section5_image?>" alt="" class="w-100">
+                <?php } ?>
+            </div>
+            <div class="col-md-8 col-lg-8 p-3 p-md-5 fadeUp">
+                <?php if (!empty($page_contents_editable)) { ?>
+                    <h3 contentEditable="true" id="sub_section5_heading" class="mb-3 editable-content"><?=$sub_section5_heading?></h3>
+                    <p contentEditable="true" id="sub_section5_description" class="editable-content">
+                        <?=$sub_section5_description?>
+                    </p>
+                <?php } else { ?>
+                    <h3 class="mb-3"><?=$sub_section5_heading?></h3>
+                    <p><?=$sub_section5_description?></p>
                 <?php } ?>
             </div>
         </div>

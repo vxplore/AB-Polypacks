@@ -26,7 +26,6 @@
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
                     <th scope="col">Image</th>
-                    <th scope="col">Link</th>
                     <th scope="col">Status</th>
                     <th scope="col">Options</th>
                   </tr>
@@ -42,27 +41,20 @@
                       </td>
                       <td scope="row">
                         <?php if (!empty($banner_details->title)) {
-                          echo $banner_details->title; 
+                          echo strip_tags($banner_details->title); 
                         } else {
                           echo "<span style='font-weight:600; color:#CCC;'>N/A</span>"; 
                         }?>
                       </td>
                       <td scope="row">
                         <?php if (!empty($banner_details->description)) {
-                          echo $banner_details->description; 
+                          echo strip_tags($banner_details->description); 
                         } else {
                           echo "<span style='font-weight:600; color:#CCC;'>N/A</span>"; 
                         }?>
                       </td>
                       <td scope="row" align="center">
                           <img src="<?=base_url($banner_details->image)?>" alt="" height="50px">
-                      </td>
-                      <td scope="row">
-                        <?php if (!empty($banner_details->link)) {
-                          echo "<a href='".$banner_details->link."' target='_blank'>".$banner_details->link."</a>"; 
-                        } else {
-                          echo "<span style='font-weight:600; color:#CCC;'>N/A</span>"; 
-                        }?>
                       </td>
                       <td scope="row">
                         <?php $banner_id = (!empty($banner_details->banner_id)) ? $banner_details->banner_id : '';

@@ -52,22 +52,22 @@ else {
                                 <input type="file" accept="image/jpg image/jpeg image/png" name="image" id="banner_image" class="hidden-image-input" onchange="previewImage(this)">
                             </label>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-floating mb-3">
-                                <input type="text" name="title" id="title" class="form-control" 
-                                placeholder="Enter Banner Title Here..." 
-                                value="<?=(!empty($banner_details->title)) ? $banner_details->title : ''?>">
-                                <label for="title">Title</label>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="title" class="floatingInput mb-2">Title</label>
+                                <textarea name="title" id="title">
+                                    <?=(!empty($banner_details->title)) ? $banner_details->title : ''?>
+                                </textarea>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <div class="form-floating mb-3">
                                 <input type="text" name="link" id="link" class="form-control" 
                                 placeholder="Enter Banner Link Here..."
                                 value="<?=(!empty($banner_details->link)) ? $banner_details->link : ''?>">
                                 <label for="link">Link</label>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="description" class="floatingInput mb-2">Description</label>
@@ -97,13 +97,20 @@ else {
             selector: "#description",
             height: "300px"
         });
+
+        tinymce.init({
+            selector: "#title",
+            height: "300px"
+        });
     }
 
     $("#banner_data_form").submit(function(e) {
         e.preventDefault();
         let formData = new FormData(this);
 
+        let title = tinymce.get("title").getContent();
         let description = tinymce.get("description").getContent();
+        formData.append("title", title);
         formData.append("description", description);
 
         if (formData.has("banner_id")) {

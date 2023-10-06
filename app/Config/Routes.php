@@ -67,7 +67,9 @@ $routes->post('/admin/contact-details/edit', 'Admin\Contacts::save_contact_infor
 // ===========================
 // Client Website Routes Start
 // ===========================
-$routes->get('/products', 'Client\Products::index');
+$routes->get('/about', 'Client\About::index');
+$routes->get('/client', 'Client\Client::index');
+$routes->get('/blog', 'Client\Blog::index');
 $routes->get('/products/(:any)', 'Client\Products::index/$1');
 $routes->get('/contact-us', 'Client\Contact_us::index');
 $routes->get('/privacy-policy', 'Client\Privacy_policy::index');

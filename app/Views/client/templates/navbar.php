@@ -6,7 +6,7 @@
 <header class="header fixed">
     <div class="container">
         <div class="d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo">
+            <a href="<?=base_url()?>" class="logo">
                 <img src="<?=base_url('assets/client/images/logo.png')?>" alt="AB Polypacks Logo" width="80">
             </a>
             <div class="d-flex align-items-center mnuwrp gap-4">

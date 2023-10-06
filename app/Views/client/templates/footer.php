@@ -6,7 +6,13 @@
                     <a href="" class="ftrlogo">
                         <img alt="logo" width="80" src="<?=base_url('assets/client/images/footer-logo.png')?>">
                     </a>
-                    <div class="my-3">AB Polypack is a reputable packaging company known for its innovative and high-quality packaging solutions. With a commitment to sustainability and customer satisfaction, AB Polypack specializes in providing a wide range of packaging materials and services tailored to meet the diverse needs of businesses across various industries.
+                    <div class="my-3">
+                        AB
+                        Polypack is a leading flexible packaging
+                        company known for its innovative and high-quality packaging solutions. With
+                        a commitment to sustainability and customer satisfaction, AB Polypack
+                        specializes in providing a wide range of packaging materials and services
+                        tailored to meet the diverse needs of businesses across various industries.
                     </div>
                         <div class="socred d-flex gap-3 align-items-center">
                         <a href="https://www.facebook.com/people/A-B-Polypacks/100095289108636/" target="_blank">
@@ -38,12 +44,12 @@
                             </svg>
                             <a href="<?=base_url()?>">Home</a>
                         </li>
-                        <!-- <li>
+                        <li>
                             <svg width="12.483" height="8.324" viewBox="0 0 12.483 8.324">
                                 <path id="right-arrow-1-svgrepo-com" d="M12.483,94.962,7.283,90.8v3.121H0V96H7.283v3.121Z" transform="translate(0 -90.8)" fill="#fff"/>
                             </svg>
                             <a href="<?=base_url('about')?>">About Us</a>
-                        </li> -->
+                        </li>
                         <li>
                             <svg width="12.483" height="8.324" viewBox="0 0 12.483 8.324">
                                 <path id="right-arrow-1-svgrepo-com" d="M12.483,94.962,7.283,90.8v3.121H0V96H7.283v3.121Z" transform="translate(0 -90.8)" fill="#fff"/>
@@ -56,7 +62,7 @@
                             </svg>
                             <a href="<?=base_url('carrer')?>">Career</a>
                         </li>
-                        <!-- <li>
+                        <li>
                             <svg width="12.483" height="8.324" viewBox="0 0 12.483 8.324">
                                 <path id="right-arrow-1-svgrepo-com" d="M12.483,94.962,7.283,90.8v3.121H0V96H7.283v3.121Z" transform="translate(0 -90.8)" fill="#fff"/>
                             </svg>
@@ -67,7 +73,7 @@
                                 <path id="right-arrow-1-svgrepo-com" d="M12.483,94.962,7.283,90.8v3.121H0V96H7.283v3.121Z" transform="translate(0 -90.8)" fill="#fff"/>
                             </svg>
                             <a href="<?=base_url('blog')?>">Blog</a>
-                        </li> -->
+                        </li>
                         <li>
                             <svg width="12.483" height="8.324" viewBox="0 0 12.483 8.324">
                                 <path id="right-arrow-1-svgrepo-com" d="M12.483,94.962,7.283,90.8v3.121H0V96H7.283v3.121Z" transform="translate(0 -90.8)" fill="#fff"/>
