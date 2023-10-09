@@ -38,6 +38,9 @@ class Home extends Common {
             $page_rendering_data["list_of_testimonials"] = $this->client_model->get_list_of_testimonials();
             $page_rendering_data["contact_informations"] = $this->admin_model->get_contact_informations();
         }
+        else if (!empty($page_id) && $page_id == ABOUT_US_PAGE_ID) {
+            $page_rendering_data["list_of_clients"] = $this->admin_model->get_list_of_clients();
+        }
 
         $page_contents_details = $this->admin_model->get_page_content_details_on_condition(["page_id" => $page_id]);
         if (!empty($page_contents_details->page_cms_contents)) {

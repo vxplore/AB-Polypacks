@@ -48,7 +48,7 @@
                             <svg width="12.483" height="8.324" viewBox="0 0 12.483 8.324">
                                 <path id="right-arrow-1-svgrepo-com" d="M12.483,94.962,7.283,90.8v3.121H0V96H7.283v3.121Z" transform="translate(0 -90.8)" fill="#fff"/>
                             </svg>
-                            <a href="<?=base_url('about')?>">About Us</a>
+                            <a href="<?=base_url('about-us')?>">About Us</a>
                         </li>
                         <li>
                             <svg width="12.483" height="8.324" viewBox="0 0 12.483 8.324">
