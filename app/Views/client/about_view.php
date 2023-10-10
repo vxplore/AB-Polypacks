@@ -48,36 +48,72 @@ background-repeat: no-repeat; padding: 120px 0;">
         </div>
     </a>
 </section>
+
 <section class="py-5" id="scrollsec">
     <div class="container">
-        <h2 class="text-center mb-3 fadeUp">About AB Polypacks</h2>
-        <div class="row justify-content-center mb-3 fadeUp">
-            <div class="col-md-8">
-                <big class="d-block text-center">Over the last decade and a half, A B Polypacks has established itself as a reliable business partner for Brand owners for all their flexible packaging needs.                        .</big>
+        <?php if (!empty($page_contents_editable)) { ?>
+            <h2 contentEditable="true" id="main_section_heading" class="text-center mb-3 fadeUp editable-content">About AB Polypacks</h2>
+            <div class="row justify-content-center mb-3 fadeUp">
+                <div class="col-md-8">
+                    <big contentEditable="true" id="main_section_description" class="d-block text-center editable-content">Over the last decade and a half, A B Polypacks has established itself as a reliable business partner for Brand owners for all their flexible packaging needs.</big>
+                </div>
             </div>
-        </div>
+        <?php } else { ?>
+            <h2 class="text-center mb-3 fadeUp">About AB Polypacks</h2>
+            <div class="row justify-content-center mb-3 fadeUp">
+                <div class="col-md-8">
+                    <big class="d-block text-center">Over the last decade and a half, A B Polypacks has established itself as a reliable business partner for Brand owners for all their flexible packaging needs.</big>
+                </div>
+            </div>
+        <?php } ?>
+
         <div class="row align-items-center">
-            <div class="col-md-6 fadeLeft">
-                <p>Today, A B polypacks is a “one stop shop” for different kind of packaging solutions that boasts of a manufacturing capacity of 1500 MT and a responsible workforce that works towards value creation and customer satisfaction.</p>
-                    <p>
-                    We provide a wide range of flexible packaging solutions that include Collation Shrink Films, Shrink Labels, Wrap Around Labels, Laminates, All kinds of Pouches, and all these under one roof.</p>
-                    <p>
-                    With a state of the art, fully integrated Manufacturing facility located at Howrah and a team that is highly skilled, A B Polypacks provides end to end packaging solutions, from just a thought of the product to the supermarket we are there for our customers.</p>
-                    <p>
-                    With our technical expertise and qualitative superiority our customers enjoy the benefits of great aesthetics, reliable shelf life and tension free transportation of their products.</p>
-                    <p>
-                    Today, we are proud to be partners of some of the biggest brands in both global and Indian Market like Coca-Cola, Britannia, Parle Agro, Haldiram’s, Pidilite Industries etc.
-                    <p>
-                    Our commitment to supply quality products is recognized and certified under BRCS, ISO 9001 - 2015 and FSSC 22000.</p>
-                    <p>
-                    Our greatest resource, i.e., “Human Resource” is provided with a safe and secure work environment, where progressive ideas are welcomed and innovative mindset takes the front seat.</p>
-            </div>
-            <div class="col-md-6 p-3 fadePopup">
-                <img src="<?=base_url('assets/client/images/about-thmb.jpg')?>" alt="" class="w-100">
-            </div>
+            <?php if (!empty($page_contents_editable)) { ?>
+                <div contentEditable="true" id="top_section_description" class="col-md-6 fadeLeft editable-content">
+                    <p>Today, A B polypacks is a “one stop shop” for different kind of packaging solutions that boasts of a manufacturing capacity of 1500 MT and a responsible workforce that works towards value creation and customer satisfaction.</p>
+                        <p>
+                        We provide a wide range of flexible packaging solutions that include Collation Shrink Films, Shrink Labels, Wrap Around Labels, Laminates, All kinds of Pouches, and all these under one roof.</p>
+                        <p>
+                        With a state of the art, fully integrated Manufacturing facility located at Howrah and a team that is highly skilled, A B Polypacks provides end to end packaging solutions, from just a thought of the product to the supermarket we are there for our customers.</p>
+                        <p>
+                        With our technical expertise and qualitative superiority our customers enjoy the benefits of great aesthetics, reliable shelf life and tension free transportation of their products.</p>
+                        <p>
+                        Today, we are proud to be partners of some of the biggest brands in both global and Indian Market like Coca-Cola, Britannia, Parle Agro, Haldiram’s, Pidilite Industries etc.
+                        <p>
+                        Our commitment to supply quality products is recognized and certified under BRCS, ISO 9001 - 2015 and FSSC 22000.</p>
+                        <p>
+                        Our greatest resource, i.e., “Human Resource” is provided with a safe and secure work environment, where progressive ideas are welcomed and innovative mindset takes the front seat.</p>
+                </div>
+                <div class="col-md-6 p-3 fadePopup">
+                    <label for="top_section_image" class="editable-content w-100">
+                        <img src="<?=base_url('assets/client/images/about-thmb.jpg')?>" alt="" class="w-100">
+                        <input type="file" id="top_section_image" class="hidden-image-input" onchange="previewImage(this)">
+                    </label>
+                </div>
+            <?php } else { ?>
+                <div class="col-md-6 fadeLeft">
+                    <p>Today, A B polypacks is a “one stop shop” for different kind of packaging solutions that boasts of a manufacturing capacity of 1500 MT and a responsible workforce that works towards value creation and customer satisfaction.</p>
+                        <p>
+                        We provide a wide range of flexible packaging solutions that include Collation Shrink Films, Shrink Labels, Wrap Around Labels, Laminates, All kinds of Pouches, and all these under one roof.</p>
+                        <p>
+                        With a state of the art, fully integrated Manufacturing facility located at Howrah and a team that is highly skilled, A B Polypacks provides end to end packaging solutions, from just a thought of the product to the supermarket we are there for our customers.</p>
+                        <p>
+                        With our technical expertise and qualitative superiority our customers enjoy the benefits of great aesthetics, reliable shelf life and tension free transportation of their products.</p>
+                        <p>
+                        Today, we are proud to be partners of some of the biggest brands in both global and Indian Market like Coca-Cola, Britannia, Parle Agro, Haldiram’s, Pidilite Industries etc.
+                        <p>
+                        Our commitment to supply quality products is recognized and certified under BRCS, ISO 9001 - 2015 and FSSC 22000.</p>
+                        <p>
+                        Our greatest resource, i.e., “Human Resource” is provided with a safe and secure work environment, where progressive ideas are welcomed and innovative mindset takes the front seat.</p>
+                </div>
+                <div class="col-md-6 p-3 fadePopup">
+                    <img src="<?=base_url('assets/client/images/about-thmb.jpg')?>" alt="" class="w-100">
+                </div>
+            <?php } ?>
         </div>
     </div>
 </section>
+
 <!-- <section class="howmuchsec overflow-hidden">
     <div class="row m-0 align-items-center">
         <div class="col-md-4 p-0 howmuchimg position-relative">
@@ -106,6 +142,7 @@ background-repeat: no-repeat; padding: 120px 0;">
         </div>
     </div>
 </section> -->
+
 <section class="pt-5">
     <!-- <div class="container">
         <h2 class="text-center m-0 fadeUp">The Dream</h2>
@@ -118,83 +155,220 @@ background-repeat: no-repeat; padding: 120px 0;">
         </div>
     </div> -->
     <div class="row m-0 bg-white align-items-center" id="Mission&Vission">
-        <div class="col-md-3 p-0">
-            <img src="<?=base_url('assets/client/images/Mission.jpg')?>" alt="" class="w-100 fadePopup">
-        </div>
-        <div class="col-md-3 p-4">
-            <h3 class="mb-2 fadeUp">Our Mission</h3>
-            <big class="d-block mb-2 fadeUp">Our Indomitable Spirit to thrive for Excellence</big>
-            <p class="fadeUp p-0">To be the most preferred supplier of consistent quality in packaging printing , an innovative and cost effective flexible packaging solution provider.</p>
-        </div>
-        <div class="col-md-3 p-0">
-            <img src="<?=base_url('assets/client/images/Vision.jpg')?>" alt="" class="w-100 fadePopup">
-        </div>
-        <div class="col-md-3 p-4">
-            <h3 class="mb-2 fadeUp">Our Vision</h3>
-            <big class="d-block mb-2 fadeUp">The Vision for the company and strategy for achieving the Vision , are well articulated.</big>
-            <p class="fadeUp p-0">To be the preferred packaging partner for brands that are a part of daily life across the globe.</p>
-        </div>
+        <?php if (!empty($page_contents_editable)) { ?>
+            <div class="col-md-3 p-0">
+                <label for="small_section1_image" class="editable-content w-100">
+                    <img src="<?=base_url('assets/client/images/Mission.jpg')?>" alt="" class="w-100 fadePopup">
+                    <input type="file" id="small_section1_image" class="hidden-image-input" onchange="previewImage(this)">
+                </label>
+            </div>
+            <div class="col-md-3 p-4">
+                <h3 contentEditable="true" id="small_section1_heading" class="mb-2 fadeUp editable-content">Our Mission</h3>
+                <big contentEditable="true" id="small_section1_sub_heading" class="d-block mb-2 fadeUp editable-content">Our Indomitable Spirit to thrive for Excellence</big>
+                <p contentEditable="true" id="small_section1_description" class="fadeUp p-0 editable-content">To be the most preferred supplier of consistent quality in packaging printing , an innovative and cost effective flexible packaging solution provider.</p>
+            </div>
+
+            <div class="col-md-3 p-0">
+                <label for="small_section2_image" class="editable-content w-100">
+                    <img src="<?=base_url('assets/client/images/Vision.jpg')?>" alt="" class="w-100 fadePopup">
+                    <input type="file" id="small_section2_image" class="hidden-image-input" onchange="previewImage(this)">
+                </label>
+            </div>
+            <div class="col-md-3 p-4">
+                <h3 contentEditable="true" id="small_section2_heading" class="mb-2 fadeUp editable-content">Our Vision</h3>
+                <big contentEditable="true" id="small_section2_sub_heading" class="d-block mb-2 fadeUp editable-content">The Vision for the company and strategy for achieving the Vision , are well articulated.</big>
+                <p contentEditable="true" id="small_section2_description" class="fadeUp p-0 editable-content">To be the preferred packaging partner for brands that are a part of daily life across the globe.</p>
+            </div>
+        <?php } else { ?>
+            <div class="col-md-3 p-0">
+                <img src="<?=base_url('assets/client/images/Mission.jpg')?>" alt="" class="w-100 fadePopup">
+            </div>
+            <div class="col-md-3 p-4">
+                <h3 class="mb-2 fadeUp">Our Mission</h3>
+                <big class="d-block mb-2 fadeUp">Our Indomitable Spirit to thrive for Excellence</big>
+                <p class="fadeUp p-0">To be the most preferred supplier of consistent quality in packaging printing , an innovative and cost effective flexible packaging solution provider.</p>
+            </div>
+
+            <div class="col-md-3 p-0">
+                <img src="<?=base_url('assets/client/images/Vision.jpg')?>" alt="" class="w-100 fadePopup">
+            </div>
+            <div class="col-md-3 p-4">
+                <h3 class="mb-2 fadeUp">Our Vision</h3>
+                <big class="d-block mb-2 fadeUp">The Vision for the company and strategy for achieving the Vision , are well articulated.</big>
+                <p class="fadeUp p-0">To be the preferred packaging partner for brands that are a part of daily life across the globe.</p>
+            </div>
+        <?php } ?>
     </div>
 </section>
+
 <section class="bg-light py-5">
     <div class="container">
         <div class="row m-0 bg-white align-items-center" id="Integrity">
-            <div class="col-md-6 p-0 fadeUp">
-                <img src="<?=base_url('assets/client/images/INTEGRITY.jpg')?>" alt="" class="w-100">
-            </div>
-            <div class="col-md-6 p-3 p-md-5 fadeUp">
-                <h3 class="mb-3">INTEGRITY                    </h3>
-                <p>With a Manufacturing facility that is spread over 1.5 Lakh Sq. Ft. we boast of quality as well as quantity, which adds to our reliability even more. Moreover, we possess World’s Best machine…                    </p>
-            </div>
+            <?php if (!empty($page_contents_editable)) { ?>
+                <div class="col-md-6 p-0 fadeUp">
+                    <label for="sub_section1_image" class="editable-content w-100">
+                        <img src="<?=base_url('assets/client/images/INTEGRITY.jpg')?>" alt="" class="w-100">
+                        <input type="file" id="sub_section1_image" class="hidden-image-input" onchange="previewImage(this)">
+                    </label>
+                </div>
+                <div class="col-md-6 p-3 p-md-5 fadeUp">
+                    <h3 contentEditable="true" id="sub_section1_heading" class="mb-3 editable-content">INTEGRITY</h3>
+                    <div contentEditable="true" id="sub_section1_description" class="editable-content">
+                        <p>With a Manufacturing facility that is spread over 1.5 Lakh Sq. Ft. we boast of quality as well as quantity, which adds to our reliability even more. Moreover, we possess World’s Best machine…</p>
+                    </div>
+                </div>
+            <?php } else { ?>
+                <div class="col-md-6 p-0 fadeUp">
+                    <img src="<?=base_url('assets/client/images/INTEGRITY.jpg')?>" alt="" class="w-100">
+                </div>
+                <div class="col-md-6 p-3 p-md-5 fadeUp">
+                    <h3 class="mb-3">INTEGRITY</h3>
+                    <div>
+                        <p>With a Manufacturing facility that is spread over 1.5 Lakh Sq. Ft. we boast of quality as well as quantity, which adds to our reliability even more. Moreover, we possess World’s Best machine…</p>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
+
         <div class="row m-0 flex-row-reverse bg-white align-items-center" id="TeamWork">
-            <div class="col-md-6 p-0 fadeUp">
-                <img src="<?=base_url('assets/client/images/team.jpg')?>" alt="" class="w-100">
-            </div>
-            <div class="col-md-6 p-3 p-md-5 fadeUp">
-                <h3 class="mb-3">TEAM WORK                    </h3>
-                <p>With a Manufacturing facility that is spread over 1.5 Lakh Sq. Ft. we boast of quality as well as quantity, which adds to our reliability even more. Moreover, we possess World’s Best machines…..                    </p>
-            </div>
+            <?php if (!empty($page_contents_editable)) { ?>
+                <div class="col-md-6 p-0 fadeUp">
+                    <label for="sub_section2_image" class="editable-content w-100">
+                        <img src="<?=base_url('assets/client/images/team.jpg')?>" alt="" class="w-100">
+                        <input type="file" id="sub_section2_image" class="hidden-image-input" onchange="previewImage(this)">
+                    </label>
+                </div>
+                <div class="col-md-6 p-3 p-md-5 fadeUp">
+                    <h3 contentEditable="true" id="sub_section2_heading" class="mb-3 editable-content">TEAM WORK</h3>
+                    <div contentEditable="true" id="sub_section2_description" class="editable-content">
+                        <p>With a Manufacturing facility that is spread over 1.5 Lakh Sq. Ft. we boast of quality as well as quantity, which adds to our reliability even more. Moreover, we possess World’s Best machines…..</p>
+                    </div>
+                </div>
+            <?php } else { ?>
+                <div class="col-md-6 p-0 fadeUp">
+                    <img src="<?=base_url('assets/client/images/team.jpg')?>" alt="" class="w-100">
+                </div>
+                <div class="col-md-6 p-3 p-md-5 fadeUp">
+                    <h3 class="mb-3">TEAM WORK</h3>
+                    <div>
+                        <p>With a Manufacturing facility that is spread over 1.5 Lakh Sq. Ft. we boast of quality as well as quantity, which adds to our reliability even more. Moreover, we possess World’s Best machines…..</p>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
+
         <div class="row m-0 bg-white align-items-center" id="SafetyMeasures">
-            <div class="col-md-6 p-0 fadeUp">
-                <img src="<?=base_url('assets/client/images/safety.jpg')?>" alt="" class="w-100">
-            </div>
-            <div class="col-md-6 p-3 p-md-5 fadeUp">
-                <h3 class="mb-3">SAFETY MEASURES                    </h3>
-                <p>“Safety First” is not just a proverb for us but a way of life. We have structured our work culture in a way in which the safety of all our Human Resource is very well thought through and proper safety guidelines are predefined.                    </p>
-                
-                <p>Various safety drills and trainings are conducted at regular intervals to make our Human Resource ready for any untoward situation.                    </p>
-            </div>
+            <?php if (!empty($page_contents_editable)) { ?>
+                <div class="col-md-6 p-0 fadeUp">
+                    <label for="sub_section3_image" class="editable-content w-100">
+                        <img src="<?=base_url('assets/client/images/safety.jpg')?>" alt="" class="w-100">
+                        <input type="file" id="sub_section3_image" class="hidden-image-input" onchange="previewImage(this)">
+                    </label>
+                </div>
+                <div class="col-md-6 p-3 p-md-5 fadeUp">
+                    <h3 contentEditable="true" id="sub_section3_heading" class="mb-3 editable-content">SAFETY MEASURES</h3>
+                    <div contentEditable="true" id="sub_section3_description" class="editable-content">
+                        <p>“Safety First” is not just a proverb for us but a way of life. We have structured our work culture in a way in which the safety of all our Human Resource is very well thought through and proper safety guidelines are predefined.</p>
+                        
+                        <p>Various safety drills and trainings are conducted at regular intervals to make our Human Resource ready for any untoward situation.</p>
+                    </div>
+                </div>
+            <?php } else { ?>
+                <div class="col-md-6 p-0 fadeUp">
+                    <img src="<?=base_url('assets/client/images/safety.jpg')?>" alt="" class="w-100">
+                </div>
+                <div class="col-md-6 p-3 p-md-5 fadeUp">
+                    <h3 class="mb-3">SAFETY MEASURES</h3>
+                    <div>
+                        <p>“Safety First” is not just a proverb for us but a way of life. We have structured our work culture in a way in which the safety of all our Human Resource is very well thought through and proper safety guidelines are predefined.</p>
+                        
+                        <p>Various safety drills and trainings are conducted at regular intervals to make our Human Resource ready for any untoward situation.</p>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
+
         <div class="row m-0 flex-row-reverse bg-white align-items-center" id="CustomerSatisfaction">
-            <div class="col-md-6 p-0 fadeUp">
-                <img src="<?=base_url('assets/client/images/customer-experience.jpg')?>" alt="" class="w-100">
-            </div>
-            <div class="col-md-6 p-3 p-md-5 fadeUp">
-                <h3 class="mb-3"> CUSTOMER SATISFACTIONS                    </h3>
-                <p>With a Manufacturing facility that is spread over 1.5 Lakh Sq. Ft. we boast of quality as well as quantity, which adds to our reliability even more. Moreover, we possess World’s Best machines…..                    </p>
-            </div>
+            <?php if (!empty($page_contents_editable)) { ?>
+                <div class="col-md-6 p-0 fadeUp">
+                    <label for="sub_section4_image" class="editable-content w-100">
+                        <img src="<?=base_url('assets/client/images/customer-experience.jpg')?>" alt="" class="w-100">
+                        <input type="file" id="sub_section4_image" class="hidden-image-input" onchange="previewImage(this)">
+                    </label>
+                </div>
+                <div class="col-md-6 p-3 p-md-5 fadeUp">
+                    <h3 contentEditable="true" id="sub_section4_heading" class="mb-3 editable-content">CUSTOMER SATISFACTIONS</h3>
+                    <div contentEditable="true" id="sub_section4_description" class="editable-content">
+                        <p>With a Manufacturing facility that is spread over 1.5 Lakh Sq. Ft. we boast of quality as well as quantity, which adds to our reliability even more. Moreover, we possess World’s Best machines…</p>
+                    </div>
+                </div>
+            <?php } else { ?>
+                <div class="col-md-6 p-0 fadeUp">
+                    <img src="<?=base_url('assets/client/images/customer-experience.jpg')?>" alt="" class="w-100">
+                </div>
+                <div class="col-md-6 p-3 p-md-5 fadeUp">
+                    <h3 class="mb-3">CUSTOMER SATISFACTIONS</h3>
+                    <div>
+                        <p>With a Manufacturing facility that is spread over 1.5 Lakh Sq. Ft. we boast of quality as well as quantity, which adds to our reliability even more. Moreover, we possess World’s Best machines…</p>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
+
         <div class="row m-0 bg-white align-items-center" id="QualityPolicy">
-            <div class="col-md-6 p-0 fadeUp">
-                <img src="<?=base_url('assets/client/images/quality.jpg')?>" alt="" class="w-100">
-            </div>
-            <div class="col-md-6 p-3 p-md-5 fadeUp">
-                <h3 class="mb-3">QUALITY POLICY    </h3>
-                <p>At AB Polypacks, we take stringent quality control measures, which enables us to deliver high quality products to our customers.                    </p>
-                <p>In order to eliminate the slightest of errors, our dedicated and proactive QA team conducts micro and macro level quality tests at every stage of the production process which results in reliable and sustainable products.                    </p>
-            </div>
+            <?php if (!empty($page_contents_editable)) { ?>
+                <div class="col-md-6 p-0 fadeUp">
+                    <label for="sub_section5_image" class="editable-content w-100">
+                        <img src="<?=base_url('assets/client/images/quality.jpg')?>" alt="" class="w-100">
+                        <input type="file" id="sub_section5_image" class="hidden-image-input" onchange="previewImage(this)">
+                    </label>
+                </div>
+                <div class="col-md-6 p-3 p-md-5 fadeUp">
+                    <h3 contentEditable="true" id="sub_section5_heading" class="mb-3 editable-content">QUALITY POLICY</h3>
+                    <div contentEditable="true" id="sub_section5_description" class="editable-content">
+                        <p>At AB Polypacks, we take stringent quality control measures, which enables us to deliver high quality products to our customers.</p>
+                        <p>In order to eliminate the slightest of errors, our dedicated and proactive QA team conducts micro and macro level quality tests at every stage of the production process which results in reliable and sustainable products.</p>
+                    </div>
+                </div>
+            <?php } else { ?>
+                <div class="col-md-6 p-0 fadeUp">
+                    <img src="<?=base_url('assets/client/images/quality.jpg')?>" alt="" class="w-100">
+                </div>
+                <div class="col-md-6 p-3 p-md-5 fadeUp">
+                    <h3 class="mb-3">QUALITY POLICY</h3>
+                    <div>
+                        <p>At AB Polypacks, we take stringent quality control measures, which enables us to deliver high quality products to our customers.</p>
+                        <p>In order to eliminate the slightest of errors, our dedicated and proactive QA team conducts micro and macro level quality tests at every stage of the production process which results in reliable and sustainable products.</p>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
+
         <div class="row m-0 flex-row-reverse bg-white align-items-center" id="Sustainability">
-            <div class="col-md-6 p-0 fadeUp">
-                <img src="<?=base_url('assets/client/images/SUSTAINABILITY.jpg')?>" alt="" class="w-100">
-            </div>
-            <div class="col-md-6 p-3 p-md-5 fadeUp">
-                <h3 class="mb-3">SUSTAINABILITY
-                </h3>
-                <p>With a Manufacturing facility that is spread over 1.5 Lakh Sq. Ft. we boast of quality as well as quantity, which adds to our reliability even more. Moreover, we possess World’s Best machines.                    </p>
-            </div>
+            <?php if (!empty($page_contents_editable)) { ?>
+                <div class="col-md-6 p-0 fadeUp">
+                    <label for="sub_section6_image" class="editable-content w-100">
+                        <img src="<?=base_url('assets/client/images/SUSTAINABILITY.jpg')?>" alt="" class="w-100">
+                        <input type="file" id="sub_section6_image" class="hidden-image-input" onchange="previewImage(this)">
+                    </label>
+                </div>
+                <div class="col-md-6 p-3 p-md-5 fadeUp">
+                    <h3 contentEditable="true" id="sub_section6_heading" class="mb-3 editable-content">SUSTAINABILITY</h3>
+                    <div contentEditable="true" id="sub_section6_description" class="editable-content">
+                        <p>With a Manufacturing facility that is spread over 1.5 Lakh Sq. Ft. we boast of quality as well as quantity, which adds to our reliability even more. Moreover, we possess World’s Best machines.</p>
+                    </div>
+                </div>
+            <?php } else { ?>
+                <div class="col-md-6 p-0 fadeUp">
+                    <img src="<?=base_url('assets/client/images/SUSTAINABILITY.jpg')?>" alt="" class="w-100">
+                </div>
+                <div class="col-md-6 p-3 p-md-5 fadeUp">
+                    <h3 class="mb-3">SUSTAINABILITY</h3>
+                    <div>
+                        <p>With a Manufacturing facility that is spread over 1.5 Lakh Sq. Ft. we boast of quality as well as quantity, which adds to our reliability even more. Moreover, we possess World’s Best machines.</p>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
     </div>
 </section>
@@ -203,37 +377,92 @@ background-repeat: no-repeat; padding: 120px 0;">
     <div class="container">
         <div class="title2sec mb-4 fadeUp">
             <small>WE ARE THE BEST</small>
-            <h2>Certification</h2>
+            <?php if (!empty($page_contents_editable)) { ?>
+                <h2 contentEditable="true" id="certificates_section_heading" class="editable-content">Certification</h2>
+            <?php } else { ?>
+                <h2>Certification</h2>
+            <?php } ?>
         </div>
 
         <div class="row">
             <div class="col-md-3 mt-3">
                 <div class="bg-light p-3 text-center h-100">
-                        <div class="mb-2"><img src="<?=base_url('assets/client/images/iso.png')?>" class="mx-auto" width="120px" height="120px" alt=""></div>
-                        <div>A B Polypacks is certified as an ISO 9001:2015 company                         </div>
+                    <?php if (!empty($page_contents_editable)) { ?>
+                        <div class="mb-2">
+                            <label for="certificate1_image" class="editable-content w-100">
+                                <img src="<?=base_url('assets/client/images/iso.png')?>" class="mx-auto" width="120px" height="120px" alt="">
+                                <input type="file" id="certificate1_image" class="hidden-image-input" onchange="previewImage(this)">
+                            </label>
+                        </div>
+                        <div contentEditable="true" id="certificate1_description" class="editable-content">A B Polypacks is certified as an ISO 9001:2015 company</div>
+                    <?php } else { ?>
+                        <div class="mb-2">
+                            <img src="<?=base_url('assets/client/images/iso.png')?>" class="mx-auto" width="120px" height="120px" alt="">
+                        </div>
+                        <div>A B Polypacks is certified as an ISO 9001:2015 company</div>
+                    <?php } ?>
                 </div>
             </div>
+
             <div class="col-md-3 mt-3">
                 <div class="bg-light p-3 text-center h-100">
-                        <div class="mb-2"><img src="<?=base_url('assets/client/images/brc.png')?>" class="mx-auto" width="120px" height="120px" alt=""></div>
-                        <div>Our packaging manufacturing processes are certified by BRC (British Retail Consortium) for food, quality and safety standards developed by British retailers.                         </div>
+                    <?php if (!empty($page_contents_editable)) { ?>
+                        <div class="mb-2">
+                            <label for="certificate2_image" class="editable-content w-100">
+                                <img src="<?=base_url('assets/client/images/brc.png')?>" class="mx-auto" width="120px" height="120px" alt="">
+                                <input type="file" id="certificate2_image" class="hidden-image-input" onchange="previewImage(this)">
+                            </label>
+                        </div>
+                        <div contentEditable="true" id="certificate2_description" class="editable-content">Our packaging manufacturing processes are certified by BRC (British Retail Consortium) for food, quality and safety standards developed by British retailers.</div>
+                    <?php } else { ?>
+                        <div class="mb-2">
+                            <img src="<?=base_url('assets/client/images/brc.png')?>" class="mx-auto" width="120px" height="120px" alt="">
+                        </div>
+                        <div>Our packaging manufacturing processes are certified by BRC (British Retail Consortium) for food, quality and safety standards developed by British retailers.</div>
+                    <?php } ?>
                 </div>
             </div>
+
             <div class="col-md-3 mt-3">
                 <div class="bg-light p-3 text-center h-100">
-                        <div class="mb-2"><img src="<?=base_url('assets/client/images/fssc.jpg')?>" class="mx-auto" width="120px" height="120px" alt=""></div>
-                        <div>We are also certified by the scheme for food safety management systems known as FSSC 22000                         </div>
+                    <?php if (!empty($page_contents_editable)) { ?>
+                        <div class="mb-2">
+                            <label for="certificate3_image" class="editable-content w-100">
+                                <img src="<?=base_url('assets/client/images/fssc.jpg')?>" class="mx-auto" width="120px" height="120px" alt="">
+                                <input type="file" id="certificate3_image" class="hidden-image-input" onchange="previewImage(this)">
+                            </label>
+                        </div>
+                        <div contentEditable="true" id="certificate3_description" class="editable-content">We are also certified by the scheme for food safety management systems known as FSSC 22000</div>
+                    <?php } else { ?>
+                        <div class="mb-2">
+                            <img src="<?=base_url('assets/client/images/fssc.jpg')?>" class="mx-auto" width="120px" height="120px" alt="">
+                        </div>
+                        <div>We are also certified by the scheme for food safety management systems known as FSSC 22000</div>
+                    <?php } ?>
                 </div>
             </div>
+
             <div class="col-md-3 mt-3">
                 <div class="bg-light p-3 text-center h-100">
-                        <div class="mb-2"><img src="" alt=""></div>
-                        <div>Our safety standards have been certified by SGP & URSA                         </div>
+                    <?php if (!empty($page_contents_editable)) { ?>
+                        <div class="mb-2">
+                            <label for="certificate4_image" class="editable-content w-100">
+                                <img src="<?=base_url('assets/client/images/hse.png')?>" alt="">
+                                <input type="file" id="certificate4_image" class="hidden-image-input" onchange="previewImage(this)">
+                            </label>
+                        </div>
+                        <div contentEditable="true" id="certificate4_description" class="editable-content">Our safety standards have been certified by SGP &amp; URSA</div>
+                    <?php } else { ?>
+                        <div class="mb-2"><img src="<?=base_url('assets/client/images/hse.png')?>" alt=""></div>
+                        <div>Our safety standards have been certified by SGP &amp; URSA</div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<?php if (!empty($list_of_clients)) { ?>
 <section class="py-5" style="background-color: #FDF6F4;" id="Clientele">
     <div class="container">
         <div class="title2sec mb-4 fadeUp">
@@ -242,57 +471,15 @@ background-repeat: no-repeat; padding: 120px 0;">
         </div>
         <div class="fadeUp">
             <div class="clientslogoslider">
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="<?=base_url('assets/client/images/client-logo1-min.png')?>" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="<?=base_url('assets/client/images/client-logo2-min.png')?>" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="<?=base_url('assets/client/images/client-logo3-min.png')?>" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="<?=base_url('assets/client/images/client-logo4-min.png')?>" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="<?=base_url('assets/client/images/client-logo5-min.png')?>" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="<?=base_url('assets/client/images/client-logo6-min.png')?>" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="<?=base_url('assets/client/images/client-logo7-min.png')?>" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="<?=base_url('assets/client/images/client-logo8-min.png')?>" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="<?=base_url('assets/client/images/client-logo3-min.png')?>" alt="">
-                    </div>
-                </div>
-                <div class="clientslogosec">
-                    <div class="clientslogo">
-                        <img class="" src="<?=base_url('assets/client/images/client-logo4-min.png')?>" alt="">
-                    </div>
-                </div>
+                <?php foreach ($list_of_clients as $i => $client_details) { ?>
+                    <div class="clientslogosec">
+                        <div class="clientslogo">
+                            <img class="" src="<?=base_url($client_details->image)?>" alt="">
+                        </div>
+                    </div>   
+                <?php } ?>
             </div>
         </div>
     </div>
 </section>
+<?php } ?>

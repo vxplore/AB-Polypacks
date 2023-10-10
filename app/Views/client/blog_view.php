@@ -1,9 +1,25 @@
-<section class="innerpagebanner py-5 position-relative" style="
-background-image: url(<?=base_url('assets/client/images/homehero-bg.jpg')?>); 
+<?php if (!empty($page_contents)) {
+  
+  if (!empty($page_contents->page_background_image)) {
+      $page_background_image = base_url($page_contents->page_background_image);
+  } else {
+      $page_background_image = "";
+  }
+
+  if (!empty($page_contents->page_heading)) {
+      $page_heading = $page_contents->page_heading;
+  } else {
+      $page_heading = "";
+  }
+
+}?>
+
+<section class="innerpagebanner position-relative" style="
+background-image: url(<?=$page_background_image?>); 
 background-size: cover; 
-background-repeat: no-repeat;">
+background-repeat: no-repeat; padding: 120px 0;">
     <div class="container py-4">
-        <h1 class="mb-3 text-center fadeUp">Blog</h1>
+        <h1 class="mb-3 text-center fadeUp"><?=$page_heading?></h1>
         <nav class="fadeUp" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-center">
                 <li class="breadcrumb-item"><a href="<?=base_url()?>">Home</a></li>
