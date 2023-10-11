@@ -206,6 +206,36 @@ class Pages extends Common {
                 "sub_section7_description"  
             ];
         }
+        else if ($page_id == ABOUT_US_PAGE_ID) {
+            $text_content_names = [
+                "main_section_heading",
+                "main_section_description",
+                "top_section_description",
+                "small_section1_heading",
+                "small_section1_sub_heading",
+                "small_section1_description",
+                "small_section2_heading",
+                "small_section2_sub_heading",
+                "small_section2_description",
+                "sub_section1_heading",
+                "sub_section1_description",
+                "sub_section2_heading",
+                "sub_section2_description",
+                "sub_section3_heading",
+                "sub_section3_description",
+                "sub_section4_heading",
+                "sub_section4_description",
+                "sub_section5_heading",
+                "sub_section5_description",
+                "sub_section6_heading",
+                "sub_section6_description",
+                "certificates_section_heading",
+                "certificate1_description",
+                "certificate2_description",
+                "certificate3_description",
+                "certificate4_description"  
+            ];
+        }
 
         return (!empty($text_content_names)) ? $text_content_names : [];
     }
@@ -237,6 +267,23 @@ class Pages extends Common {
         else if ($page_id == CAREER_PAGE_ID) {
             $file_content_names = [
                 "career_development_image"
+            ];
+        }
+        else if ($page_id == ABOUT_US_PAGE_ID) {
+            $file_content_names = [
+                "top_section_image",
+                "small_section1_image",
+                "small_section2_image",
+                "sub_section1_image",
+                "sub_section2_image",
+                "sub_section3_image",
+                "sub_section4_image",
+                "sub_section5_image",
+                "sub_section6_image",
+                "certificate1_image",
+                "certificate2_image",
+                "certificate3_image",
+                "certificate4_image"
             ];
         }
 
